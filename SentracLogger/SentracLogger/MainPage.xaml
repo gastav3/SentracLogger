@@ -7,4 +7,10 @@
     
 
 
+    <Label Text="{x:Static Resource:AppResources.hello}"
+           x:Name="label"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"
+           FontSize="Large"/>
+
 </ContentPage>
