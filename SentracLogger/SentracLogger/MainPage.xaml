@@ -4,5 +4,7 @@
              xmlns:local="clr-namespace:SentracLogger"
              x:Class="SentracLogger.MainPage"
              xmlns:Resource="clr-namespace:SentracLogger">
+    
+
 
 </ContentPage>
