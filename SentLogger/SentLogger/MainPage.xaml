@@ -3,13 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:SentLogger"
              xmlns:resources="clr-namespace:SentLogger.Resources;assembly=SentLogger"
-             x:Class="SentLogger.MainPage">
-    
-    <!-- Language change by using tags instead of strings in the app,
-    the tags are referensing to a Resource file. -->
-    <Label Text="{x:Static resources:AppResource.Title}" 
+             x:Class="SentLogger.MainPage"
+             xmlns:viewModels="clr-namespace:SentLogger.ViewModels;assembly=SentLogger"
+            >
+
+    <ContentPage.BindingContext>
+        <viewModels:GraphViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Orientation="Vertical" Spacing="20" VerticalOptions="Center">
+        <!-- Language change by using tags instead of strings in the app,
+         the tags are referensing to a Resource file. -->
+        <Label Text="{x:Static resources:AppResource.Hello}" 
            x:Name="label"
            VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+           HorizontalOptions="Center"
+           Margin="50, 0, 0, 0"/>
 
+    <Label Text="{Binding HelloVar}" 
+           x:Name="HelloText"
+           VerticalOptions="Center" 
+           HorizontalOptions="Center"
+           Margin="0, 50, 0, 0"/>
+
+    <Button Text="Tryck" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding TestButtonCommand}"></Button>
+    </StackLayout>
 </ContentPage>

@@ -20,8 +20,8 @@ namespace SentLogger
       /// <summary>
       /// Changes the language in the app and initializes it again.
       /// </summary>
-      AppResource.Culture = new CultureInfo("sv");
-		    InitializeComponent();
+     // AppResource.Culture = new CultureInfo("sv");
+		//    InitializeComponent();
         }
-	}
+    }
 }
