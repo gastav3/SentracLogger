@@ -9,15 +9,15 @@ using Xamarin.Forms;
 
 namespace SentLogger
 {
-	public partial class MainPage : ContentPage
-	{
-		public MainPage()
-		{
-			InitializeComponent();
-		    AppResource.Culture = new CultureInfo("sv"); // Change Language
-		    InitializeComponent(); // Run this again after chaning language
+    public partial class MainPage : ContentPage
+    {
+        public MainPage()
+        {
+            InitializeComponent();
+            //  AppResource.Culture = new CultureInfo("sv"); // Change Language
+            //InitializeComponent(); // Run this again after chaning language
 
             // label.Text = AppResource.Title;
         }
-	}
+    }
 }

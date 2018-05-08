@@ -61,7 +61,16 @@ namespace SentLogger.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to hej.
+        ///   Looks up a localized string similar to -.
+        /// </summary>
+        internal static string Hello {
+            get {
+                return ResourceManager.GetString("Hello", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -.
         /// </summary>
         internal static string Title {
             get {
