@@ -9,6 +9,9 @@ using Xamarin.Forms.Xaml;
 
 namespace SentLogger.Views
 {
+  /// <summary>
+  /// View for the histogram with function.
+  /// </summary>
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HistogramView : ContentPage
 	{

@@ -9,6 +9,9 @@ using Xamarin.Forms.Xaml;
 
 namespace SentLogger.Views
 {
+  /// <summary>
+  /// View for the File Explorer.
+  /// </summary>
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class FileExplorerView : ContentPage
 	{

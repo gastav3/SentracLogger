@@ -9,6 +9,9 @@ using Xamarin.Forms.Xaml;
 
 namespace SentLogger.Views
 {
+  /// <summary>
+  /// HelpView.
+  /// </summary>
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HelpView : ContentPage
 	{
