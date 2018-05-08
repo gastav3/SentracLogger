@@ -16,7 +16,7 @@ namespace SentLogger.ViewModels
         //------ PROPERTIES -----
         public string HelloVar
         {
-            get { return this._helloVar; }
+            get => this._helloVar;
             set
             {
                 _helloVar = value;
@@ -27,7 +27,7 @@ namespace SentLogger.ViewModels
 
         public List<string> TestList
         {
-            get { return _testList; }
+            get => _testList;
             set
             {
                 _testList = value;
@@ -49,7 +49,6 @@ namespace SentLogger.ViewModels
             {
                 return new Command(() =>
                 {
-                    Console.WriteLine("hej");
                     HelloVar = "VOLVO";
                 });
             }

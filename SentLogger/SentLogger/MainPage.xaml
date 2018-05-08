@@ -4,13 +4,16 @@
              xmlns:local="clr-namespace:SentLogger"
              xmlns:resources="clr-namespace:SentLogger.Resources;assembly=SentLogger"
              x:Class="SentLogger.MainPage"
-             xmlns:viewModels="clr-namespace:SentLogger.ViewModels;assembly=SentLogger">
+             xmlns:viewModels="clr-namespace:SentLogger.ViewModels;assembly=SentLogger"
+            >
 
     <ContentPage.BindingContext>
-        <viewModels:GraphView/>
+        <viewModels:GraphViewModel/>
     </ContentPage.BindingContext>
 
     <StackLayout Orientation="Vertical" Spacing="20" VerticalOptions="Center">
+        <!-- Language change by using tags instead of strings in the app,
+         the tags are referensing to a Resource file. -->
         <Label Text="{x:Static resources:AppResource.Hello}" 
            x:Name="label"
            VerticalOptions="Center" 
