@@ -9,7 +9,9 @@ using Android.OS;
 
 namespace SentLogger.Droid
 {
-    [Activity(Label = "SentLogger", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "SentLogger", Icon = "@drawable/icon", Theme = "@style/MainTheme",
+    MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
