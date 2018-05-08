@@ -11,13 +11,17 @@ namespace SentLogger
 {
 	public partial class MainPage : ContentPage
 	{
-		public MainPage()
+    /// <summary>
+    /// MainPage for the shared code of the project.
+    /// </summary>
+    public MainPage()
 		{
 			InitializeComponent();
-		    AppResource.Culture = new CultureInfo("sv"); // Change Language
-		    InitializeComponent(); // Run this again after chaning language
-
-            // label.Text = AppResource.Title;
+      /// <summary>
+      /// Changes the language in the app and initializes it again.
+      /// </summary>
+      AppResource.Culture = new CultureInfo("sv");
+		    InitializeComponent();
         }
 	}
 }
