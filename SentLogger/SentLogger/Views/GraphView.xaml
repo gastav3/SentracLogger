@@ -4,7 +4,13 @@
              x:Class="SentLogger.Views.GraphView">
     <ContentPage.Content>
         <StackLayout>
-            
+            <Frame x:Name="GraphFrame">
+                <ScrollView>
+                    <Frame HeightRequest="200" WidthRequest="500">
+
+                    </Frame>
+                </ScrollView>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

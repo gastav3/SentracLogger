@@ -19,5 +19,7 @@ namespace SentLogger.Views
 		{
 			InitializeComponent ();
 		}
+
+
 	}
 }
