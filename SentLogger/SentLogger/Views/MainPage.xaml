@@ -26,6 +26,17 @@
            HorizontalOptions="Center"
            Margin="0, 50, 0, 0"/>
 
-    <Button Text="Tryck" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding TestButtonCommand}"></Button>
+    <Button Text="Tryck"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Command="{Binding TestButtonCommand}"
+            ></Button>
+
+        <Button Text="Tryck"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                OnClick="GraphView"
+        ></Button>
+
     </StackLayout>
 </ContentPage>

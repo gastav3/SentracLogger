@@ -4,9 +4,13 @@
              x:Class="SentLogger.Views.GraphView">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Frame x:Name="GraphFrame">
+                <ScrollView>
+                    <Frame HeightRequest="200" WidthRequest="500">
+
+                    </Frame>
+                </ScrollView>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
