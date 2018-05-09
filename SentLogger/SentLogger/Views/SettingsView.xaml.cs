@@ -9,6 +9,9 @@ using Xamarin.Forms.Xaml;
 
 namespace SentLogger.Views
 {
+  /// <summary>
+  /// SettingsView.
+  /// </summary>
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SettingsView : ContentPage
 	{

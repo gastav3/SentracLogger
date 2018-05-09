@@ -8,6 +8,9 @@ using Xamarin.Forms.Xaml;
 
 namespace SentLogger.Views
 {
+  /// <summary>
+  /// View for the GraphTab.
+  /// </summary>
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class GraphView : ContentPage
 	{

@@ -12,7 +12,7 @@ namespace SentLogger
 	public partial class MainPage : ContentPage
 	{
     /// <summary>
-    /// MainPage for the shared code of the project.
+    /// MainPage.
     /// </summary>
     public MainPage()
 		{
