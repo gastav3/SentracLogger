@@ -5,10 +5,10 @@
     <ContentPage.Content>
         <StackLayout>
             <Frame x:Name="GraphFrame">
-                <ScrollView>
-                    <Frame HeightRequest="200" WidthRequest="500">
-
-                    </Frame>
+                <ScrollView> 
+                    <StackLayout WidthRequest="500" HeightRequest="200" BackgroundColor="Red">
+    
+                    </StackLayout>
                 </ScrollView>
             </Frame>
         </StackLayout>
