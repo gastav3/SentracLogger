@@ -149,7 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.0.0.446417" />
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.0.8" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.0-Preview1-26502-02" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SentLogger\SentLogger.csproj">
