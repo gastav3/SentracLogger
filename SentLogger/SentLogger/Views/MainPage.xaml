@@ -12,6 +12,7 @@
     </ContentPage.BindingContext>
 
     <StackLayout Orientation="Vertical" Spacing="20" VerticalOptions="Center">
+        
         <!-- Language change by using tags instead of strings in the app,
          the tags are referensing to a Resource file. -->
         <Label Text="{x:Static resources:AppResource.Hello}" 
@@ -32,10 +33,10 @@
             Command="{Binding TestButtonCommand}"
             ></Button>
 
-        <Button Text="Tryck"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                OnClick="GraphView"
+    <Button Text="Graph"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"
+           Command="{Binding ChangeToThisViewCommand}"
         ></Button>
 
     </StackLayout>

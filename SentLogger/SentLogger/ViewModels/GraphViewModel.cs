@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using SentLogger.Views;
 using Xamarin.Forms;
 
 namespace SentLogger.ViewModels
@@ -50,6 +51,18 @@ namespace SentLogger.ViewModels
                 return new Command(() =>
                 {
                     HelloVar = "VOLVO";
+                });
+            }
+        }
+
+        public Command ChangeToThisViewCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    NavigationPage nav = new NavigationPage(new GraphView());
+                    
                 });
             }
         }
