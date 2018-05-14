@@ -13,7 +13,7 @@ namespace SentLogger
 		{
 			InitializeComponent();
 
-		    MainPage = new NavigationPage(new SentLogger.MainPage());
+		    MainPage = new NavigationPage(new SentLogger.Views.HelpView());
         }
 
 		protected override void OnStart ()
