@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using SentLogger.Views;
 using Xamarin.Forms;
+using SentLogger.Models;
 
 namespace SentLogger.ViewModels
 {
     class GraphViewModel : INotifyPropertyChanged
     {
         private string _helloVar;
-        private List<string> _testList { get; set; }
-
+        private ObservableCollection<GraphDot> graphDots = new ObservableCollection<GraphDot>();
 
         //------ PROPERTIES -----
         public string HelloVar
@@ -23,50 +24,58 @@ namespace SentLogger.ViewModels
                 _helloVar = value;
                 OnPropertyChanged();
             }
-
         }
 
-        public List<string> TestList
+        public ObservableCollection<GraphDot> GetGraphDotsList()
         {
-            get => _testList;
-            set
-            {
-                _testList = value;
-                OnPropertyChanged();
-            }
+            return this.graphDots;
+        }
+
+        public ObservableCollection<GraphDot> GetGraphDots()
+        {
+            return this.graphDots;
+        }
+
+        public void AddGraphDot(GraphDot dot)
+        {
+            this.graphDots.Add(dot);
         }
 
         //-----------------INIT-------------------------
         public GraphViewModel()
         {
-
+            HelloVar = "VOLVO";
         }
-
 
         //-----------COMMANDS FOR BUTTONS-------------
-        public Command TestButtonCommand
+
+        public Command AddNewRandomDotCommand
         {
             get
             {
                 return new Command(() =>
                 {
-                    HelloVar = "VOLVO";
+                    Random rnd = new Random();
+                    GraphDot tempDot = new GraphDot(new Point(rnd.Next(1,100), rnd.Next(1,25)));
+                    AddGraphDot(tempDot);
                 });
             }
         }
 
-        public Command ChangeToThisViewCommand
+        public Command RemoveLastGraphDotCommand
         {
             get
             {
                 return new Command(() =>
                 {
-                    NavigationPage nav = new NavigationPage(new GraphView());
-                    
+                    if (graphDots.Count > 0)
+                    {
+                        this.graphDots.RemoveAt(graphDots.Count - 1);
+                        HelloVar = graphDots.Count.ToString() + " St";
+                    }
                 });
             }
         }
-
 
         //--------ON PROPERTY CHANGED STUFF-----------
         public event PropertyChangedEventHandler PropertyChanged;
