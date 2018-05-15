@@ -5,12 +5,38 @@
     <ContentPage.Content>
         <StackLayout>
             <Frame x:Name="GraphFrame">
-                <ScrollView> 
-                    <StackLayout WidthRequest="500" HeightRequest="200" BackgroundColor="Red">
-    
-                    </StackLayout>
+                <ScrollView Orientation="Both">
+                    <AbsoluteLayout x:Name="GraphDrawArea" HeightRequest="300" WidthRequest="10000" BackgroundColor="AliceBlue">
+                        
+                        <Label
+                          AbsoluteLayout.LayoutBounds="0, 0, 10, 10"
+                          AbsoluteLayout.LayoutFlags="None" 
+                          BackgroundColor="Green" ></Label>
+
+                    </AbsoluteLayout>
                 </ScrollView>
             </Frame>
+
+
+            <Button Text="Add Random Dot"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         Command="{Binding AddNewRandomDotCommand}"
+                          Margin="0, 0, 0, 0"
+                         ></Button>
+
+            <Button Text="Remove Last Dot"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         Command="{Binding RemoveLastGraphDotCommand}"
+                          Margin="0, 0, 0, 0"
+                         ></Button>
+
+            <Label Text="{Binding HelloVar}" 
+              x:Name="HelloText"
+             VerticalOptions="Center" 
+             HorizontalOptions="Center"
+             Margin="0, 0, 0, 0"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
