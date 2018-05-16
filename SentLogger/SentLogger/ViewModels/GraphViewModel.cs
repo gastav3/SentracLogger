@@ -12,10 +12,65 @@ namespace SentLogger.ViewModels
 {
     class GraphViewModel : INotifyPropertyChanged
     {
-        private string _helloVar;
         private ObservableCollection<GraphDot> graphDots = new ObservableCollection<GraphDot>();
 
+        private string _helloVar;
+        private float zoomAmount;
+
+        private double graphFrameSizeOffsetX;
+        private double graphFrameSizeOffsetY;
+
+        private double graphFrameSizeWidth;
+        private double graphFrameSizeHeight;
+
+        //----------------UI-------------------
+
+        public void UpdateUiElement(object sender, EventArgs e)
+        {
+            foreach (GraphDot dot in GetGraphDotsList())
+            {
+                double newPosX = (dot.StartPoint.X * (Application.Current.MainPage.Width / dot.ScreenSizeCreated.X));
+                double newPosY = (dot.StartPoint.Y * (Application.Current.MainPage.Height) / dot.ScreenSizeCreated.Y);
+                dot.Positon = new Point(newPosX, newPosY);
+                AbsoluteLayout.SetLayoutBounds(dot.GraphicDot, new Rectangle(dot.Positon.X, dot.Positon.Y, dot.Size.X, dot.Size.Y));
+            }
+
+            GraphFrameSizeWidth = Application.Current.MainPage.Width + graphFrameSizeOffsetX;
+            GraphFrameSizeHeight = Application.Current.MainPage.Height + graphFrameSizeOffsetY;
+        }
+
         //------ PROPERTIES -----
+
+        public double GraphFrameSizeHeight
+        {
+            get => this.graphFrameSizeHeight;
+            set
+            {
+                graphFrameSizeHeight = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public double GraphFrameSizeWidth
+        {
+            get => this.graphFrameSizeWidth;
+            set
+            {
+                graphFrameSizeWidth = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public float ZoomAmount
+        {
+            get => this.zoomAmount;
+            set
+            {
+                zoomAmount = value;
+                OnPropertyChanged();
+            }
+        }
+
         public string HelloVar
         {
             get => this._helloVar;
@@ -31,11 +86,6 @@ namespace SentLogger.ViewModels
             return this.graphDots;
         }
 
-        public ObservableCollection<GraphDot> GetGraphDots()
-        {
-            return this.graphDots;
-        }
-
         public void AddGraphDot(GraphDot dot)
         {
             this.graphDots.Add(dot);
@@ -47,6 +97,7 @@ namespace SentLogger.ViewModels
             HelloVar = "VOLVO";
         }
 
+
         //-----------COMMANDS FOR BUTTONS-------------
 
         public Command AddNewRandomDotCommand
@@ -56,7 +107,10 @@ namespace SentLogger.ViewModels
                 return new Command(() =>
                 {
                     Random rnd = new Random();
-                    GraphDot tempDot = new GraphDot(new Point(rnd.Next(1,100), rnd.Next(1,25)));
+                    GraphDot tempDot = new GraphDot(new Point(rnd.Next(1,1000), rnd.Next(1,600)));
+                    tempDot.Size = new Point(10, 10);
+
+                    tempDot.ScreenSizeCreated = new Point(Application.Current.MainPage.Width, Application.Current.MainPage.Height);
                     AddGraphDot(tempDot);
                 });
             }
@@ -76,6 +130,30 @@ namespace SentLogger.ViewModels
                 });
             }
         }
+
+
+        public Command GraphZoomInCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    
+                });
+            }
+        }
+
+        public Command GraphZoomOutCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+
+                });
+            }
+        }
+
 
         //--------ON PROPERTY CHANGED STUFF-----------
         public event PropertyChangedEventHandler PropertyChanged;
