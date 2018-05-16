@@ -7,36 +7,49 @@ using System.Text;
 using SentLogger.Views;
 using Xamarin.Forms;
 using SentLogger.Models;
+using SentLogger.Misc;
 
 namespace SentLogger.ViewModels
 {
-    class GraphViewModel : INotifyPropertyChanged
+    /// <summary>
+    /// The GraphViewModel controls most of the funconality of the graph
+    /// -TODO-
+    /// Stay pos where zoomed in
+    /// Make graph longer when more dots are added
+    /// X Axis
+    /// Y Axis
+    /// X Axis acceptable value
+    /// Dots should be circles
+    /// 
+    /// </summary>
+   public class GraphViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<GraphDot> graphDots = new ObservableCollection<GraphDot>();
 
         private string _helloVar;
-        private float zoomAmount;
+        private float zoomAmount = 0f; // the amount that should be zoomed in
 
-        private double graphFrameSizeOffsetX;
-        private double graphFrameSizeOffsetY;
-
-        private double graphFrameSizeWidth;
-        private double graphFrameSizeHeight;
+        private double graphFrameSizeWidth; // Binded to the graph width
+        private double graphFrameSizeHeight; // Binded to the graph height
 
         //----------------UI-------------------
 
+        /// <summary>
+        /// Called when the graph and its elements needs to be updated
+        /// </summary>
         public void UpdateUiElement(object sender, EventArgs e)
         {
-            foreach (GraphDot dot in GetGraphDotsList())
+            foreach (GraphDot dot in GetGraphDotsList()) // loop through all dots
             {
-                double newPosX = (dot.StartPoint.X * (Application.Current.MainPage.Width / dot.ScreenSizeCreated.X));
-                double newPosY = (dot.StartPoint.Y * (Application.Current.MainPage.Height) / dot.ScreenSizeCreated.Y);
+                double newPosX = (dot.StartPoint.X * (GraphFrameSizeWidth / dot.ScreenSizeCreated.X));
+                double newPosY = (dot.StartPoint.Y * (GraphFrameSizeHeight / dot.ScreenSizeCreated.Y));
+
                 dot.Positon = new Point(newPosX, newPosY);
-                AbsoluteLayout.SetLayoutBounds(dot.GraphicDot, new Rectangle(dot.Positon.X, dot.Positon.Y, dot.Size.X, dot.Size.Y));
+                AbsoluteLayout.SetLayoutBounds(dot.GraphicDot, new Rectangle(dot.Positon.X, dot.Positon.Y, dot.Size.X*(1 + ZoomAmount/100f), dot.Size.Y*(1 + ZoomAmount/100f)));
             }
 
-            GraphFrameSizeWidth = Application.Current.MainPage.Width + graphFrameSizeOffsetX;
-            GraphFrameSizeHeight = Application.Current.MainPage.Height + graphFrameSizeOffsetY;
+            GraphFrameSizeWidth = (Application.Current.MainPage.Width/2f) * (1 + (ZoomAmount/100f));
+            GraphFrameSizeHeight = (Application.Current.MainPage.Height/2f) * (1 + (ZoomAmount/100f));
         }
 
         //------ PROPERTIES -----
@@ -126,36 +139,18 @@ namespace SentLogger.ViewModels
                     {
                         this.graphDots.RemoveAt(graphDots.Count - 1);
                         HelloVar = graphDots.Count.ToString() + " St";
+                        UpdateUiElement(this, EventArgs.Empty);
                     }
                 });
             }
         }
 
 
-        public Command GraphZoomInCommand
-        {
-            get
-            {
-                return new Command(() =>
-                {
-                    
-                });
-            }
-        }
-
-        public Command GraphZoomOutCommand
-        {
-            get
-            {
-                return new Command(() =>
-                {
-
-                });
-            }
-        }
-
-
         //--------ON PROPERTY CHANGED STUFF-----------
+
+        /// <summary>
+        /// A standard PropertyChangedEventHandler
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

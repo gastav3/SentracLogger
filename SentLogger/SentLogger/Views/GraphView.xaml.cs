@@ -19,7 +19,6 @@ namespace SentLogger.Views
 	public partial class GraphView : ContentPage
 	{
         private GraphViewModel graphViewModel; // the viewmodel class
-
         private Label dotToolTip;
 
         public GraphView ()
@@ -29,7 +28,9 @@ namespace SentLogger.Views
             graphViewModel = new GraphViewModel();
             this.BindingContext = graphViewModel;
 
+            // EVENTS??
             this.SizeChanged += graphViewModel.UpdateUiElement;
+            SliderZoom.ValueChanged += graphViewModel.UpdateUiElement;
             graphViewModel.GetGraphDotsList().CollectionChanged += DrawChangedDots;
         }
 
@@ -91,5 +92,6 @@ namespace SentLogger.Views
       );
             GraphDrawArea.Children.Add(newDot);
         }
-	}
+
+    }
 }
