@@ -1,12 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SentLogger.Views.HelpView">
-    
-    <ContentPage.Content>
-        <StackLayout>
+             x:Class="SentLogger.Views.HelpView"
+             ControlTemplate="{StaticResource MainDesign}">
 
+    <ContentPage.Content>
+        <StackLayout Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
+            <Label Text="What is the meaning of life?" FontSize="24"
+                HorizontalOptions="CenterAndExpand" VerticalOptions='CenterAndExpand'/>
+            <Label Text="42" FontSize="24" HorizontalOptions="CenterAndExpand"
+                VerticalOptions='CenterAndExpand'/>
         </StackLayout>
     </ContentPage.Content>
-    
 </ContentPage>
