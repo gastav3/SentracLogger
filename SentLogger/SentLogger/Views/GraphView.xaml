@@ -1,42 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SentLogger.Views.GraphView">
-    <ContentPage.Content>
-        <StackLayout>
-            <Frame x:Name="GraphFrame">
-                <ScrollView Orientation="Both">
-                    <AbsoluteLayout x:Name="GraphDrawArea" HeightRequest="300" WidthRequest="10000" BackgroundColor="AliceBlue">
-                        
-                        <Label
-                          AbsoluteLayout.LayoutBounds="0, 0, 10, 10"
-                          AbsoluteLayout.LayoutFlags="None" 
-                          BackgroundColor="Green" ></Label>
+             x:Class="SentLogger.Views.GraphView"
+             ControlTemplate="{StaticResource MainDesign}">
 
+    <ContentPage.Content>
+        <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
+            <Frame x:Name="GraphFrame"  BackgroundColor="Gray" >
+                <ScrollView Orientation="Both">
+                    <AbsoluteLayout x:Name="GraphDrawArea" HeightRequest="{Binding GraphFrameSizeHeight}" WidthRequest="{Binding GraphFrameSizeWidth}" BackgroundColor="GhostWhite">
+
+                        
+ 
                     </AbsoluteLayout>
                 </ScrollView>
             </Frame>
 
+            <Slider x:Name="SliderZoom"
+                          Value="{Binding ZoomAmount, Mode=TwoWay}"
+                          Minimum="0"
+                          Maximum="100"
+                          HorizontalOptions="FillAndExpand"
+                          VerticalOptions="Center" />
 
             <Button Text="Add Random Dot"
                          VerticalOptions="Center"
                          HorizontalOptions="Center"
                          Command="{Binding AddNewRandomDotCommand}"
-                          Margin="0, 0, 0, 0"
+                         Margin="0, 0, 0, 0"
                          ></Button>
 
             <Button Text="Remove Last Dot"
                          VerticalOptions="Center"
                          HorizontalOptions="Center"
                          Command="{Binding RemoveLastGraphDotCommand}"
-                          Margin="0, 0, 0, 0"
+                         Margin="0, 0, 0, 0"
                          ></Button>
 
             <Label Text="{Binding HelloVar}" 
-              x:Name="HelloText"
-             VerticalOptions="Center" 
-             HorizontalOptions="Center"
-             Margin="0, 0, 0, 0"/>
+                        x:Name="HelloText"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="Center"
+                        Margin="0, 0, 0, 0"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
