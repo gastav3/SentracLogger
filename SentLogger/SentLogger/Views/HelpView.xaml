@@ -1,39 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SentLogger.Views.HelpView"
-             BackgroundColor="White">
+             x:Class="SentLogger.Views.HelpView">
     
     <ContentPage.Content>
+        <StackLayout>
 
-        <Grid RowSpacing="0" ColumnSpacing="0">
-            <Grid.RowDefinitions TotalHeight="1*">
-                <RowDefinition Height="0.1125*" />
-                <RowDefinition Height="0.0125*" />
-                <RowDefinition Height="0.75*" />
-                <RowDefinition Height="0.0125*" />
-                <RowDefinition Height="0.1125*" />
-            </Grid.RowDefinitions>
-
-            <Grid.ColumnDefinitions TotalWidth="1.33333*">
-                <ColumnDefinition Width="0.0125*" />
-                <ColumnDefinition Width="0.104166*" />
-                <ColumnDefinition Width="1.1*" />
-                <ColumnDefinition Width="0.104166*" />
-                <ColumnDefinition Width="0.0125*" />
-            </Grid.ColumnDefinitions>
-
-            <BoxView Color="#5D74A1"
-                   Grid.Row="0" Grid.Column="2"/>
-
-            <BoxView Color="#5D74A1"
-                   Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"/>
-
-            <BoxView Color="#5D74A1"
-                   Grid.Row="4" Grid.Column="2"/>
-
-        </Grid>
-        
+        </StackLayout>
     </ContentPage.Content>
     
 </ContentPage>
