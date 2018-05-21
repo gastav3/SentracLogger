@@ -20,6 +20,9 @@ namespace SentLogger.Models
         {
             Positon = point;
             StartPoint = point;
+
+            Size = new Point(10,10);
+            ScreenSizeCreated = new Point(Application.Current.MainPage.Width, Application.Current.MainPage.Height);
         }
     }
 }

@@ -8,17 +8,19 @@
         <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
             <Frame x:Name="GraphFrame"  BackgroundColor="Gray" >
                 <ScrollView Orientation="Both">
-                    <AbsoluteLayout x:Name="GraphDrawArea" HeightRequest="{Binding GraphFrameSizeHeight}" WidthRequest="{Binding GraphFrameSizeWidth}" BackgroundColor="GhostWhite">
+                    <Frame>
+                        <AbsoluteLayout x:Name="GraphDrawArea" HeightRequest="{Binding GraphFrameSizeHeight}" WidthRequest="{Binding GraphFrameSizeWidth}" BackgroundColor="GhostWhite">
 
                         
  
-                    </AbsoluteLayout>
+                        </AbsoluteLayout>
+                    </Frame>
                 </ScrollView>
             </Frame>
 
             <Slider x:Name="SliderZoom"
                           Value="{Binding ZoomAmount, Mode=TwoWay}"
-                          Minimum="0"
+                          Minimum="-50"
                           Maximum="100"
                           HorizontalOptions="FillAndExpand"
                           VerticalOptions="Center" />
