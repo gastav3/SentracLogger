@@ -67,7 +67,7 @@ namespace SentLogger.Views
         public void DrawNewDot(GraphDot dot)
         {
             var newDot = new BoxView { Color = Color.Olive };
-            AbsoluteLayout.SetLayoutBounds(newDot, new Rectangle(dot.Positon.X, dot.Positon.Y, dot.Size.X, dot.Size.X));
+            AbsoluteLayout.SetLayoutBounds(newDot, new Rectangle(dot.Positon.X, dot.Positon.Y, dot.Size.X * (1 + (graphViewModel.ZoomAmount / 100f)), dot.Size.Y * (1 + (graphViewModel.ZoomAmount / 100f))));
             AbsoluteLayout.SetLayoutFlags(newDot, AbsoluteLayoutFlags.None);
             dot.GraphicDot = newDot; // add the BoxView object to the dots varible GraphicDot
 

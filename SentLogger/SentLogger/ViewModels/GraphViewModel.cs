@@ -39,18 +39,34 @@ namespace SentLogger.ViewModels
         /// </summary>
         public void UpdateUiElement(object sender, EventArgs e)
         {
+            GraphFrameSizeWidth = (Application.Current.MainPage.Width) * (1 + (ZoomAmount / 100f));
+            GraphFrameSizeHeight = (Application.Current.MainPage.Height) * (1 + (ZoomAmount / 100f));
+
             foreach (GraphDot dot in GetGraphDotsList()) // loop through all dots
             {
                 double newPosX = (dot.StartPoint.X * (GraphFrameSizeWidth / dot.ScreenSizeCreated.X));
                 double newPosY = (dot.StartPoint.Y * (GraphFrameSizeHeight / dot.ScreenSizeCreated.Y));
 
                 dot.Positon = new Point(newPosX, newPosY);
-                AbsoluteLayout.SetLayoutBounds(dot.GraphicDot, new Rectangle(dot.Positon.X, dot.Positon.Y, dot.Size.X*(1 + ZoomAmount/100f), dot.Size.Y*(1 + ZoomAmount/100f)));
+                AbsoluteLayout.SetLayoutBounds(dot.GraphicDot, new Rectangle(dot.Positon.X, dot.Positon.Y, dot.Size.X*(1 + (ZoomAmount/100f)), dot.Size.Y*(1 + (ZoomAmount/100f))));
             }
-
-            GraphFrameSizeWidth = (Application.Current.MainPage.Width/2f) * (1 + (ZoomAmount/100f));
-            GraphFrameSizeHeight = (Application.Current.MainPage.Height/2f) * (1 + (ZoomAmount/100f));
         }
+
+        private void AddNewDotToGraphList(Point pos)
+        {
+            GraphFrameSizeWidth = (Application.Current.MainPage.Width) * (1 + (ZoomAmount / 100f));
+            GraphFrameSizeHeight = (Application.Current.MainPage.Height) * (1 + (ZoomAmount / 100f));
+
+            GraphDot tempDot = new GraphDot(new Point(pos.X, pos.Y));
+
+            double newPosX = (tempDot.StartPoint.X * (GraphFrameSizeWidth / Application.Current.MainPage.Width));
+            double newPosY = (tempDot.StartPoint.Y * (GraphFrameSizeHeight / Application.Current.MainPage.Height));
+
+            tempDot.Positon = new Point(newPosX, newPosY);
+
+            AddGraphDot(tempDot);
+        }
+
 
         //------ PROPERTIES -----
 
@@ -110,7 +126,6 @@ namespace SentLogger.ViewModels
             HelloVar = "VOLVO";
         }
 
-
         //-----------COMMANDS FOR BUTTONS-------------
 
         public Command AddNewRandomDotCommand
@@ -120,11 +135,7 @@ namespace SentLogger.ViewModels
                 return new Command(() =>
                 {
                     Random rnd = new Random();
-                    GraphDot tempDot = new GraphDot(new Point(rnd.Next(1,1000), rnd.Next(1,600)));
-                    tempDot.Size = new Point(10, 10);
-
-                    tempDot.ScreenSizeCreated = new Point(Application.Current.MainPage.Width, Application.Current.MainPage.Height);
-                    AddGraphDot(tempDot);
+                    AddNewDotToGraphList(new Point(rnd.Next(2000), rnd.Next(1000)));
                 });
             }
         }
