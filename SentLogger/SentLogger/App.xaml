@@ -29,26 +29,21 @@
                     <ColumnDefinition Width="0.0125*" />
                 </Grid.ColumnDefinitions>
 
-                <local:MyBoxView
-                    BackgroundColor="#5D74A1"
-                    CornerRadius="2.5"
-                    Grid.Row="0" Grid.Column="3">
-                </local:MyBoxView>
-
-                <Frame BackgroundColor="Black" Grid.Row="2" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="5">
+                <Frame CornerRadius="10" Margin="0" Padding="0" IsClippedToBounds="True" Grid.Row="2"
+                        Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="5">
                     <BoxView Color="#5D74A1"
-                        Grid.Row="2" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="5"/>
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill"/>
                 </Frame>
-                <Frame BackgroundColor="PaleVioletRed" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
-                    <BoxView Color="White"
+                
+                <BoxView Color="White"
                     Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"/>
-                </Frame>
-                <Frame BackgroundColor="DarkGoldenrod" Grid.Row="6" Grid.Column="3">
-                    <BoxView Color="#5D74A1" Grid.Row="6" Grid.Column="3"/>
-                </Frame>
+                
+                <BoxView Color="#5D74A1" Grid.Row="6" Grid.Column="3"/>
+
                 <ContentPresenter Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"/>
             </Grid>
         </ControlTemplate>
-        
-	</Application.Resources>
+
+    </Application.Resources>
 </Application>
