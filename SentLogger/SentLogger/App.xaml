@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:SentLogger.Misc"
+             xmlns:local="clr-namespace:SentLogger.Resources"
              x:Class="SentLogger.App">
     
     <!-- Application resource dictionary -->
@@ -28,13 +28,24 @@
                     <ColumnDefinition Width="0.0125*" />
                     <ColumnDefinition Width="0.0125*" />
                 </Grid.ColumnDefinitions>
-                <BoxView Color="#5D74A1"
-                   Grid.Row="0" Grid.Column="3"/>
-                <BoxView Color="#5D74A1"
-                   Grid.Row="2" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="5"/>
-                <BoxView Color="White"
-                   Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"/>
-                <BoxView Color="#5D74A1" Grid.Row="6" Grid.Column="3"/>
+
+                <local:MyBoxView
+                    BackgroundColor="#5D74A1"
+                    CornerRadius="2.5"
+                    Grid.Row="0" Grid.Column="3">
+                </local:MyBoxView>
+
+                <Frame BackgroundColor="Black" Grid.Row="2" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="5">
+                    <BoxView Color="#5D74A1"
+                        Grid.Row="2" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="5"/>
+                </Frame>
+                <Frame BackgroundColor="PaleVioletRed" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
+                    <BoxView Color="White"
+                    Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"/>
+                </Frame>
+                <Frame BackgroundColor="DarkGoldenrod" Grid.Row="6" Grid.Column="3">
+                    <BoxView Color="#5D74A1" Grid.Row="6" Grid.Column="3"/>
+                </Frame>
                 <ContentPresenter Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"/>
             </Grid>
         </ControlTemplate>
