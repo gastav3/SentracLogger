@@ -13,13 +13,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Images\INFICON_Main_display_320_240.png" />
-    <None Remove="Resources\Images\INFICON_Menu_barNew.png" />
+    <None Remove="Resources\Images\help.png" />
+    <None Remove="Resources\Images\limpa.png" />
+    <None Remove="Resources\Images\load.png" />
+    <None Remove="Resources\Images\save.png" />
+    <None Remove="Resources\Images\settings.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Images\INFICON_Main_display_320_240.png" />
-    <EmbeddedResource Include="Resources\Images\INFICON_Menu_barNew.png" />
+    <EmbeddedResource Include="Resources\Images\help.png" />
+    <EmbeddedResource Include="Resources\Images\limpa.png" />
+    <EmbeddedResource Include="Resources\Images\load.png" />
+    <EmbeddedResource Include="Resources\Images\save.png" />
+    <EmbeddedResource Include="Resources\Images\settings.png" />
   </ItemGroup>
 
   <ItemGroup>

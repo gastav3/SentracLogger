@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SentLogger.Misc
+namespace SentLogger.Resources
 {
    public static class Extras
     {

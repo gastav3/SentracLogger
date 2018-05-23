@@ -4,7 +4,7 @@ using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace SentLogger.Misc
+namespace SentLogger.Resources
 {
   /// <summary>
   /// Makes it possible to use images in Xaml.

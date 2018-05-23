@@ -7,7 +7,7 @@ using System.Text;
 using SentLogger.Views;
 using Xamarin.Forms;
 using SentLogger.Models;
-using SentLogger.Misc;
+using SentLogger.Resources;
 
 namespace SentLogger.ViewModels
 {
