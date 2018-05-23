@@ -7,7 +7,7 @@ using System.Text;
 using SentLogger.Views;
 using Xamarin.Forms;
 using SentLogger.Models;
-using SentLogger.Misc;
+using SentLogger.Resources;
 using System.Diagnostics;
 
 namespace SentLogger.ViewModels
@@ -27,7 +27,7 @@ namespace SentLogger.ViewModels
     {
         private ObservableCollection<GraphDot> graphDots = new ObservableCollection<GraphDot>();
 
-        private double dotIntervalX = 15.0;
+        private double dotIntervalX = 15.0; // The amount of space between every dot
 
         private string _helloVar;
         private float zoomAmount = 0f; // the amount that should be zoomed in
@@ -38,22 +38,24 @@ namespace SentLogger.ViewModels
         private double minimumGraphFrameSizeWidth; // Binded to the minimum graph width
         private double minimumGraphFrameSizeHeight; // Binded to the minimum graph height
 
-        private double graphFrameSizeOffsetX;
-        private double graphFrameSizeOffsetY;
+        private double graphFrameSizeOffsetX; // How much should the graph width increase
+        private double graphFrameSizeOffsetY; // How much should the graph height increase
 
-        private double windowStartSizeX = 0.0;
-        private double windowStartSizeY = 0.0;
+        private double windowStartSizeX = 0.0; // Gets the start window size X when the first dot is created
+        private double windowStartSizeY = 0.0; // Gets the start window size Y when the first dot is created
 
         //----------------UI-------------------
-
         /// <summary>
-        /// Called when the graph and its elements needs to be updated
+        /// Called by events when the graph and its elements needs to be updated
         /// </summary>
         public void UpdateUiElement(object sender, EventArgs e)
         {
             DoUpdateUIElements();
         }
 
+        /// <summary>
+        /// Called when the graph and its elements needs to be updated
+        /// </summary>
         private void DoUpdateUIElements()
         {
             GraphFrameSizeWidth = (Application.Current.MainPage.Width + graphFrameSizeOffsetX) * GetZoomAmount();
@@ -68,6 +70,9 @@ namespace SentLogger.ViewModels
             }
         }
 
+        /// <summary>
+        /// Adds a new dot to the dot list, which is an ObservableCollection that will trigger DrawChangedDots in GraphView
+        /// </summary>
         public void AddNewDotToGraphList(Point pos)
         {
 
@@ -92,6 +97,10 @@ namespace SentLogger.ViewModels
             this.graphDots.Add(tempDot);
         }
 
+
+        /// <summary>
+        /// Extend the length of the graph draw area
+        /// </summary>
         public void ExtendGraphLength()
         {
             graphFrameSizeOffsetX += dotIntervalX * GetZoomAmount();
@@ -158,6 +167,9 @@ namespace SentLogger.ViewModels
             }
         }
 
+        /// <summary>
+        /// Get the calculated zoom amount
+        /// </summary>
         public double GetZoomAmount()
         {
             return (1f + (ZoomAmount / 100f));
@@ -215,7 +227,6 @@ namespace SentLogger.ViewModels
                 });
             }
         }
-
 
         //--------ON PROPERTY CHANGED STUFF-----------
 
