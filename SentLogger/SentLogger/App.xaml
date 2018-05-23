@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:SentLogger.Misc"
+             xmlns:local="clr-namespace:SentLogger.Resources"
              x:Class="SentLogger.App">
     
     <!-- Application resource dictionary -->
@@ -29,37 +29,48 @@
                     <ColumnDefinition Width="0.0125*" />
                 </Grid.ColumnDefinitions>
 
-                <!--<Frame CornerRadius="10" Margin="0" Padding="0" IsClippedToBounds="True"
-                        Grid.Row="0" Grid.Column="3">
-                    <BoxView BackgroundColor="#5D74A1"
-                        HorizontalOptions="Fill"
-                        VerticalOptions="Fill"/>
-                </Frame>-->
+                <!--Remember the command for the button-->
+                <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.settings.png}"
+                    Grid.Row="0" Grid.Column="2" Margin="2"/>
+                <Button x:Name="GoToSettingsButton" BackgroundColor="Transparent"
+                    Grid.Row="0" Grid.Column="2" BorderWidth="0" Clicked="GoToSettingsButton_Clicked"
+                    Pressed="GoToSettingsButton_Pressed"/>
+
                 <Image Source=
-                   "{local:ImageResourceExtension SentLogger.Resources.Images.INFICON_Menu_barNew.png}"
-                   BackgroundColor="White"
-                   Grid.Row="0" Grid.Column="3"/>
+                    "{local:ImageResourceExtension SentLogger.Resources.Images.limpa.png}"
+                    Grid.Row="0" Grid.Column="3"/>
+
+                <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.save.png}"
+                    Aspect="AspectFit" Grid.Row="0" Grid.Column="4" Margin="2"/>
+                <Button x:Name="GoToExplorerButton" BackgroundColor="Transparent" Grid.Row="0"
+                    Grid.Column="4" BorderWidth="0" Clicked="GoToExplorerButton_Clicked"
+                    Pressed="GoToExplorerButton_Pressed"/>
 
                 <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True" Grid.Row="2"
-                        Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="5">
-                    <BoxView Color="#5D74A1"
-                        HorizontalOptions="Fill"
-                        VerticalOptions="Fill"/>
+                    Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="5">
+                    <BoxView Color="#5D74A1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
                 </Frame>
 
                 <Frame CornerRadius="6" Margin="0" Padding="0" IsClippedToBounds="True"
-                       Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
-                    <BoxView Color="White"
-                        HorizontalOptions="Fill"
-                        VerticalOptions="Fill"/>
+                    Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
+                    <BoxView Color="White" HorizontalOptions="Fill" VerticalOptions="Fill"/>
                 </Frame>
 
-                <Frame CornerRadius="10" Margin="0" Padding="0" IsClippedToBounds="True"
-                        Grid.Row="6" Grid.Column="3">
-                    <BoxView BackgroundColor="#5D74A1"
-                        HorizontalOptions="Fill"
-                        VerticalOptions="Fill"/>
-                </Frame>
+                <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.help.png}"
+                    Aspect="AspectFit" Grid.Row="6" Grid.Column="2" Margin="2, 2, 2, 5"/>
+                <Button x:Name="GoToHelpButton" BackgroundColor="Transparent" Grid.Row="6"
+                    Grid.Column="2" BorderWidth="0" Clicked="GoToHelpButton_Clicked"
+                    Pressed="GoToHelpButton_Pressed"/>
+
+                <Image Source=
+                    "{local:ImageResourceExtension SentLogger.Resources.Images.limpa.png}"
+                    Rotation="180" Grid.Row="6" Grid.Column="3"/>
+
+                <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
+                    Aspect="AspectFit" Grid.Row="6" Grid.Column="4" Margin="2"/>
+                <Button x:Name="GoToExplorerButton" BackgroundColor="Transparent" Grid.Row="6"
+                    Grid.Column="4" BorderWidth="0" Clicked="GoToExplorerButton_Clicked"
+                    Pressed="GoToExplorerButton_Pressed"/>
 
                 <ContentPresenter Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"/>
             </Grid>

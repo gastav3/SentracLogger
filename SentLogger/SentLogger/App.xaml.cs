@@ -30,5 +30,21 @@ namespace SentLogger
 		{
 			// Handle when your app resumes
 		}
-	}
+
+    /// <summary>
+    /// Buttons handling navigation.
+    /// </summary>
+    /*
+    private void GoToSettingsButton_Pressed(object sender, EventArgs e)
+    {
+      (sender as Button).Text = "You pressed me!";
+    }
+    */
+
+    private void GoToSettingsButton_Clicked(object sender, EventArgs e)
+    {
+      MainPage = new Views.SettingsView();
+    }
+
+  }
 }
