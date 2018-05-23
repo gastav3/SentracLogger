@@ -7,22 +7,23 @@ namespace SentLogger.Models
 {
     public class GraphDot
     {
+        public double Value { get; set; }
+
         public Point StartPoint { get; set; }
         public Point Positon { get; set; }
         public Point ScreenSizeCreated { get; set; }
-
         public Point Size { get; set; }
-        public BoxView GraphicDot { get; set; }
 
-        public double Value { get; set; }
+        public BoxView GraphicDot { get; set; }
+        public Label ValueLabel { get; set; }
 
         public GraphDot(Point point)
         {
-            Positon = point;
-            StartPoint = point;
+            this.StartPoint = point;
+            this.Positon = point;
 
-            Size = new Point(10,10);
-            ScreenSizeCreated = new Point(Application.Current.MainPage.Width, Application.Current.MainPage.Height);
+            this.Size = new Point(10,10);
+            this.GraphicDot = new BoxView { Color = Color.Black };
         }
     }
 }

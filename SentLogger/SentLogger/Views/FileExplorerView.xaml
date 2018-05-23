@@ -4,6 +4,7 @@
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              x:Class="SentLogger.Views.FileExplorerView">
 
+ 
     <skia:SKCanvasView x:Name="canvasView"
                               PaintSurface="CanvasView_PaintSurface" />
 

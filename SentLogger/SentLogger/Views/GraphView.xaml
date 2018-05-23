@@ -6,13 +6,19 @@
 
     <ContentPage.Content>
         <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
-            <Frame x:Name="GraphFrame"  BackgroundColor="Gray" >
-                <ScrollView Orientation="Both">
+            <Frame x:Name="GraphFrame"
+                   BackgroundColor="GhostWhite" 
+                   MinimumHeightRequest="{Binding MinimumGraphFrameSizeHeight}"
+                   MinimumWidthRequest="{Binding MinimumGraphFrameSizeWidth}">
+                
+                <ScrollView Orientation="Both" x:Name="GraphScroller">
                     <Frame>
-                        <AbsoluteLayout x:Name="GraphDrawArea" HeightRequest="{Binding GraphFrameSizeHeight}" WidthRequest="{Binding GraphFrameSizeWidth}" BackgroundColor="GhostWhite">
+                        <AbsoluteLayout
+                            x:Name="GraphDrawArea"
+                            HeightRequest="{Binding GraphFrameSizeHeight}"
+                            WidthRequest="{Binding GraphFrameSizeWidth}"
+                            BackgroundColor="GhostWhite">
 
-                        
- 
                         </AbsoluteLayout>
                     </Frame>
                 </ScrollView>
@@ -20,7 +26,7 @@
 
             <Slider x:Name="SliderZoom"
                           Value="{Binding ZoomAmount, Mode=TwoWay}"
-                          Minimum="-50"
+                          Minimum="-25"
                           Maximum="100"
                           HorizontalOptions="FillAndExpand"
                           VerticalOptions="Center" />
