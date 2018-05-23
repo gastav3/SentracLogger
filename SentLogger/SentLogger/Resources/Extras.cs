@@ -12,5 +12,11 @@ namespace SentLogger.Resources
             else if (val.CompareTo(max) > 0) return max;
             else return val;
         }
+
+        public static double GetRandomNumber(double minimum, double maximum)
+        {
+            Random random = new Random();
+            return random.NextDouble() * (maximum - minimum) + minimum;
+        }
     }
 }
