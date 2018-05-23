@@ -42,9 +42,9 @@
 
                 <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.save.png}"
                     Aspect="AspectFit" Grid.Row="0" Grid.Column="4" Margin="2"/>
-                <Button x:Name="GoToExplorerButton" BackgroundColor="Transparent" Grid.Row="0"
-                    Grid.Column="4" BorderWidth="0" Clicked="GoToExplorerButton_Clicked"
-                    Pressed="GoToExplorerButton_Pressed"/>
+                <Button x:Name="GoToExplorerSaveButton" BackgroundColor="Transparent" Grid.Row="0"
+                    Grid.Column="4" BorderWidth="0" Clicked="GoToExplorerSaveButton_Clicked"
+                    Pressed="GoToExplorerSaveButton_Pressed"/>
 
                 <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True" Grid.Row="2"
                     Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="5">
@@ -68,9 +68,9 @@
 
                 <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
                     Aspect="AspectFit" Grid.Row="6" Grid.Column="4" Margin="2"/>
-                <Button x:Name="GoToExplorerButton" BackgroundColor="Transparent" Grid.Row="6"
-                    Grid.Column="4" BorderWidth="0" Clicked="GoToExplorerButton_Clicked"
-                    Pressed="GoToExplorerButton_Pressed"/>
+                <Button x:Name="GoToExplorerLoadButton" BackgroundColor="Transparent" Grid.Row="6"
+                    Grid.Column="4" BorderWidth="0" Clicked="GoToExplorerLoadButton_Clicked"
+                    Pressed="GoToExplorerLoadButton_Pressed"/>
 
                 <ContentPresenter Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"/>
             </Grid>
