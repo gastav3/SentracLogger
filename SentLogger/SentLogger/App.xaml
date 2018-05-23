@@ -39,6 +39,11 @@
                     "{local:ImageResourceExtension SentLogger.Resources.Images.limpa.png}"
                     Grid.Row="0" Grid.Column="3"/>
 
+                <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.timeAndDate.png}"
+                    x:Name="timeAndDateImg" Aspect="AspectFit" Grid.Row="0" Grid.Column="3" Margin="7"/>
+                <Button x:Name="CurTimeAndDateButton" BackgroundColor="Transparent"
+                    Grid.Row="0" Grid.Column="3" BorderWidth="0" Pressed="CurTimeAndDateButton_Pressed"/>
+
                 <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.save.png}"
                     Aspect="AspectFit" Grid.Row="0" Grid.Column="4" Margin="2"/>
                 <Button x:Name="GoToExplorerSaveButton" BackgroundColor="Transparent" Grid.Row="0"
