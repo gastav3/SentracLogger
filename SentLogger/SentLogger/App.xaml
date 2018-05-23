@@ -33,8 +33,7 @@
                 <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.settings.png}"
                     Grid.Row="0" Grid.Column="2" Margin="2"/>
                 <Button x:Name="GoToSettingsButton" BackgroundColor="Transparent"
-                    Grid.Row="0" Grid.Column="2" BorderWidth="0" Clicked="GoToSettingsButton_Clicked"
-                    Pressed="GoToSettingsButton_Pressed"/>
+                    Grid.Row="0" Grid.Column="2" BorderWidth="0" Clicked="GoToSettingsButton_Clicked"/>
 
                 <Image Source=
                     "{local:ImageResourceExtension SentLogger.Resources.Images.limpa.png}"
@@ -43,8 +42,7 @@
                 <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.save.png}"
                     Aspect="AspectFit" Grid.Row="0" Grid.Column="4" Margin="2"/>
                 <Button x:Name="GoToExplorerSaveButton" BackgroundColor="Transparent" Grid.Row="0"
-                    Grid.Column="4" BorderWidth="0" Clicked="GoToExplorerSaveButton_Clicked"
-                    Pressed="GoToExplorerSaveButton_Pressed"/>
+                    Grid.Column="4" BorderWidth="0" Clicked="GoToExplorerSaveButton_Clicked"/>
 
                 <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True" Grid.Row="2"
                     Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="5">
@@ -59,8 +57,7 @@
                 <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.help.png}"
                     Aspect="AspectFit" Grid.Row="6" Grid.Column="2" Margin="2, 2, 2, 5"/>
                 <Button x:Name="GoToHelpButton" BackgroundColor="Transparent" Grid.Row="6"
-                    Grid.Column="2" BorderWidth="0" Clicked="GoToHelpButton_Clicked"
-                    Pressed="GoToHelpButton_Pressed"/>
+                    Grid.Column="2" BorderWidth="0" Clicked="GoToHelpButton_Clicked"/>
 
                 <Image Source=
                     "{local:ImageResourceExtension SentLogger.Resources.Images.limpa.png}"
@@ -69,8 +66,7 @@
                 <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
                     Aspect="AspectFit" Grid.Row="6" Grid.Column="4" Margin="2"/>
                 <Button x:Name="GoToExplorerLoadButton" BackgroundColor="Transparent" Grid.Row="6"
-                    Grid.Column="4" BorderWidth="0" Clicked="GoToExplorerLoadButton_Clicked"
-                    Pressed="GoToExplorerLoadButton_Pressed"/>
+                    Grid.Column="4" BorderWidth="0" Clicked="GoToExplorerLoadButton_Clicked"/>
 
                 <ContentPresenter Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"/>
             </Grid>

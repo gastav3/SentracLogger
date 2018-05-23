@@ -46,5 +46,19 @@ namespace SentLogger
       MainPage = new Views.SettingsView();
     }
 
+    private void GoToExplorerSaveButton_Clicked(object sender, EventArgs e)
+    {
+      MainPage = new Views.FileExplorerView();
+    }
+
+    private void GoToHelpButton_Clicked(object sender, EventArgs e)
+    {
+      MainPage = new Views.HelpView();
+    }
+
+    private void GoToExplorerLoadButton_Clicked(object sender, EventArgs e)
+    {
+      MainPage = new Views.FileExplorerView();
+    }
   }
 }
