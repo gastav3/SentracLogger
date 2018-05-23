@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
-             x:Class="SentLogger.Views.FileExplorerView">
+             x:Class="SentLogger.Views.FileExplorerView"
+             ControlTemplate="{StaticResource MainDesign}">
 
- 
-    <skia:SKCanvasView x:Name="canvasView"
-                              PaintSurface="CanvasView_PaintSurface" />
-
+    <ContentPage.Content>
+        <StackLayout Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
+            <Label Text="FileExplorer" FontSize="24"
+                HorizontalOptions="CenterAndExpand" VerticalOptions='CenterAndExpand'/>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
