@@ -23,7 +23,9 @@
                     <ColumnDefinition Width="0.0125*" />
                     <ColumnDefinition Width="0.0125*" />
                     <ColumnDefinition Width="0.091666*" />
-                    <ColumnDefinition Width="1.1*" />
+                    <ColumnDefinition Width="0.4*" />
+                    <ColumnDefinition Width="0.3*" />
+                    <ColumnDefinition Width="0.4*" />
                     <ColumnDefinition Width="0.091666*" />
                     <ColumnDefinition Width="0.0125*" />
                     <ColumnDefinition Width="0.0125*" />
@@ -37,20 +39,26 @@
 
                 <Image Source=
                     "{local:ImageResourceExtension SentLogger.Resources.Images.limpa.png}"
-                    Grid.Row="0" Grid.Column="3"/>
+                    Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3"/>
+
+                <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.timeAndDate.png}"
+                    x:Name="timeAndDateImg" Aspect="AspectFit" Grid.Row="0" Grid.Column="4" Margin="7"/>
+                <Button x:Name="CurTimeAndDateButton" BackgroundColor="Transparent"
+                    Grid.Row="0" Grid.Column="4" BorderWidth="0" Pressed="CurTimeAndDateButton_Pressed"
+                    Released="CurTimeAndDateButton_Released" TextColor="White"/>
 
                 <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.save.png}"
-                    Aspect="AspectFit" Grid.Row="0" Grid.Column="4" Margin="2"/>
+                    Aspect="AspectFit" Grid.Row="0" Grid.Column="6" Margin="2"/>
                 <Button x:Name="GoToExplorerSaveButton" BackgroundColor="Transparent" Grid.Row="0"
-                    Grid.Column="4" BorderWidth="0" Clicked="GoToExplorerSaveButton_Clicked"/>
+                    Grid.Column="6" BorderWidth="0" Clicked="GoToExplorerSaveButton_Clicked"/>
 
                 <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True" Grid.Row="2"
-                    Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="5">
+                    Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="7">
                     <BoxView Color="#5D74A1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
                 </Frame>
 
                 <Frame CornerRadius="6" Margin="0" Padding="0" IsClippedToBounds="True"
-                    Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
+                    Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="5">
                     <BoxView Color="White" HorizontalOptions="Fill" VerticalOptions="Fill"/>
                 </Frame>
 
@@ -61,14 +69,14 @@
 
                 <Image Source=
                     "{local:ImageResourceExtension SentLogger.Resources.Images.limpa.png}"
-                    Rotation="180" Grid.Row="6" Grid.Column="3"/>
+                    Rotation="180" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3"/>
 
                 <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
-                    Aspect="AspectFit" Grid.Row="6" Grid.Column="4" Margin="2"/>
+                    Aspect="AspectFit" Grid.Row="6" Grid.Column="6" Margin="2"/>
                 <Button x:Name="GoToExplorerLoadButton" BackgroundColor="Transparent" Grid.Row="6"
-                    Grid.Column="4" BorderWidth="0" Clicked="GoToExplorerLoadButton_Clicked"/>
+                    Grid.Column="6" BorderWidth="0" Clicked="GoToExplorerLoadButton_Clicked"/>
 
-                <ContentPresenter Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3"/>
+                <ContentPresenter Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="5"/>
             </Grid>
         </ControlTemplate>
 

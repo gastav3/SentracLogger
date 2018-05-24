@@ -13,7 +13,7 @@ namespace SentLogger
 		{
 			InitializeComponent();
 
-            MainPage = new NavigationPage(new SentLogger.Views.GraphView());
+            MainPage = new NavigationPage(new SentLogger.Views.HelpView());
         }
 
 		protected override void OnStart ()
@@ -40,6 +40,7 @@ namespace SentLogger
       (sender as Button).Text = "You pressed me!";
     }
     */
+    /*this.GoToSettingsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;*/
 
     private void GoToSettingsButton_Clicked(object sender, EventArgs e)
     {
@@ -59,6 +60,22 @@ namespace SentLogger
     private void GoToExplorerLoadButton_Clicked(object sender, EventArgs e)
     {
       MainPage = new Views.FileExplorerView();
+    }
+
+    /// <summary>
+    /// Time and date on press button.
+    /// </summary>
+    
+    private void CurTimeAndDateButton_Pressed(object sender, EventArgs e)
+    {
+      (sender as Button).BackgroundColor = Color.FromHex ("5D74A1");
+      (sender as Button).Text = DateTime.Now.ToString();
+      (sender as Button).TextColor = Color.White;
+    }
+    private void CurTimeAndDateButton_Released(object sender, EventArgs e)
+    {
+      (sender as Button).BackgroundColor = Color.Transparent;
+      (sender as Button).Text = null;
     }
   }
 }

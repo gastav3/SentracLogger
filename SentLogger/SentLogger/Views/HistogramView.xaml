@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SentLogger.Views.HistogramView">
+             x:Class="SentLogger.Views.HistogramView"
+             ControlTemplate="{StaticResource MainDesign}">
+
+    <ContentPage.Content>
+        <StackLayout Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
+            <Label Text="HistogramView" FontSize="24"
+                HorizontalOptions="CenterAndExpand" VerticalOptions='CenterAndExpand'/>
+        </StackLayout>
+    </ContentPage.Content>
 
 </ContentPage>

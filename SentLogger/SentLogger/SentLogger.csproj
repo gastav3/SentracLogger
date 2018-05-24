@@ -18,6 +18,7 @@
     <None Remove="Resources\Images\load.png" />
     <None Remove="Resources\Images\save.png" />
     <None Remove="Resources\Images\settings.png" />
+    <None Remove="Resources\Images\timeAndDate.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +27,7 @@
     <EmbeddedResource Include="Resources\Images\load.png" />
     <EmbeddedResource Include="Resources\Images\save.png" />
     <EmbeddedResource Include="Resources\Images\settings.png" />
+    <EmbeddedResource Include="Resources\Images\timeAndDate.png" />
   </ItemGroup>
 
   <ItemGroup>
