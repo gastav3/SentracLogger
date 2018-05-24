@@ -9,6 +9,8 @@ using Xamarin.Forms;
 using SentLogger.Models;
 using SentLogger.Resources;
 using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace SentLogger.ViewModels
 {
@@ -27,7 +29,7 @@ namespace SentLogger.ViewModels
     {
         private ObservableCollection<GraphDot> graphDots = new ObservableCollection<GraphDot>();
 
-        private double dotIntervalX = 15.0; // The amount of space between every dot
+        private double dotIntervalX = 20.0; // The amount of space between every dot
 
         private string _helloVar;
         private float zoomAmount = 0f; // the amount that should be zoomed in
@@ -44,36 +46,54 @@ namespace SentLogger.ViewModels
         private double windowStartSizeX = 0.0; // Gets the start window size X when the first dot is created
         private double windowStartSizeY = 0.0; // Gets the start window size Y when the first dot is created
 
+
+        private Task<int> updateUITask; // The task that updates the ui
+        private double frozenZoomUpdate; // Used when the foreach loop is running so the user dosent change zoom midway through
+
         //----------------UI-------------------
         /// <summary>
         /// Called by events when the graph and its elements needs to be updated
         /// </summary>
         public void UpdateUiElement(object sender, EventArgs e)
         {
-            DoUpdateUIElements();
+            if (!Extras.IsTaskRunning(updateUITask))
+            {
+                RunUpdateUITask();
+            }
+        }
+
+        private async Task RunUpdateUITask()
+        {
+            frozenZoomUpdate = GetZoomAmount();
+            updateUITask = DoUpdateUIElements();
+            int result = await updateUITask;
         }
 
         /// <summary>
         /// Called when the graph and its elements needs to be updated
         /// </summary>
-        private void DoUpdateUIElements()
+        private async Task<int> DoUpdateUIElements()
         {
-            GraphFrameSizeWidth = (Application.Current.MainPage.Width + graphFrameSizeOffsetX) * GetZoomAmount();
-            GraphFrameSizeHeight = ((Application.Current.MainPage.Height / 2f) + graphFrameSizeOffsetY) * GetZoomAmount();
+            GraphFrameSizeWidth = (Application.Current.MainPage.Width + graphFrameSizeOffsetX) * frozenZoomUpdate;
+            GraphFrameSizeHeight = ((Application.Current.MainPage.Height / 2f) + graphFrameSizeOffsetY) * frozenZoomUpdate;
 
+            int i = 0;
             foreach (GraphDot dot in GetGraphDotsList()) // loop through all dots
             {
-                double newPosX = (dot.StartPoint.X * (((GraphFrameSizeWidth - graphFrameSizeOffsetX) / windowStartSizeX) * GetZoomAmount()));
-                double newPosY = (dot.StartPoint.Y * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount()));
+                double newPosX = (dot.StartPoint.X * (((GraphFrameSizeWidth - graphFrameSizeOffsetX) / windowStartSizeX) * frozenZoomUpdate));
+                double newPosY = (dot.StartPoint.Y * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount())) + (GraphFrameSizeHeight - (dot.Size.Y * GetZoomAmount()));
 
-                AbsoluteLayout.SetLayoutBounds(dot.GraphicDot, new Rectangle(newPosX, newPosY, dot.Size.X * GetZoomAmount(), dot.Size.Y * GetZoomAmount()));
+                AbsoluteLayout.SetLayoutBounds(dot.GraphicDot, new Rectangle(newPosX, newPosY, dot.Size.X * frozenZoomUpdate, dot.Size.Y * frozenZoomUpdate));
+                i++;
+                await Task.Delay(GetDynamicUpdateDelay()); // a bit of delay so we dont crash
             }
+            return i;
         }
 
         /// <summary>
         /// Adds a new dot to the dot list, which is an ObservableCollection that will trigger DrawChangedDots in GraphView
         /// </summary>
-        public void AddNewDotToGraphList(Point pos)
+        public void AddNewDotToGraphList(Point pos, double value)
         {
 
             if (windowStartSizeX == 0.0 || windowStartSizeY == 0.0)
@@ -86,17 +106,19 @@ namespace SentLogger.ViewModels
             GraphFrameSizeHeight = ((Application.Current.MainPage.Height / 2f) + graphFrameSizeOffsetY) * GetZoomAmount();
 
             GraphDot tempDot = new GraphDot(new Point(pos.X, pos.Y));
+            tempDot.Value = value;
             tempDot.ScreenSizeCreated = new Point(GraphFrameSizeWidth, GraphFrameSizeHeight);
 
             double newPosX = (tempDot.StartPoint.X * (((GraphFrameSizeWidth - graphFrameSizeOffsetX) / windowStartSizeX) * GetZoomAmount()));
-            double newPosY = (tempDot.StartPoint.Y * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount()));
+            double newPosY = (tempDot.StartPoint.Y * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount())) + (GraphFrameSizeHeight - (tempDot.Size.Y * GetZoomAmount()));
+
+            Debug.WriteLine(newPosY + " " + GraphFrameSizeHeight);
 
             AbsoluteLayout.SetLayoutBounds(tempDot.GraphicDot, new Rectangle(newPosX, newPosY, tempDot.Size.X * GetZoomAmount(), tempDot.Size.Y * GetZoomAmount()));
             AbsoluteLayout.SetLayoutFlags(tempDot.GraphicDot, AbsoluteLayoutFlags.None);
 
             this.graphDots.Add(tempDot);
         }
-
 
         /// <summary>
         /// Extend the length of the graph draw area
@@ -195,6 +217,20 @@ namespace SentLogger.ViewModels
         {
         }
 
+        //---------------------MISC-----------------
+        private int GetDynamicUpdateDelay()
+        {
+            int delay = Extras.Clamp((GetGraphDotsList().Count / 100), 0, 5);
+        //    Debug.WriteLine(delay.ToString());
+
+            return delay;
+        }
+
+        public void AddNewDot(Point pos, double value)
+        {
+            AddNewDotToGraphList(new Point(pos.X, -pos.Y), value); // -pos.Y to reverse to fit graph
+        }
+
         //-----------COMMANDS FOR BUTTONS-------------
 
         public Command AddNewRandomDotCommand
@@ -203,10 +239,10 @@ namespace SentLogger.ViewModels
             {
                 return new Command(() =>
                 {
-                    for (int i = 0; i < 10; i++)
+                    for (int i = 0; i < 100; i++)
                     {
                         Random rnd = new Random();
-                        AddNewDotToGraphList(new Point(((1 + GetGraphDotsList().Count) * dotIntervalX), rnd.Next(2)));
+                        AddNewDot(new Point(((1 + GetGraphDotsList().Count) * dotIntervalX), rnd.Next(350)), 10.0);
                     }
                 });
             }

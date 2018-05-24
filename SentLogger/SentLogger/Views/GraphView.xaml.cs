@@ -54,7 +54,6 @@ namespace SentLogger.Views
                     // graphViewModel.HelloVar = dot.Positon.X.ToString();
                 }
             }
-
             if (e.OldItems != null)
             {
                 foreach (GraphDot dot in e.OldItems)

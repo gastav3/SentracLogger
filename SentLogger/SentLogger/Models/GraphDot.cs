@@ -24,6 +24,11 @@ namespace SentLogger.Models
 
             this.Size = new Point(10,10);
             this.GraphicDot = new BoxView { Color = Color.Black };
+
+            this.ValueLabel = new Label {
+                TextColor = Color.Black,
+                Text = this.Value.ToString()
+            };
         }
     }
 }

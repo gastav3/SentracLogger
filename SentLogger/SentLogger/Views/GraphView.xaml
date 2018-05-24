@@ -19,6 +19,12 @@
                             WidthRequest="{Binding GraphFrameSizeWidth}"
                             BackgroundColor="GhostWhite">
 
+                            <BoxView
+                               x:Name="AcceptedValueLine"
+                               BackgroundColor="Red"
+                                
+                            ></BoxView>
+
                         </AbsoluteLayout>
                     </Frame>
                 </ScrollView>
