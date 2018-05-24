@@ -65,11 +65,17 @@ namespace SentLogger
     /// <summary>
     /// Time and date on press button.
     /// </summary>
+    
     private void CurTimeAndDateButton_Pressed(object sender, EventArgs e)
     {
-      (sender as Button).BackgroundColor = Color.White;
+      (sender as Button).BackgroundColor = Color.FromHex ("5D74A1");
       (sender as Button).Text = DateTime.Now.ToString();
-
+      (sender as Button).TextColor = Color.White;
+    }
+    private void CurTimeAndDateButton_Released(object sender, EventArgs e)
+    {
+      (sender as Button).BackgroundColor = Color.Transparent;
+      (sender as Button).Text = null;
     }
   }
 }
