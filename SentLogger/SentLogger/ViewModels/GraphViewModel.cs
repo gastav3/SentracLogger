@@ -29,11 +29,14 @@ namespace SentLogger.ViewModels
     {
         private ObservableCollection<GraphDot> graphDots = new ObservableCollection<GraphDot>();
 
-        private Point dotSize;
+        private Point dotSize; // the dot size
 
-        private double dotIntervalX = 20.0; // The amount of space between every dot
+        public int dotSelected; // used to get value from a speceific dot in the graph
+        private double dotIntervalX = 10.0; // The amount of space between every dot
 
-        private string _helloVar;
+        private string toolTipValue; // The text of the tooltip above the dot
+        private Rectangle toolTipPos; // the posistion of the tooltip on the graph
+
         private float zoomAmount = 0f; // the amount that should be zoomed in
 
         private double graphFrameSizeWidth; // Binded to the graph width
@@ -54,8 +57,6 @@ namespace SentLogger.ViewModels
         private bool hasCreatedDot = false;
         private double maxAcceptedLineValue = 10.0;
         private Rectangle acceptedLineValuePos;
-
-        private double heighestGraphicDot = 0.0;
 
         //----------------UI-------------------
         /// <summary>
@@ -112,8 +113,9 @@ namespace SentLogger.ViewModels
             GraphFrameSizeWidth = (Application.Current.MainPage.Width * GetZoomAmount()) + graphFrameSizeOffsetX;
             GraphFrameSizeHeight = ((Application.Current.MainPage.Height / 2f) + graphFrameSizeOffsetY) * (GetZoomAmount()*2f);
 
-            GraphDot tempDot = new GraphDot(new Point(pos.X, pos.Y));
-            tempDot.Value = value; // the dots actual value
+            GraphDot tempDot = new GraphDot(new Point(pos.X, pos.Y), value);
+            tempDot.Index = GetGraphDotsList().Count;
+
             tempDot.ScreenSizeCreated = new Point(GraphFrameSizeWidth, GraphFrameSizeHeight);
 
             double newPosX = (tempDot.StartPoint.X * (((GraphFrameSizeWidth - graphFrameSizeOffsetX) / windowStartSizeX) * GetZoomAmount()));
@@ -254,12 +256,22 @@ namespace SentLogger.ViewModels
             return (1f + (ZoomAmount / 100f));
         }
 
-        public string HelloVar
+        public string ToolTipValue
         {
-            get => this._helloVar;
+            get => this.toolTipValue;
             set
             {
-                _helloVar = value;
+                toolTipValue = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Rectangle ToolTipPos
+        {
+            get => this.toolTipPos;
+            set
+            {
+                toolTipPos = value;
                 OnPropertyChanged();
             }
         }
@@ -278,7 +290,9 @@ namespace SentLogger.ViewModels
         //---------------------MISC-----------------
         private int GetDynamicUpdateDelay()
         {
-            int delay = Extras.Clamp((GetGraphDotsList().Count / 100), 0, 5);
+            int delay = Extras.Clamp((GetGraphDotsList().Count / 150), 0, 2);
+
+            Debug.WriteLine(delay);
 
             return delay;
         }
@@ -307,13 +321,41 @@ namespace SentLogger.ViewModels
 
         private void ShouldDotChangeColor(GraphDot dot, double value)
         {
-            if (dot.Value < value)
+            if (dot.Value <= value)
             {
                 dot.GraphicDot.Color = Color.Red;
             }
             else
             {
                 dot.GraphicDot.Color = Color.Green;
+            }
+        }
+
+        public void SelectDot(int newSelected, int oldSelected)
+        {
+            try
+            {
+                ShouldDotChangeColor(GetGraphDotsList()[oldSelected], MaxAcceptedLineValue);
+
+                GraphDot tempDot = GetGraphDotsList()[newSelected];
+                tempDot.GraphicDot.Color = Color.Blue;
+
+                ToolTipValue = tempDot.Value.ToString();
+
+                ToolTipPos = new Rectangle(
+                  tempDot.GraphicDot.X - (tempDot.Value.ToString().Length * 3.5f),
+                  tempDot.GraphicDot.Y - (DotSize.Y * 4f),
+                  50.0,
+                  25.0
+                  );
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                Debug.WriteLine(e);
+            }
+            catch (ArgumentNullException e)
+            {
+                Debug.WriteLine(e);
             }
         }
 
@@ -344,12 +386,64 @@ namespace SentLogger.ViewModels
                     if (graphDots.Count > 0)
                     {
                         this.graphDots.RemoveAt(graphDots.Count - 1);
-                        HelloVar = graphDots.Count.ToString() + " St";
                         UpdateUiElement(this, EventArgs.Empty);
                     }
                 });
             }
         }
+
+
+        public Command UpdateUiCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    UpdateUiElement(this, EventArgs.Empty);
+                });
+            }
+        }
+
+        public Command NextDotCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    if ((GetGraphDotsList().Count - 1 ) > dotSelected)
+                    {
+                        SelectDot(dotSelected + 1, dotSelected);
+                        dotSelected += 1;
+                    }
+                    else
+                    {
+                        SelectDot(0, dotSelected);
+                        dotSelected = 0;
+                    }
+                });
+            }
+        }
+
+        public Command PreviousDotCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    if ((dotSelected - 1) >= 0)
+                    {
+                        SelectDot(dotSelected - 1, dotSelected);
+                        dotSelected -= 1;
+                    }
+                    else
+                    {
+                        SelectDot(GetGraphDotsList().Count - 1, dotSelected);
+                        dotSelected = GetGraphDotsList().Count - 1;
+                    }
+                });
+            }
+        }
+
 
         //--------ON PROPERTY CHANGED STUFF-----------
 

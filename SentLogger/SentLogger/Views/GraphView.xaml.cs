@@ -10,6 +10,7 @@ using SentLogger.Models;
 using System.Collections.Specialized;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
+using System.Diagnostics;
 
 namespace SentLogger.Views
 {
@@ -19,7 +20,6 @@ namespace SentLogger.Views
     public partial class GraphView : ContentPage
     {
         private GraphViewModel graphViewModel; // the viewmodel class
-        private Label dotToolTip;
 
         public GraphView()
         {
@@ -28,19 +28,16 @@ namespace SentLogger.Views
             graphViewModel = new GraphViewModel();
             this.BindingContext = graphViewModel;
 
-            //   SetScrollPositonRatio();
-
             // EVENTS??
             this.SizeChanged += graphViewModel.UpdateUiElement;
             SliderZoom.ValueChanged += KeepScrollPosistion;
-            SliderZoom.ValueChanged += graphViewModel.UpdateUiElement;
+           // SliderZoom.ValueChanged += graphViewModel.UpdateUiElement;
             AcceptedLineValueEntry.TextChanged += graphViewModel.UpdateAcceptedValueLine;
+      //      AcceptedLineValueEntry.TextChanged += graphViewModel.UpdateUiElement;
             graphViewModel.GetGraphDotsList().CollectionChanged += DrawChangedDots;
         }
 
-
         // -----------------------DRAW--------------------------------
-
 
         /// <summary>
         /// Add or remove the dots when the GetGraphDotsList() is changed
@@ -72,29 +69,21 @@ namespace SentLogger.Views
         /// </summary>
         public void DrawNewDot(GraphDot dot)
         {
-
             // Add the click funconality to the dots
             dot.GraphicDot.GestureRecognizers.Add(
             new TapGestureRecognizer()
             {
                 Command = new Command(() => {
 
-                    if (dotToolTip != null)
-                    {
-                        GraphDrawArea.Children.Remove(dotToolTip);
-                    }
+                    graphViewModel.SelectDot(dot.Index, graphViewModel.dotSelected);
+                    graphViewModel.dotSelected = dot.Index;
 
-                    dotToolTip = new Label { Text = dot.Positon.Y.ToString(), LineBreakMode = LineBreakMode.WordWrap };
-                    // dotToolTip.BackgroundColor = Color.GhostWhite;
-                    AbsoluteLayout.SetLayoutBounds(dotToolTip, new Rectangle(dot.Positon.X, dot.Positon.Y, 100, 20));
-                    AbsoluteLayout.SetLayoutFlags(dotToolTip, AbsoluteLayoutFlags.None);
-
-                    GraphDrawArea.Children.Add(dotToolTip);
                 })
             }
       );
             GraphDrawArea.Children.Add(dot.GraphicDot);
         }
+
 
         /// <summary>
         /// View for the GraphTab.

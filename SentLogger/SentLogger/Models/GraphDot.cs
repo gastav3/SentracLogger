@@ -7,6 +7,7 @@ namespace SentLogger.Models
 {
     public class GraphDot
     {
+        public int Index { get; set; }
         public double Value { get; set; }
 
         public Point StartPoint { get; set; }
@@ -14,19 +15,14 @@ namespace SentLogger.Models
         public Point ScreenSizeCreated { get; set; }
 
         public BoxView GraphicDot { get; set; }
-        public Label ValueLabel { get; set; }
 
-        public GraphDot(Point point)
+        public GraphDot(Point point, double val)
         {
+            this.Value = val;
             this.StartPoint = point;
             this.Positon = point;
 
             this.GraphicDot = new BoxView { Color = Color.Black };
-
-            this.ValueLabel = new Label {
-                TextColor = Color.Black,
-                Text = this.Value.ToString()
-            };
         }
     }
 }
