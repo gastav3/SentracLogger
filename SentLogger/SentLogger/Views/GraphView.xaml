@@ -7,11 +7,12 @@
     <ContentPage.Content>
         <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
             <Frame x:Name="GraphFrame"
-                   BackgroundColor="GhostWhite" 
+                   BackgroundColor="LightGray" 
                    MinimumHeightRequest="{Binding MinimumGraphFrameSizeHeight}"
                    MinimumWidthRequest="{Binding MinimumGraphFrameSizeWidth}">
                 
-                <ScrollView Orientation="Both" x:Name="GraphScroller">
+                <ScrollView Orientation="Both"
+                            x:Name="GraphScroller">
                     <Frame>
                         <AbsoluteLayout
                             x:Name="GraphDrawArea"
@@ -22,6 +23,8 @@
                             <BoxView
                                x:Name="AcceptedValueLine"
                                BackgroundColor="Red"
+                               AbsoluteLayout.LayoutBounds="{Binding AcceptedLineValuePos}"
+                               AbsoluteLayout.LayoutFlags="None"
                                 
                             ></BoxView>
 
@@ -33,9 +36,15 @@
             <Slider x:Name="SliderZoom"
                           Value="{Binding ZoomAmount, Mode=TwoWay}"
                           Minimum="-25"
-                          Maximum="100"
+                          Maximum="25"
                           HorizontalOptions="FillAndExpand"
                           VerticalOptions="Center" />
+
+            <Entry 
+                x:Name="AcceptedLineValueEntry"
+                Text="{Binding MaxAcceptedLineValue, Mode=TwoWay}">
+            </Entry>
+
 
             <Button Text="Add Random Dot"
                          VerticalOptions="Center"

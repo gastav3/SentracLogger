@@ -34,6 +34,7 @@ namespace SentLogger.Views
             this.SizeChanged += graphViewModel.UpdateUiElement;
             SliderZoom.ValueChanged += KeepScrollPosistion;
             SliderZoom.ValueChanged += graphViewModel.UpdateUiElement;
+            AcceptedLineValueEntry.TextChanged += graphViewModel.UpdateAcceptedValueLine;
             graphViewModel.GetGraphDotsList().CollectionChanged += DrawChangedDots;
         }
 
@@ -92,7 +93,6 @@ namespace SentLogger.Views
                 })
             }
       );
-            graphViewModel.ExtendGraphLength();
             GraphDrawArea.Children.Add(dot.GraphicDot);
         }
 
