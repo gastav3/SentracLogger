@@ -135,7 +135,7 @@
                 <Button x:Name="GoToExplorerSaveButton" BackgroundColor="Transparent" Grid.Row="0"
                     Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerSaveButton_Clicked"/>
 
-                <!--<StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2" Grid.RowSpan="3"
+                <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2" Grid.RowSpan="3"
                              Grid.Column="1" Grid.ColumnSpan="9" VerticalOptions="FillAndExpand">
                     <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True"
                              HorizontalOptions="FillAndExpand">
@@ -149,27 +149,27 @@
                              HorizontalOptions="FillAndExpand">
                         <BoxView Color="#5D74A1" x:Name="HistogramTabColor"/>
                     </Frame>
-                </StackLayout>-->
-
-                <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2" Grid.RowSpan="2"
-                             Grid.Column="1" Grid.ColumnSpan="9" VerticalOptions="FillAndExpand">
-                    <Button x:Name="FileExplorerTabButton" Margin="0" HorizontalOptions="FillAndExpand"
-                             BackgroundColor="Red" BorderWidth="0" Clicked="FileExplorerTabButton_Clicked"/>
-                    <Button x:Name="GraphTabButton" Margin="0" HorizontalOptions="FillAndExpand"
-                             BackgroundColor="Blue" BorderWidth="0" Clicked="GraphTabButton_Clicked"/>
-                    <Button x:Name="HistogramTabButton" Margin="0" HorizontalOptions="FillAndExpand"
-                             BackgroundColor="Green" BorderWidth="0" Clicked="HistogramTabButton_Clicked"/>
                 </StackLayout>
 
-                <!--<Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True" Grid.Row="3"
+                <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2"
+                             Grid.Column="1" Grid.ColumnSpan="9" VerticalOptions="FillAndExpand">
+                    <Button x:Name="FileExplorerTabButton" Margin="0" HorizontalOptions="FillAndExpand"
+                             BackgroundColor="Transparent" BorderWidth="0" Clicked="FileExplorerTabButton_Clicked"/>
+                    <Button x:Name="GraphTabButton" Margin="0" HorizontalOptions="FillAndExpand"
+                             BackgroundColor="Transparent" BorderWidth="0" Clicked="GraphTabButton_Clicked"/>
+                    <Button x:Name="HistogramTabButton" Margin="0" HorizontalOptions="FillAndExpand"
+                             BackgroundColor="Transparent" BorderWidth="0" Clicked="HistogramTabButton_Clicked"/>
+                </StackLayout>
+
+                <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True" Grid.Row="3"
                     Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="9">
                     <BoxView Color="#5D74A1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
-                </Frame>-->
+                </Frame>
 
-                <!--<Frame CornerRadius="6" Margin="0" Padding="0" IsClippedToBounds="True"
+                <Frame CornerRadius="6" Margin="0" Padding="0" IsClippedToBounds="True"
                     Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="7">
                     <BoxView Color="White" HorizontalOptions="Fill" VerticalOptions="Fill"/>
-                </Frame>-->
+                </Frame>
 
                 <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.help.png}"
                     Aspect="AspectFit" Grid.Row="8" Grid.Column="2" Margin="2, 2, 2, 5"/>
@@ -185,7 +185,7 @@
                 <Button x:Name="GoToExplorerLoadButton" BackgroundColor="Transparent" Grid.Row="8"
                     Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerLoadButton_Clicked"/>
 
-                <ContentPresenter Grid.Row="2" Grid.RowSpan="5" Grid.Column="1" Grid.ColumnSpan="9"/>
+                <ContentPresenter Grid.Row="3" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="9"/>
             </Grid>
         </ControlTemplate>
 
