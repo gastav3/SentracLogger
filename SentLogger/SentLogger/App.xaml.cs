@@ -13,7 +13,7 @@ namespace SentLogger
 		{
 			InitializeComponent();
 
-            MainPage = new NavigationPage(new SentLogger.Views.GraphView());
+            MainPage = new NavigationPage(new SentLogger.Views.HistogramView());
         }
 
 		protected override void OnStart ()
@@ -34,14 +34,7 @@ namespace SentLogger
     /// <summary>
     /// Buttons handling navigation.
     /// </summary>
-    /*
-    private void GoToSettingsButton_Pressed(object sender, EventArgs e)
-    {
-      (sender as Button).Text = "You pressed me!";
-    }
-    */
     /*this.GoToSettingsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;*/
-
     private void GoToSettingsButton_Clicked(object sender, EventArgs e)
     {
       MainPage = new Views.SettingsView();
@@ -65,17 +58,35 @@ namespace SentLogger
     /// <summary>
     /// Time and date on press button.
     /// </summary>
-    
     private void CurTimeAndDateButton_Pressed(object sender, EventArgs e)
     {
       (sender as Button).BackgroundColor = Color.FromHex ("5D74A1");
-      (sender as Button).Text = DateTime.Now.ToString();
-      (sender as Button).TextColor = Color.White;
+      (sender as Button).Text = " " + " " + " " + " " + " " + DateTime.Now.ToShortTimeString() + "\n" +
+        DateTime.Now.ToShortDateString();
     }
     private void CurTimeAndDateButton_Released(object sender, EventArgs e)
     {
       (sender as Button).BackgroundColor = Color.Transparent;
       (sender as Button).Text = null;
     }
+
+    /// <summary>
+    /// Tab buttons.
+    /// </summary>
+    private void FileExplorerTabButton_Clicked(object sender, EventArgs e)
+    {
+      MainPage = new Views.FileExplorerView();
+    }
+
+    private void GraphTabButton_Clicked(object sender, EventArgs e)
+    {
+      MainPage = new Views.GraphView();
+    }
+
+    private void HistogramTabButton_Clicked(object sender, EventArgs e)
+    {
+      MainPage = new Views.HistogramView();
+    }
+
   }
 }

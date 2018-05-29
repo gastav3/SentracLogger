@@ -7,10 +7,12 @@
 
     <ContentPage.Content>
         <StackLayout Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
-            <Label Text="What is the meaning of life?" FontSize="24"
-                HorizontalOptions="CenterAndExpand" VerticalOptions='CenterAndExpand'/>
-            <Label Text="42" FontSize="24" HorizontalOptions="CenterAndExpand"
-                VerticalOptions='CenterAndExpand'/>
+            <Label Text="FAQ:" FontSize="Small" Font="Arial" Margin="10,10,0,0" TextColor="#5D74A1"
+                HorizontalOptions="Start" VerticalOptions="Start"/>
+            <Label Text="Q: Something doesn't work as it's supposed to..." FontSize="Small" Font="Arial"
+                Margin="10,5,0,0" TextColor="#5D74A1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+            <Label Text="A: Restart the app and try again." FontSize="Small" Font="Arial" Margin="10,5,0,0"
+                TextColor="#5D74A1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
