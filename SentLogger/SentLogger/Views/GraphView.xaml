@@ -7,11 +7,12 @@
     <ContentPage.Content>
         <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
             <Frame x:Name="GraphFrame"
-                   BackgroundColor="GhostWhite" 
+                   BackgroundColor="LightGray" 
                    MinimumHeightRequest="{Binding MinimumGraphFrameSizeHeight}"
                    MinimumWidthRequest="{Binding MinimumGraphFrameSizeWidth}">
                 
-                <ScrollView Orientation="Both" x:Name="GraphScroller">
+                <ScrollView Orientation="Both"
+                            x:Name="GraphScroller">
                     <Frame>
                         <AbsoluteLayout
                             x:Name="GraphDrawArea"
@@ -19,17 +20,60 @@
                             WidthRequest="{Binding GraphFrameSizeWidth}"
                             BackgroundColor="GhostWhite">
 
+                            <BoxView
+                               x:Name="AcceptedValueLine"
+                               BackgroundColor="Red"
+                               AbsoluteLayout.LayoutBounds="{Binding AcceptedLineValuePos}"
+                               AbsoluteLayout.LayoutFlags="None"
+                            ></BoxView>
+
+                            <Label
+                               x:Name="ToolTipLabel"
+                               BackgroundColor="Transparent"
+                               Text="{Binding ToolTipValue}"
+                               AbsoluteLayout.LayoutBounds="{Binding ToolTipPos}"
+                               AbsoluteLayout.LayoutFlags="None">
+                            </Label>
+
                         </AbsoluteLayout>
                     </Frame>
                 </ScrollView>
             </Frame>
 
-            <Slider x:Name="SliderZoom"
+                <Slider x:Name="SliderZoom"
                           Value="{Binding ZoomAmount, Mode=TwoWay}"
                           Minimum="-25"
-                          Maximum="100"
+                          Maximum="25"
                           HorizontalOptions="FillAndExpand"
                           VerticalOptions="Center" />
+
+            <StackLayout Orientation="Horizontal">
+                <Entry 
+                x:Name="AcceptedLineValueEntry"
+                Text="{Binding MaxAcceptedLineValue, Mode=TwoWay}"
+                    HorizontalOptions="Start">
+            </Entry>
+
+
+                <Button Text="Update"
+                         Command="{Binding UpdateUiCommand}"
+                         HorizontalOptions="End"
+                         Margin="0, 0, 0, 0"
+                         ></Button>
+
+                <Button Text="Previous Dot"
+                         Command="{Binding PreviousDotCommand}"
+                         HorizontalOptions="End"
+                         Margin="0, 0, 0, 0"
+                         ></Button>
+
+                <Button Text="Next Dot"
+                         Command="{Binding NextDotCommand}"
+                        HorizontalOptions="End"
+                         Margin="0, 0, 0, 0"
+                         ></Button>
+
+            </StackLayout>
 
             <Button Text="Add Random Dot"
                          VerticalOptions="Center"
@@ -45,12 +89,6 @@
                          Margin="0, 0, 0, 0"
                          ></Button>
 
-            <Label Text="{Binding HelloVar}" 
-                        x:Name="HelloText"
-                        VerticalOptions="Center" 
-                        HorizontalOptions="Center"
-                        Margin="0, 0, 0, 0"/>
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

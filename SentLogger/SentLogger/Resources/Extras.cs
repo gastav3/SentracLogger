@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace SentLogger.Resources
 {
@@ -17,6 +19,21 @@ namespace SentLogger.Resources
         {
             Random random = new Random();
             return random.NextDouble() * (maximum - minimum) + minimum;
+        }
+
+        public static bool IsTaskRunning(Task<int> task)
+        {
+            if ((task != null) && (task.IsCompleted == false ||
+                       task.Status == TaskStatus.Running ||
+                       task.Status == TaskStatus.WaitingToRun ||
+                       task.Status == TaskStatus.WaitingForActivation))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
