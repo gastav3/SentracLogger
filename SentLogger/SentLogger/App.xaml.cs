@@ -12,11 +12,10 @@ namespace SentLogger
 		public App ()
 		{
 			InitializeComponent();
-
             MainPage = new NavigationPage(new SentLogger.Views.HistogramView());
         }
 
-		protected override void OnStart ()
+    protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}
