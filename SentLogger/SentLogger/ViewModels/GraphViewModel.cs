@@ -11,6 +11,8 @@ using SentLogger.Resources;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IO.Ports;
+using Plugin.DeviceInfo;
 
 namespace SentLogger.ViewModels
 {
@@ -27,9 +29,10 @@ namespace SentLogger.ViewModels
     /// </summary>
     public class GraphViewModel : INotifyPropertyChanged
     {
-        private ObservableCollection<GraphDot> graphDots = new ObservableCollection<GraphDot>();
 
-        private Point dotSize; // the dot size
+    private ObservableCollection<GraphDot> graphDots = new ObservableCollection<GraphDot>();
+
+        private Point dotSize = new Point(5.0, 5.0); // the dot size
 
         public int dotSelected; // used to get value from a speceific dot in the graph
         private double dotIntervalX = 10.0; // The amount of space between every dot
@@ -151,7 +154,7 @@ namespace SentLogger.ViewModels
         /// </summary>
         public void ExtendGraphLength(double posX)
         {
-            if (GraphFrameSizeWidth <= posX) {
+            if (GraphFrameSizeWidth <= (posX + DotSize.X)) {
                 graphFrameSizeOffsetX = (posX + DotSize.X);
             }
         }
@@ -284,17 +287,20 @@ namespace SentLogger.ViewModels
         //-----------------INIT-------------------------
         public GraphViewModel()
         {
-            DotSize = new Point(5.0, 5.0);
+            // PortDataReceived portTest = new PortDataReceived();
+
+            // SerialPortClass serialPortClass = new SerialPortClass();
+            // serialPortClass.Open();
+
+            // SerialPortExample port = new SerialPortExample();
         }
 
         //---------------------MISC-----------------
         private int GetDynamicUpdateDelay()
         {
-            int delay = Extras.Clamp((GetGraphDotsList().Count / 150), 0, 2);
+           int delay = Extras.Clamp((GetGraphDotsList().Count / 150), 0, 2);
 
-            Debug.WriteLine(delay);
-
-            return delay;
+              return delay;
         }
 
         /// <summary>

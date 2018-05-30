@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 
 using Xamarin.Forms;
 
@@ -13,7 +14,7 @@ namespace SentLogger
 		{
 			InitializeComponent();
 
-            MainPage = new NavigationPage(new SentLogger.Views.HistogramView());
+            MainPage = new NavigationPage(new SentLogger.Views.GraphView());
         }
 
 		protected override void OnStart ()
@@ -75,18 +76,21 @@ namespace SentLogger
     /// </summary>
     private void FileExplorerTabButton_Clicked(object sender, EventArgs e)
     {
-      MainPage = new Views.FileExplorerView();
+            Debug.WriteLine("FileExplorerTabButton_Clicked");
+            MainPage = new Views.FileExplorerView();
     }
 
     private void GraphTabButton_Clicked(object sender, EventArgs e)
     {
-      MainPage = new Views.GraphView();
+            Debug.WriteLine("GraphTabButton_Clicked");
+            MainPage = new Views.GraphView();
     }
 
     private void HistogramTabButton_Clicked(object sender, EventArgs e)
     {
-      MainPage = new Views.HistogramView();
+           Debug.WriteLine("HistogramTabButton_Clicked");
+           MainPage = new Views.HistogramView();
     }
 
-  }
+    }
 }
