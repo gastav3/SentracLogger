@@ -4,11 +4,13 @@
              x:Class="SentLogger.Views.HistogramView"
              ControlTemplate="{StaticResource TabMainDesign}">
 
-    <!--<ContentPage.Resources>
+    <ContentPage.Resources>
         <ResourceDictionary>
-            
+            <Color x:Key="TabColor1">#A3B8DD</Color>
+            <Color x:Key="TabColor2">#A3B8DD</Color>
+            <Color x:Key="TabColor3">#5D74A1</Color>
         </ResourceDictionary>
-    </ContentPage.Resources>-->
+    </ContentPage.Resources>
 
     <ContentPage.Content>
         <StackLayout Grid.Row="2" Grid.RowSpan="5" Grid.Column="1" Grid.ColumnSpan="9">

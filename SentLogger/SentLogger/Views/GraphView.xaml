@@ -2,23 +2,28 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SentLogger.Views.GraphView"
-             ControlTemplate="{StaticResource MainDesign}">
+             ControlTemplate="{StaticResource TabMainDesign}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="TabColor1">#A3B8DD</Color>
+            <Color x:Key="TabColor2">#5D74A1</Color>
+            <Color x:Key="TabColor3">#A3B8DD</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
-            <Frame x:Name="GraphFrame"
-                   BackgroundColor="LightGray" 
-                   MinimumHeightRequest="{Binding MinimumGraphFrameSizeHeight}"
-                   MinimumWidthRequest="{Binding MinimumGraphFrameSizeWidth}">
-                
-                <ScrollView Orientation="Both"
+        <StackLayout Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="7">
+            <Frame x:Name="GraphFrame" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="7">
+                <StackLayout>
+                    <ScrollView Orientation="Both"
                             x:Name="GraphScroller">
-                    <Frame>
+                        <Frame BackgroundColor="#DCE2ED">
                         <AbsoluteLayout
                             x:Name="GraphDrawArea"
                             HeightRequest="{Binding GraphFrameSizeHeight}"
                             WidthRequest="{Binding GraphFrameSizeWidth}"
-                            BackgroundColor="GhostWhite">
+                            BackgroundColor="#DCE2ED">
 
                             <BoxView
                                x:Name="AcceptedValueLine"
@@ -34,25 +39,23 @@
                                AbsoluteLayout.LayoutBounds="{Binding ToolTipPos}"
                                AbsoluteLayout.LayoutFlags="None">
                             </Label>
-
                         </AbsoluteLayout>
-                    </Frame>
-                </ScrollView>
+                        </Frame>
+                    </ScrollView>
+                    <Slider x:Name="SliderZoom"
+                        Value="{Binding ZoomAmount, Mode=TwoWay}"
+                        Minimum="-25"
+                        Maximum="25"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+                </StackLayout>
             </Frame>
 
-                <Slider x:Name="SliderZoom"
-                          Value="{Binding ZoomAmount, Mode=TwoWay}"
-                          Minimum="-25"
-                          Maximum="25"
-                          HorizontalOptions="FillAndExpand"
-                          VerticalOptions="Center" />
-
             <StackLayout Orientation="Horizontal">
-                <Entry 
-                x:Name="AcceptedLineValueEntry"
-                Text="{Binding MaxAcceptedLineValue, Mode=TwoWay}"
+                <Entry x:Name="AcceptedLineValueEntry"
+                    Text="{Binding MaxAcceptedLineValue, Mode=TwoWay}"
                     HorizontalOptions="Start">
-            </Entry>
+                </Entry>
 
 
                 <Button Text="Update"

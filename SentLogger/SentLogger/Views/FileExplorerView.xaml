@@ -2,7 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SentLogger.Views.FileExplorerView"
-             ControlTemplate="{StaticResource MainDesign}">
+             ControlTemplate="{StaticResource TabMainDesign}">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="TabColor1">#5D74A1</Color>
+            <Color x:Key="TabColor2">#A3B8DD</Color>
+            <Color x:Key="TabColor3">#A3B8DD</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.Content>
         <StackLayout Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
