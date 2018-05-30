@@ -13,9 +13,9 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout Grid.Row="2" Grid.RowSpan="5" Grid.Column="1" Grid.ColumnSpan="9">
-            <Label Text="Histogram View" Font="Arial" FontSize="Small" TextColor="Black" HorizontalOptions="Center"
-                    VerticalOptions="Center"/>
+        <StackLayout Grid.Row="3" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="7">
+            <Label Text="Histogram View" Font="Arial" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 

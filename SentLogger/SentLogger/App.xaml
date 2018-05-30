@@ -81,12 +81,9 @@
                     <Button x:Name="GoToExplorerLoadButton" BackgroundColor="Transparent" Grid.Row="7"
                     Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerLoadButton_Clicked"/>
 
-                    <ContentPresenter Grid.Row="3" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="7"/>
+                    <ContentPresenter Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="7"/>
                 </Grid>
             </ControlTemplate>
-            <Color x:Key="TabColor1">#5D74A1</Color>
-            <Color x:Key="TabColor2">#5D74A1</Color>
-            <Color x:Key="TabColor3">#5D74A1</Color>
 
             <!--The common TabView display design-->
             <ControlTemplate x:Key="TabMainDesign">
@@ -197,14 +194,37 @@
                         "{local:ImageResourceExtension SentLogger.Resources.Images.limpa.png}"
                         Rotation="180" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="5" Aspect="Fill"/>
 
+                    <Label Style="{StaticResource NavigationLabel}" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="5"/>
+
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
                         Aspect="AspectFit" Grid.Row="8" Grid.Column="8" Margin="2"/>
                     <Button x:Name="GoToExplorerLoadButton" BackgroundColor="Transparent" Grid.Row="8"
                         Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerLoadButton_Clicked"/>
 
-                    <ContentPresenter Grid.Row="3" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="9"/>
+                    <ContentPresenter Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="7"/>
                 </Grid>
             </ControlTemplate>
+
+            <Color x:Key="TabColor1">#5D74A1</Color>
+            <Color x:Key="TabColor2">#5D74A1</Color>
+            <Color x:Key="TabColor3">#5D74A1</Color>
+            <Style x:Key="NavigationLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="Font" Value="Arial"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="Text" Value="Testing Testing"/>
+            </Style>
+            <Style x:Key="NavigationLabel1" TargetType="Label">
+                <Setter Property="Text" Value="File Explorer"/>
+            </Style>
+            <Style x:Key="NavigationLabel2" TargetType="Label">
+                <Setter Property="Text" Value="Graph"/>
+            </Style>
+            <Style x:Key="NavigationLabel3" TargetType="Label">
+                <Setter Property="Text" Value="Histogram"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
