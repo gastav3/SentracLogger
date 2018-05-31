@@ -18,14 +18,6 @@ namespace SentLogger.ViewModels
 {
     /// <summary>
     /// The GraphViewModel controls most of the funconality of the graph
-    /// -TODO-
-    /// Stay pos where zoomed in
-    /// Make graph longer when more dots are added
-    /// X Axis
-    /// Y Axis
-    /// X Axis acceptable value
-    /// Dots should be circles
-    /// 
     /// </summary>
     public class GraphViewModel : INotifyPropertyChanged
     {

@@ -15,11 +15,11 @@ namespace SentLogger.Resources
         public class SerialPortClass
         {
             private SerialPort _serialPort = new SerialPort();
-            private int _baudRate = 9600;
+            private int _baudRate = 115200;
             private int _dataBits = 8;
             private Handshake _handshake = Handshake.None;
             private Parity _parity = Parity.None;
-            private string _portName = "COM8";
+            private string _portName = "COM3";
             private StopBits _stopBits = StopBits.One;
 
             /// <summary> 
@@ -51,7 +51,7 @@ namespace SentLogger.Resources
                     _serialPort.DataReceived += new SerialDataReceivedEventHandler(_serialPort_DataReceived);
 
 
-                Debug.WriteLine(_serialPort.PortName);
+                Debug.WriteLine("Test " + _serialPort.PortName);
             }
                 catch(Exception e) { Debug.WriteLine(e.ToString()); return false; }
                 return true;

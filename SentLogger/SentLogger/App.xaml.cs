@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
+using SentLogger.Resources;
 
 using Xamarin.Forms;
 
@@ -13,8 +14,11 @@ namespace SentLogger
 		public App ()
 		{
 			InitializeComponent();
-            MainPage = new NavigationPage(new SentLogger.Views.HistogramView());
-        }
+      SerialPortClass portTest = new SerialPortClass();
+      portTest.Open();
+
+          MainPage = new Views.GraphView();
+    }
 
     protected override void OnStart ()
 		{

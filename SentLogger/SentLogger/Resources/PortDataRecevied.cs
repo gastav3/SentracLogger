@@ -11,9 +11,9 @@ namespace SentLogger.Resources
     {
         public PortDataReceived()
         {
-            SerialPort mySerialPort = new SerialPort("COM8");
+            SerialPort mySerialPort = new SerialPort("COM3");
 
-            mySerialPort.BaudRate = 9600;
+            mySerialPort.BaudRate = 115200;
             mySerialPort.Parity = Parity.None;
             mySerialPort.StopBits = StopBits.One;
             mySerialPort.DataBits = 8;
