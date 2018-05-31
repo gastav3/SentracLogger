@@ -2,20 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SentLogger.Views.HistogramView"
-             ControlTemplate="{StaticResource TabMainDesign}">
+             ControlTemplate="{StaticResource TabViewHistogramDesign}">
 
-    <ContentPage.Resources>
+    <!--<ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="TabColor1">#A3B8DD</Color>
             <Color x:Key="TabColor2">#A3B8DD</Color>
             <Color x:Key="TabColor3">#5D74A1</Color>
         </ResourceDictionary>
-    </ContentPage.Resources>
+    </ContentPage.Resources>-->
 
     <ContentPage.Content>
-        <StackLayout Grid.Row="2" Grid.RowSpan="5" Grid.Column="1" Grid.ColumnSpan="9">
-            <Label Text="Histogram View" Font="Arial" FontSize="Small" TextColor="Black" HorizontalOptions="Center"
-                    VerticalOptions="Center"/>
+        <StackLayout Grid.Row="3" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="7">
+            <Label Text="Histogram View" Font="Arial" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 

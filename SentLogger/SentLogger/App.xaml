@@ -81,15 +81,12 @@
                     <Button x:Name="GoToExplorerLoadButton" BackgroundColor="Transparent" Grid.Row="7"
                     Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerLoadButton_Clicked"/>
 
-                    <ContentPresenter Grid.Row="3" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="7"/>
+                    <ContentPresenter Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="7"/>
                 </Grid>
             </ControlTemplate>
-            <Color x:Key="TabColor1">#5D74A1</Color>
-            <Color x:Key="TabColor2">#5D74A1</Color>
-            <Color x:Key="TabColor3">#5D74A1</Color>
 
-            <!--The common TabView display design-->
-            <ControlTemplate x:Key="TabMainDesign">
+            <!--The common TabViewFileExplorer display design-->
+            <ControlTemplate x:Key="TabViewFileExplorerDesign">
                 <Grid RowSpacing="0" ColumnSpacing="0">
                     <Grid.RowDefinitions TotalHeight="1*">
                         <RowDefinition Height="0.1125*" />
@@ -143,39 +140,29 @@
                          Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="9" VerticalOptions="FillAndExpand">
                         <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True"
                              HorizontalOptions="FillAndExpand">
-                            <BoxView Color="{StaticResource TabColor1}"/>
+                            <BoxView Color="#5D74A1"/>
                         </Frame>
                         <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True"
                              HorizontalOptions="FillAndExpand">
-                            <BoxView Color="{StaticResource TabColor2}"/>
+                            <BoxView Color="#A3B8DD"/>
                         </Frame>
                         <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True"
                              HorizontalOptions="FillAndExpand">
-                            <BoxView Color="{StaticResource TabColor3}"/>
+                            <BoxView Color="#A3B8DD"/>
                         </Frame>
-                    </StackLayout>
-                    
-                    <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2"
-                             Grid.Column="1" Grid.ColumnSpan="9">
-                        <Label Text="File Explorer" TextColor="White" Font="Arial" FontSize="Small"
-                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center" WidthRequest="20"
-                           HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                        <Label Text="Graph" TextColor="White" Font="Arial" FontSize="Small"
-                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center" WidthRequest="20"
-                           HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                        <Label Text="Histogram" TextColor="White" Font="Arial" FontSize="Small"
-                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center" WidthRequest="20"
-                           HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2"
-                         Grid.Column="1" Grid.ColumnSpan="9" VerticalOptions="FillAndExpand">
-                        <Button x:Name="FileExplorerTabButton" Margin="0" HorizontalOptions="FillAndExpand"
-                            BackgroundColor="Transparent" BorderWidth="0" Clicked="FileExplorerTabButton_Clicked"/>
-                        <Button x:Name="GraphTabButton" Margin="0" HorizontalOptions="FillAndExpand"
-                            BackgroundColor="Transparent" BorderWidth="0" Clicked="GraphTabButton_Clicked"/>
-                        <Button x:Name="HistogramTabButton" Margin="0" HorizontalOptions="FillAndExpand"
-                            BackgroundColor="Transparent" BorderWidth="0" Clicked="HistogramTabButton_Clicked"/>
+                             Grid.Column="1" Grid.ColumnSpan="9" VerticalOptions="FillAndExpand">
+                        <Button Text="File Explorer" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                           Clicked="FileExplorerTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
+                           Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
+                        <Button Text="Graph" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                           Clicked="GraphTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
+                           Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
+                        <Button Text="Histogram" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                           Clicked="HistogramTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
+                           Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
                     </StackLayout>
 
                     <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True" Grid.Row="3"
@@ -197,14 +184,260 @@
                         "{local:ImageResourceExtension SentLogger.Resources.Images.limpa.png}"
                         Rotation="180" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="5" Aspect="Fill"/>
 
+                    <Label Text="File Explorer" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
+                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="5"/>
+
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
                         Aspect="AspectFit" Grid.Row="8" Grid.Column="8" Margin="2"/>
                     <Button x:Name="GoToExplorerLoadButton" BackgroundColor="Transparent" Grid.Row="8"
                         Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerLoadButton_Clicked"/>
 
-                    <ContentPresenter Grid.Row="3" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="9"/>
+                    <ContentPresenter Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="7"/>
                 </Grid>
             </ControlTemplate>
+
+            <!--The common TabViewGraph display design-->
+            <ControlTemplate x:Key="TabViewGraphDesign">
+                <Grid RowSpacing="0" ColumnSpacing="0">
+                    <Grid.RowDefinitions TotalHeight="1*">
+                        <RowDefinition Height="0.1125*" />
+                        <RowDefinition Height="0.0125*" />
+                        <RowDefinition Height="0.068*" />
+                        <RowDefinition Height="0.0125*" />
+                        <RowDefinition Height="0.48*" />
+                        <RowDefinition Height="0.177*" />
+                        <RowDefinition Height="0.0125*" />
+                        <RowDefinition Height="0.0125*" />
+                        <RowDefinition Height="0.1125*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions TotalWidth="1.33333*">
+                        <ColumnDefinition Width="0.0125*" />
+                        <ColumnDefinition Width="0.0125*" />
+                        <ColumnDefinition Width="0.091666*" />
+                        <ColumnDefinition Width="0.125*" />
+                        <ColumnDefinition Width="0.3125*" />
+                        <ColumnDefinition Width="0.225*" />
+                        <ColumnDefinition Width="0.3125*" />
+                        <ColumnDefinition Width="0.125*" />
+                        <ColumnDefinition Width="0.091666*" />
+                        <ColumnDefinition Width="0.0125*" />
+                        <ColumnDefinition Width="0.0125*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.settings.png}"
+                        Grid.Row="0" Grid.Column="2" Margin="2"/>
+                    <Button x:Name="GoToSettingsButton" BackgroundColor="Transparent"
+                        Grid.Row="0" Grid.Column="2" BorderWidth="0" Clicked="GoToSettingsButton_Clicked"/>
+
+                    <Image Source=
+                        "{local:ImageResourceExtension SentLogger.Resources.Images.limpa.png}"
+                        Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="5" Aspect="Fill"/>
+
+                    <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.whiteLogo.png}"
+                        HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="4"/>
+
+                    <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.timeAndDate.png}"
+                        x:Name="timeAndDateImg" Aspect="AspectFit" Grid.Row="0" Grid.Column="5" Margin="7"/>
+                    <Button x:Name="CurTimeAndDateButton" BackgroundColor="Transparent"
+                        Grid.Row="0" Grid.Column="5" BorderWidth="0" Pressed="CurTimeAndDateButton_Pressed"
+                        Released="CurTimeAndDateButton_Released" TextColor="White" FontSize="Micro"/>
+
+                    <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.save.png}"
+                        Aspect="AspectFit" Grid.Row="0" Grid.Column="8" Margin="2"/>
+                    <Button x:Name="GoToExplorerSaveButton" BackgroundColor="Transparent" Grid.Row="0"
+                        Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerSaveButton_Clicked"/>
+
+                    <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2"
+                         Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="9" VerticalOptions="FillAndExpand">
+                        <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True"
+                             HorizontalOptions="FillAndExpand">
+                            <BoxView Color="#A3B8DD"/>
+                        </Frame>
+                        <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True"
+                             HorizontalOptions="FillAndExpand">
+                            <BoxView Color="#5D74A1"/>
+                        </Frame>
+                        <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True"
+                             HorizontalOptions="FillAndExpand">
+                            <BoxView Color="#A3B8DD"/>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2"
+                             Grid.Column="1" Grid.ColumnSpan="9" VerticalOptions="FillAndExpand">
+                        <Button Text="File Explorer" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                           Clicked="FileExplorerTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
+                           Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
+                        <Button Text="Graph" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                           Clicked="GraphTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
+                           Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
+                        <Button Text="Histogram" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                           Clicked="HistogramTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
+                           Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
+                    </StackLayout>
+
+                    <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True" Grid.Row="3"
+                         Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="9">
+                        <BoxView Color="#5D74A1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                    </Frame>
+
+                    <Frame CornerRadius="6" Margin="0" Padding="0" IsClippedToBounds="True"
+                         Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="7">
+                        <BoxView Color="White" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                    </Frame>
+
+                    <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.help.png}"
+                        Aspect="AspectFit" Grid.Row="8" Grid.Column="2" Margin="2, 2, 2, 5"/>
+                    <Button x:Name="GoToHelpButton" BackgroundColor="Transparent" Grid.Row="8"
+                        Grid.Column="2" BorderWidth="0" Clicked="GoToHelpButton_Clicked"/>
+
+                    <Image Source=
+                        "{local:ImageResourceExtension SentLogger.Resources.Images.limpa.png}"
+                        Rotation="180" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="5" Aspect="Fill"/>
+
+                    <Label Text="Graph" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
+                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="5"/>
+
+                    <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
+                        Aspect="AspectFit" Grid.Row="8" Grid.Column="8" Margin="2"/>
+                    <Button x:Name="GoToExplorerLoadButton" BackgroundColor="Transparent" Grid.Row="8"
+                        Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerLoadButton_Clicked"/>
+
+                    <ContentPresenter Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="7"/>
+                </Grid>
+            </ControlTemplate>
+
+            <!--The common TabViewHistogram display design-->
+            <ControlTemplate x:Key="TabViewHistogramDesign">
+                <Grid RowSpacing="0" ColumnSpacing="0">
+                    <Grid.RowDefinitions TotalHeight="1*">
+                        <RowDefinition Height="0.1125*" />
+                        <RowDefinition Height="0.0125*" />
+                        <RowDefinition Height="0.068*" />
+                        <RowDefinition Height="0.0125*" />
+                        <RowDefinition Height="0.48*" />
+                        <RowDefinition Height="0.177*" />
+                        <RowDefinition Height="0.0125*" />
+                        <RowDefinition Height="0.0125*" />
+                        <RowDefinition Height="0.1125*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions TotalWidth="1.33333*">
+                        <ColumnDefinition Width="0.0125*" />
+                        <ColumnDefinition Width="0.0125*" />
+                        <ColumnDefinition Width="0.091666*" />
+                        <ColumnDefinition Width="0.125*" />
+                        <ColumnDefinition Width="0.3125*" />
+                        <ColumnDefinition Width="0.225*" />
+                        <ColumnDefinition Width="0.3125*" />
+                        <ColumnDefinition Width="0.125*" />
+                        <ColumnDefinition Width="0.091666*" />
+                        <ColumnDefinition Width="0.0125*" />
+                        <ColumnDefinition Width="0.0125*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.settings.png}"
+                        Grid.Row="0" Grid.Column="2" Margin="2"/>
+                    <Button x:Name="GoToSettingsButton" BackgroundColor="Transparent"
+                        Grid.Row="0" Grid.Column="2" BorderWidth="0" Clicked="GoToSettingsButton_Clicked"/>
+
+                    <Image Source=
+                        "{local:ImageResourceExtension SentLogger.Resources.Images.limpa.png}"
+                        Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="5" Aspect="Fill"/>
+
+                    <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.whiteLogo.png}"
+                        HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="4"/>
+
+                    <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.timeAndDate.png}"
+                        x:Name="timeAndDateImg" Aspect="AspectFit" Grid.Row="0" Grid.Column="5" Margin="7"/>
+                    <Button x:Name="CurTimeAndDateButton" BackgroundColor="Transparent"
+                        Grid.Row="0" Grid.Column="5" BorderWidth="0" Pressed="CurTimeAndDateButton_Pressed"
+                        Released="CurTimeAndDateButton_Released" TextColor="White" FontSize="Micro"/>
+
+                    <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.save.png}"
+                        Aspect="AspectFit" Grid.Row="0" Grid.Column="8" Margin="2"/>
+                    <Button x:Name="GoToExplorerSaveButton" BackgroundColor="Transparent" Grid.Row="0"
+                        Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerSaveButton_Clicked"/>
+
+                    <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2"
+                         Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="9" VerticalOptions="FillAndExpand">
+                        <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True"
+                             HorizontalOptions="FillAndExpand">
+                            <BoxView Color="#A3B8DD"/>
+                        </Frame>
+                        <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True"
+                             HorizontalOptions="FillAndExpand">
+                            <BoxView Color="#A3B8DD"/>
+                        </Frame>
+                        <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True"
+                             HorizontalOptions="FillAndExpand">
+                            <BoxView Color="#5D74A1"/>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2"
+                             Grid.Column="1" Grid.ColumnSpan="9" VerticalOptions="FillAndExpand">
+                        <Button Text="File Explorer" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                           Clicked="FileExplorerTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
+                           Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
+                        <Button Text="Graph" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                           Clicked="GraphTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
+                           Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
+                        <Button Text="Histogram" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                           Clicked="HistogramTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
+                           Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
+                    </StackLayout>
+
+                    <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True" Grid.Row="3"
+                         Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="9">
+                        <BoxView Color="#5D74A1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                    </Frame>
+
+                    <Frame CornerRadius="6" Margin="0" Padding="0" IsClippedToBounds="True"
+                         Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="7">
+                        <BoxView Color="White" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+                    </Frame>
+
+                    <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.help.png}"
+                        Aspect="AspectFit" Grid.Row="8" Grid.Column="2" Margin="2, 2, 2, 5"/>
+                    <Button x:Name="GoToHelpButton" BackgroundColor="Transparent" Grid.Row="8"
+                        Grid.Column="2" BorderWidth="0" Clicked="GoToHelpButton_Clicked"/>
+
+                    <Image Source=
+                        "{local:ImageResourceExtension SentLogger.Resources.Images.limpa.png}"
+                        Rotation="180" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="5" Aspect="Fill"/>
+
+                    <Label Text="Histogram" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
+                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="5"/>
+
+                    <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
+                        Aspect="AspectFit" Grid.Row="8" Grid.Column="8" Margin="2"/>
+                    <Button x:Name="GoToExplorerLoadButton" BackgroundColor="Transparent" Grid.Row="8"
+                        Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerLoadButton_Clicked"/>
+
+                    <ContentPresenter Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="7"/>
+                </Grid>
+            </ControlTemplate>
+
+            <!--<Color x:Key="TabColor1">#5D74A1</Color>
+            <Color x:Key="TabColor2">#5D74A1</Color>
+            <Color x:Key="TabColor3">#5D74A1</Color>
+            <Style x:Key="NavigationLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="Font" Value="Arial"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="Text" Value="Testing Testing"/>
+            </Style>
+            <Style x:Key="NavigationLabel1" TargetType="Label">
+                <Setter Property="Text" Value="File Explorer"/>
+            </Style>
+            <Style x:Key="NavigationLabel2" TargetType="Label">
+                <Setter Property="Text" Value="Graph"/>
+            </Style>
+            <Style x:Key="NavigationLabel3" TargetType="Label">
+                <Setter Property="Text" Value="Histogram"/>
+            </Style>-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

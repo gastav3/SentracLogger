@@ -2,85 +2,85 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SentLogger.Views.GraphView"
-             ControlTemplate="{StaticResource TabMainDesign}">
+             ControlTemplate="{StaticResource TabViewGraphDesign}">
 
-    <ContentPage.Resources>
+    <!--<ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="TabColor1">#A3B8DD</Color>
             <Color x:Key="TabColor2">#5D74A1</Color>
             <Color x:Key="TabColor3">#A3B8DD</Color>
         </ResourceDictionary>
-    </ContentPage.Resources>
+    </ContentPage.Resources>-->
 
     <ContentPage.Content>
-        <StackLayout Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="7">
-            <Frame x:Name="GraphFrame" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="7">
-                <StackLayout>
-                    <ScrollView Orientation="Both"
-                            x:Name="GraphScroller"
-                             VerticalOptions="FillAndExpand"
-                            HorizontalOptions="FillAndExpand">
-
-                        <Frame BackgroundColor="#DCE2ED">
+        <StackLayout Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="7">
+            <Frame Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="7" Margin="0" Padding="0">
+                <StackLayout Margin="0" Padding="0">
+                    <ScrollView Orientation="Both" x:Name="GraphScroller">
+                        <Frame BackgroundColor="#DCE2ED" Margin="0" Padding="0">
                             <AbsoluteLayout
-                            x:Name="GraphDrawArea"
-                            HeightRequest="{Binding GraphFrameSizeHeight}"
-                            WidthRequest="{Binding GraphFrameSizeWidth}"
-                            VerticalOptions="FillAndExpand"
-                            HorizontalOptions="FillAndExpand"
-                            BackgroundColor="#DCE2ED">
+                                x:Name="GraphDrawArea"
+                                HeightRequest="{Binding GraphFrameSizeHeight}"
+                                WidthRequest="{Binding GraphFrameSizeWidth}"
+                                BackgroundColor="#DCE2ED"
+                                Margin="0"
+                                Padding="0">
 
                                 <BoxView
-                               x:Name="AcceptedValueLine"
-                               BackgroundColor="Red"
-                               AbsoluteLayout.LayoutBounds="{Binding AcceptedLineValuePos}"
-                               AbsoluteLayout.LayoutFlags="None"
-                            ></BoxView>
+                                    x:Name="AcceptedValueLine"
+                                    AbsoluteLayout.LayoutBounds="{Binding AcceptedLineValuePos}"
+                                    AbsoluteLayout.LayoutFlags="None"/>
 
                                 <Label
-                               x:Name="ToolTipLabel"
-                               BackgroundColor="Transparent"
-                               Text="{Binding ToolTipValue}"
-                               AbsoluteLayout.LayoutBounds="{Binding ToolTipPos}"
-                               AbsoluteLayout.LayoutFlags="None">
+                                    x:Name="ToolTipLabel"
+                                    BackgroundColor="Transparent"
+                                    Text="{Binding ToolTipValue}"
+                                    AbsoluteLayout.LayoutBounds="{Binding ToolTipPos}"
+                                    AbsoluteLayout.LayoutFlags="None">
                                 </Label>
-
                             </AbsoluteLayout>
                         </Frame>
                     </ScrollView>
                     <Slider x:Name="SliderZoom"
                         Value="{Binding ZoomAmount, Mode=TwoWay}"
                         Minimum="-25"
-                        Maximum="25"/>
+                        Maximum="25"
+                        Margin="0"/>
                 </StackLayout>
             </Frame>
 
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="7"
+                    VerticalOptions="Start" Margin="0" Padding="0">
                 <Entry x:Name="AcceptedLineValueEntry"
                     Text="{Binding MaxAcceptedLineValue, Mode=TwoWay}"
-                    HorizontalOptions="Start">
+                    HorizontalOptions="FillAndExpand">
                 </Entry>
 
                 <Button Text="Update"
                          Command="{Binding UpdateUiCommand}"
-                         HorizontalOptions="End"
-                         ></Button>
+                         HorizontalOptions="FillAndExpand"
+                         Margin="0"/>
 
                 <Button Text="Previous Dot"
                          Command="{Binding PreviousDotCommand}"
-                         ></Button>
+                         HorizontalOptions="FillAndExpand"
+                         Margin="0"/>
 
                 <Button Text="Next Dot"
                          Command="{Binding NextDotCommand}"
-                         ></Button>
+                        HorizontalOptions="FillAndExpand"
+                         Margin="0"/>
+            </StackLayout>
 
-                <Button Text="Add Random Dot"
+            <Button Text="Add Random Dot"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"
                          Command="{Binding AddNewRandomDotCommand}"
-                         ></Button>
+                         Margin="0"/>
 
                 <Button Text="Remove Last Dot"
                          Command="{Binding RemoveLastGraphDotCommand}"
-                         ></Button>
+                         Margin="0"/>
 
             </StackLayout>
         </StackLayout>
