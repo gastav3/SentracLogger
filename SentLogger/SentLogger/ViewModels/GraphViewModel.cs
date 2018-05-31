@@ -141,7 +141,7 @@ namespace SentLogger.ViewModels
             {
                 double newPosY = ((-MaxAcceptedLineValue) * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount())) + (GraphFrameSizeHeight - (DotSize.Y * GetZoomAmount()));
                 AcceptedLineValuePos = new Rectangle(
-                    AcceptedLineValuePos.X,
+                    AcceptedLineValuePos.X-1000,
                     newPosY,
                     GraphFrameSizeWidth*100.0,
                     1.0

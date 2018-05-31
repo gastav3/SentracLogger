@@ -11,7 +11,7 @@ namespace SentLogger.Resources
     {
         // Create the serial port with basic settings
         private SerialPort port = new SerialPort("COM8",
-          9600, Parity.None, 8, StopBits.One);
+          115200, Parity.None, 8, StopBits.One);
 
 
 

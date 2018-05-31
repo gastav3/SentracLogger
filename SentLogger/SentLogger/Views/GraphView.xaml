@@ -17,37 +17,41 @@
             <Frame x:Name="GraphFrame" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="7">
                 <StackLayout>
                     <ScrollView Orientation="Both"
-                            x:Name="GraphScroller">
+                            x:Name="GraphScroller"
+                             VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand">
+
                         <Frame BackgroundColor="#DCE2ED">
-                        <AbsoluteLayout
+                            <AbsoluteLayout
                             x:Name="GraphDrawArea"
                             HeightRequest="{Binding GraphFrameSizeHeight}"
                             WidthRequest="{Binding GraphFrameSizeWidth}"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
                             BackgroundColor="#DCE2ED">
 
-                            <BoxView
+                                <BoxView
                                x:Name="AcceptedValueLine"
                                BackgroundColor="Red"
                                AbsoluteLayout.LayoutBounds="{Binding AcceptedLineValuePos}"
                                AbsoluteLayout.LayoutFlags="None"
                             ></BoxView>
 
-                            <Label
+                                <Label
                                x:Name="ToolTipLabel"
                                BackgroundColor="Transparent"
                                Text="{Binding ToolTipValue}"
                                AbsoluteLayout.LayoutBounds="{Binding ToolTipPos}"
                                AbsoluteLayout.LayoutFlags="None">
-                            </Label>
-                        </AbsoluteLayout>
+                                </Label>
+
+                            </AbsoluteLayout>
                         </Frame>
                     </ScrollView>
                     <Slider x:Name="SliderZoom"
                         Value="{Binding ZoomAmount, Mode=TwoWay}"
                         Minimum="-25"
-                        Maximum="25"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="Center" />
+                        Maximum="25"/>
                 </StackLayout>
             </Frame>
 
@@ -57,41 +61,28 @@
                     HorizontalOptions="Start">
                 </Entry>
 
-
                 <Button Text="Update"
                          Command="{Binding UpdateUiCommand}"
                          HorizontalOptions="End"
-                         Margin="0, 0, 0, 0"
                          ></Button>
 
                 <Button Text="Previous Dot"
                          Command="{Binding PreviousDotCommand}"
-                         HorizontalOptions="End"
-                         Margin="0, 0, 0, 0"
                          ></Button>
 
                 <Button Text="Next Dot"
                          Command="{Binding NextDotCommand}"
-                        HorizontalOptions="End"
-                         Margin="0, 0, 0, 0"
+                         ></Button>
+
+                <Button Text="Add Random Dot"
+                         Command="{Binding AddNewRandomDotCommand}"
+                         ></Button>
+
+                <Button Text="Remove Last Dot"
+                         Command="{Binding RemoveLastGraphDotCommand}"
                          ></Button>
 
             </StackLayout>
-
-            <Button Text="Add Random Dot"
-                         VerticalOptions="Center"
-                         HorizontalOptions="Center"
-                         Command="{Binding AddNewRandomDotCommand}"
-                         Margin="0, 0, 0, 0"
-                         ></Button>
-
-            <Button Text="Remove Last Dot"
-                         VerticalOptions="Center"
-                         HorizontalOptions="Center"
-                         Command="{Binding RemoveLastGraphDotCommand}"
-                         Margin="0, 0, 0, 0"
-                         ></Button>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

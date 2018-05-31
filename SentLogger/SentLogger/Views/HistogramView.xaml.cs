@@ -14,9 +14,11 @@ namespace SentLogger.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HistogramView : ContentPage
 	{
+
     public HistogramView ()
 		{
 			InitializeComponent ();
-		}
-  }
+
+        }
+    }
 }

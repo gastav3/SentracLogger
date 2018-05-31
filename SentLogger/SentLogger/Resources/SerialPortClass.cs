@@ -60,7 +60,7 @@ namespace SentLogger.Resources
             void _serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
             {
 
-            Debug.WriteLine(e.ToString() + " wot");
+            Debug.WriteLine(e.ToString() + " Hello");
                 //Initialize a buffer to hold the received data 
                 byte[] buffer = new byte[_serialPort.ReadBufferSize];
 

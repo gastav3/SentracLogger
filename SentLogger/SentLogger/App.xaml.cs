@@ -3,20 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
-
+using SentLogger.Resources;
 using Xamarin.Forms;
+using System.IO.Ports;
 
 namespace SentLogger
 {
 	public partial class App : Application
 	{
-		public App ()
+        public App ()
 		{
 			InitializeComponent();
+
+            // PortDataReceived portTest = new PortDataReceived();
+            //  SerialPortClass serialPortClass = new SerialPortClass();
+            // serialPortClass.Open();
+
+            //  SerialPortExample port = new SerialPortExample();
+            
+
+
             MainPage = new NavigationPage(new SentLogger.Views.HistogramView());
         }
 
-    protected override void OnStart ()
+
+        protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}
