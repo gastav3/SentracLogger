@@ -3,16 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:SentLogger.Resources"
              x:Class="SentLogger.Views.HelpView"
-             ControlTemplate="{StaticResource MainDesign}">
+             ControlTemplate="{StaticResource HelpDesign}">
 
     <ContentPage.Content>
+        <StackLayout>
         <StackLayout Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
             <Label Text="FAQ:" FontSize="Small" Font="Arial" Margin="10,10,0,0" TextColor="#5D74A1"
                 HorizontalOptions="Start" VerticalOptions="Start"/>
             <Label Text="Q: Something doesn't work as it's supposed to..." FontSize="Small" Font="Arial"
                 Margin="10,5,0,0" TextColor="#5D74A1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
-            <Label Text="A: Restart the app and try again." FontSize="Small" Font="Arial" Margin="10,5,0,0"
+                <Label Text="A: Restart the app and try again." FontSize="Small" Font="Arial" Margin="10,5,0,0"
                 TextColor="#5D74A1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
