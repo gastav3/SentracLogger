@@ -33,9 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Essy.FTDIWrapper" Version="6.1.0" />
-    <PackageReference Include="FTD2XX.Net" Version="1.0.14" />
-    <PackageReference Include="SerialPortLib" Version="1.0.12" />
     <PackageReference Include="SkiaSharp" Version="1.60.0" />
     <PackageReference Include="SkiaSharp.Views" Version="1.60.0" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="1.60.0" />

@@ -14,17 +14,16 @@ namespace SentLogger
         public App ()
 		{
 			InitializeComponent();
-
-            // PortDataReceived portTest = new PortDataReceived();
-            //  SerialPortClass serialPortClass = new SerialPortClass();
-            // serialPortClass.Open();
-
-            //  SerialPortExample port = new SerialPortExample();
             
+                DependencyService.Get<IUsbConnectionSerialPort>().Start();
+            //string fromSpecificProject = DependencyService.Get<IUsbConnectionSerialPort>().GetData();
 
+          //  Debug.WriteLine(fromSpecificProject);
 
-            MainPage = new NavigationPage(new SentLogger.Views.HistogramView());
+            MainPage = new  SentLogger.Views.HistogramView();
         }
+
+
 
 
         protected override void OnStart ()
@@ -42,10 +41,10 @@ namespace SentLogger
 			// Handle when your app resumes
 		}
 
-    /// <summary>
-    /// Buttons handling navigation.
-    /// </summary>
-    /*this.GoToSettingsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;*/
+        /// <summary>
+        /// Buttons handling navigation.
+        /// </summary>
+        /*this.GoToSettingsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;*/
     private void GoToSettingsButton_Clicked(object sender, EventArgs e)
     {
       MainPage = new Views.SettingsView();

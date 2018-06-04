@@ -28,6 +28,7 @@
 
                                 <BoxView
                                     x:Name="AcceptedValueLine"
+                                    BackgroundColor="Red"
                                     AbsoluteLayout.LayoutBounds="{Binding AcceptedLineValuePos}"
                                     AbsoluteLayout.LayoutFlags="None"/>
 
@@ -78,11 +79,10 @@
                          Command="{Binding AddNewRandomDotCommand}"
                          Margin="0"/>
 
-                <Button Text="Remove Last Dot"
+            <Button Text="Remove Last Dot"
                          Command="{Binding RemoveLastGraphDotCommand}"
                          Margin="0"/>
 
-            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
