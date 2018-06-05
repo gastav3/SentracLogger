@@ -58,7 +58,7 @@
                     Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerSaveButton_Clicked"/>
 
                     <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True" Grid.Row="2"
-                    Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="9">
+                    Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="9">
                         <BoxView Color="#5D74A1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
                     </Frame>
 
@@ -77,14 +77,17 @@
                     Rotation="180" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="5" Aspect="Fill"/>
 
                     <Label Text="Settings" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
-                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="3"/>
+                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="7" Grid.Column="4"/>
+
+                    <Label Text="Sentrac Logger" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
+                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="7" Grid.Column="6"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
                     Aspect="AspectFit" Grid.Row="7" Grid.Column="8" Margin="2"/>
                     <Button x:Name="GoToExplorerLoadButton" BackgroundColor="Transparent" Grid.Row="7"
                     Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerLoadButton_Clicked"/>
 
-                    <ContentPresenter Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="7"/>
+                    <ContentPresenter Grid.Row="3" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="7"/>
                 </Grid>
             </ControlTemplate>
 
@@ -139,7 +142,7 @@
                     Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerSaveButton_Clicked"/>
 
                     <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True" Grid.Row="2"
-                    Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="9">
+                    Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="9">
                         <BoxView Color="#5D74A1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
                     </Frame>
 
@@ -158,14 +161,17 @@
                     Rotation="180" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="5" Aspect="Fill"/>
 
                     <Label Text="Help" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
-                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="3"/>
+                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="7" Grid.Column="4"/>
+
+                    <Label Text="Sentrac Logger" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
+                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="7" Grid.Column="6"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
                     Aspect="AspectFit" Grid.Row="7" Grid.Column="8" Margin="2"/>
                     <Button x:Name="GoToExplorerLoadButton" BackgroundColor="Transparent" Grid.Row="7"
                     Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerLoadButton_Clicked"/>
 
-                    <ContentPresenter Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="7"/>
+                    <ContentPresenter Grid.Row="3" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="7"/>
                 </Grid>
             </ControlTemplate>
 
@@ -269,7 +275,10 @@
                         Rotation="180" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="5" Aspect="Fill"/>
 
                     <Label Text="File Explorer" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
-                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="5"/>
+                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="4"/>
+
+                    <Label Text="Sentrac Logger" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
+                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="6"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
                         Aspect="AspectFit" Grid.Row="8" Grid.Column="8" Margin="2"/>
@@ -380,7 +389,10 @@
                         Rotation="180" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="5" Aspect="Fill"/>
 
                     <Label Text="Graph" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
-                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="5"/>
+                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="4"/>
+
+                    <Label Text="Sentrac Logger" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
+                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="6"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
                         Aspect="AspectFit" Grid.Row="8" Grid.Column="8" Margin="2"/>
@@ -491,7 +503,10 @@
                         Rotation="180" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="5" Aspect="Fill"/>
 
                     <Label Text="Histogram" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
-                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="5"/>
+                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="4"/>
+
+                    <Label Text="Sentrac Logger" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
+                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="6"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
                         Aspect="AspectFit" Grid.Row="8" Grid.Column="8" Margin="2"/>
@@ -523,7 +538,7 @@
                 <Setter Property="Text" Value="Histogram"/>
             </Style>-->
 
-            <OnPlatform x:Key="NavigationLabelFontSize" x:TypeArguments="x:Double">
+            <!--<OnPlatform x:Key="NavigationLabelFontSize" x:TypeArguments="x:Double">
                 <On Platform="iOS">
                     <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="14"/>
                 </On>
@@ -536,10 +551,10 @@
             </OnPlatform>
 
             <Style x:Key="NavigationLabel" TargetType="Label">
+                <Setter Property="Font" Value="Arial"/>
                 <Setter Property="FontSize" Value="{StaticResource NavigationLabelFontSize}"/>
                 <Setter Property="TextColor" Value="White"/>
-                <Setter Property="Font" Value="Arial"/>
-            </Style>
+            </Style>-->
 
         </ResourceDictionary>
     </Application.Resources>

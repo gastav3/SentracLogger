@@ -6,15 +6,33 @@
              ControlTemplate="{StaticResource HelpDesign}">
 
     <ContentPage.Content>
-        <StackLayout>
-        <StackLayout Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
-            <Label Text="FAQ:" FontSize="Small" Font="Arial" Margin="10,10,0,0" TextColor="#5D74A1"
-                HorizontalOptions="Start" VerticalOptions="Start"/>
-            <Label Text="Q: Something doesn't work as it's supposed to..." FontSize="Small" Font="Arial"
-                Margin="10,5,0,0" TextColor="#5D74A1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
-                <Label Text="A: Restart the app and try again." FontSize="Small" Font="Arial" Margin="10,5,0,0"
-                TextColor="#5D74A1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+        <Grid RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions TotalHeight="0.725*">
+                <RowDefinition Height="0.54375*"/>
+                <RowDefinition Height="0.18125*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions TotalWidth="1.283332*">
+                <ColumnDefinition Width="0.091666*"/>
+                <ColumnDefinition Width="0.125*" />
+                <ColumnDefinition Width="0.3125*" />
+                <ColumnDefinition Width="0.225*" />
+                <ColumnDefinition Width="0.3125*" />
+                <ColumnDefinition Width="0.125*" />
+                <ColumnDefinition Width="0.091666*" />
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Margin="0" Padding="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7">
+            <Label Text="   FAQ:" FontSize="Small" Font="Arial" Margin="10,10,0,0" TextColor="#5D74A1"/>
+            <Label Text="   Q: Something doesn't work as it's supposed to..." FontSize="Small" Font="Arial"
+                Margin="10,5,0,0" TextColor="#5D74A1"/>
+            <Label Text="   A: Restart the app and try again." FontSize="Small" Font="Arial" Margin="10,5,0,0"
+                TextColor="#5D74A1"/>
             </StackLayout>
-        </StackLayout>
+
+            <StackLayout Margin="0" Padding="0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7">
+            <Label Text="   Contact:" TextColor="White" Font="Arial" FontSize="Small" Margin="10,10,0,0"/>
+            <Label Text="   Inficon" TextColor="White" Font="Arial" FontSize="Small" Margin="10,5,0,0"/>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
