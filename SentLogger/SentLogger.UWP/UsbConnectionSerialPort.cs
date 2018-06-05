@@ -8,32 +8,40 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Diagnostics;
 using SentLogger.Models;
+using SentLogger.ViewModels;
 
 [assembly: Dependency(typeof(UsbConnectionSerialPort))]
 namespace SentLogger.UWP
 {
     public class UsbConnectionSerialPort : IUsbConnectionSerialPort
     {
-        private DataTranslator translator;
-        private List<GraphDot> dotList;
+        private List<DataDotObject> dotList;
         private UwpUsbConnection uwpUsbCon;
+        private GraphViewModel graphVM;
 
-        public void Start()
+        public void Start(GraphViewModel graphvm)
         {
-            this.translator = new DataTranslator();
-            this.dotList = new List<GraphDot>();
+            this.dotList = new List<DataDotObject>();
             this.uwpUsbCon = new UwpUsbConnection(this);
+            this.graphVM = graphvm;
         }
 
-        public List<GraphDot> GetData()
+        public void ReceiveNewData(DataDotObject data)
         {
-         //   translator.TranslateIntoDots();
+            this.graphVM.AddNewDot(data.Value, data.Value);
+        }
 
+        public List<DataDotObject> GetList()
+        {
+            return this.dotList;
+        }
 
-            List<GraphDot> temoDotList = new List<GraphDot>(this.dotList);
+        public List<DataDotObject> GetData()
+        {
+            List<DataDotObject> tempDotList = new List<DataDotObject>(this.dotList);
             this.dotList.Clear();
 
-            return temoDotList;
+            return tempDotList;
         }
     }
 }

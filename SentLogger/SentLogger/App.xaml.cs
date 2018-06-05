@@ -14,17 +14,9 @@ namespace SentLogger
         public App ()
 		{
 			InitializeComponent();
-            
-                DependencyService.Get<IUsbConnectionSerialPort>().Start();
-            //string fromSpecificProject = DependencyService.Get<IUsbConnectionSerialPort>().GetData();
-
-          //  Debug.WriteLine(fromSpecificProject);
 
             MainPage = new  SentLogger.Views.HistogramView();
         }
-
-
-
 
         protected override void OnStart ()
 		{

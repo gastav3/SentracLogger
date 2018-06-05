@@ -22,7 +22,7 @@ namespace SentLogger.ViewModels
     public class GraphViewModel : INotifyPropertyChanged
     {
 
-    private ObservableCollection<GraphDot> graphDots = new ObservableCollection<GraphDot>();
+        private ObservableCollection<GraphDot> graphDots = new ObservableCollection<GraphDot>();
 
         private Point dotSize = new Point(5.0, 5.0); // the dot size
 
@@ -40,7 +40,7 @@ namespace SentLogger.ViewModels
         private double minimumGraphFrameSizeWidth; // Binded to the minimum graph width
         private double minimumGraphFrameSizeHeight; // Binded to the minimum graph height
 
-        private double graphFrameSizeOffsetX; // How much should the graph width increase
+        private double graphFrameSizeOffsetX; // How much should the graph width increase 2140000000
         private double graphFrameSizeOffsetY; // How much should the graph height increase
 
         private double windowStartSizeX = 0.0; // Gets the start window size X when the first dot is created
@@ -61,7 +61,7 @@ namespace SentLogger.ViewModels
         {
             if (!Extras.IsTaskRunning(updateUITask))
             {
-                RunUpdateUITask();
+              RunUpdateUITask();
             }
 
             UpdateAcceptedValueLine(this, EventArgs.Empty);
@@ -80,18 +80,19 @@ namespace SentLogger.ViewModels
         private async Task<int> DoUpdateUIElements()
         {
             GraphFrameSizeWidth = (Application.Current.MainPage.Width * frozenZoomUpdate) + graphFrameSizeOffsetX;
-            GraphFrameSizeHeight = ((Application.Current.MainPage.Height / 2f) + graphFrameSizeOffsetY) * (frozenZoomUpdate*2f);
+            GraphFrameSizeHeight = ((Application.Current.MainPage.Height / 2f)) * (frozenZoomUpdate*2f) + graphFrameSizeOffsetY;
 
             int i = 0;
             foreach (GraphDot dot in GetGraphDotsList()) // loop through all dots
             {
                 double newPosX = (dot.StartPoint.X * (((GraphFrameSizeWidth - graphFrameSizeOffsetX) / windowStartSizeX) * frozenZoomUpdate));
-                double newPosY = (dot.StartPoint.Y * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * frozenZoomUpdate)) + (GraphFrameSizeHeight - (DotSize.Y * frozenZoomUpdate));
+                double newPosY = (dot.StartPoint.Y * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * frozenZoomUpdate)) + (GraphFrameSizeHeight - ((DotSize.Y*4f) * frozenZoomUpdate));
 
                 ShouldDotChangeColor(dot, MaxAcceptedLineValue);
                 AbsoluteLayout.SetLayoutBounds(dot.GraphicDot, new Rectangle(newPosX, newPosY, DotSize.X * frozenZoomUpdate, DotSize.Y * frozenZoomUpdate));
 
                 ExtendGraphLength(newPosX);
+                ExtendGraphHeight(newPosY);
                 i++;
                 await Task.Delay(GetDynamicUpdateDelay()); // a bit of delay so we dont crash
             }
@@ -106,15 +107,15 @@ namespace SentLogger.ViewModels
             SetWindowStartSize();
 
             GraphFrameSizeWidth = (Application.Current.MainPage.Width * GetZoomAmount()) + graphFrameSizeOffsetX;
-            GraphFrameSizeHeight = ((Application.Current.MainPage.Height / 2f) + graphFrameSizeOffsetY) * (GetZoomAmount()*2f);
+            GraphFrameSizeHeight = ((Application.Current.MainPage.Height / 2f)) * (GetZoomAmount()*2f) + graphFrameSizeOffsetY;
 
-            GraphDot tempDot = new GraphDot(new Point(pos.X, pos.Y), value);
+            GraphDot tempDot = new GraphDot(new Point(pos.X, (pos.Y * 100f)), value);
             tempDot.Index = GetGraphDotsList().Count;
 
             tempDot.ScreenSizeCreated = new Point(GraphFrameSizeWidth, GraphFrameSizeHeight);
 
             double newPosX = (tempDot.StartPoint.X * (((GraphFrameSizeWidth - graphFrameSizeOffsetX) / windowStartSizeX) * GetZoomAmount()));
-            double newPosY = (tempDot.StartPoint.Y * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount())) + (GraphFrameSizeHeight - (DotSize.Y * GetZoomAmount()));
+            double newPosY = (tempDot.StartPoint.Y * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount())) + (GraphFrameSizeHeight - ((DotSize.Y*4f) * GetZoomAmount()));
 
             AbsoluteLayout.SetLayoutBounds(tempDot.GraphicDot, new Rectangle(newPosX, newPosY, DotSize.X * GetZoomAmount(), DotSize.Y * GetZoomAmount()));
             AbsoluteLayout.SetLayoutFlags(tempDot.GraphicDot, AbsoluteLayoutFlags.None);
@@ -124,6 +125,7 @@ namespace SentLogger.ViewModels
             this.graphDots.Add(tempDot); // add to the dot list
 
             ExtendGraphLength(newPosX);
+            ExtendGraphHeight(newPosY);
             hasCreatedDot = true;
         }
 
@@ -131,7 +133,7 @@ namespace SentLogger.ViewModels
         {
             if (hasCreatedDot)
             {
-                double newPosY = ((-MaxAcceptedLineValue) * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount())) + (GraphFrameSizeHeight - (DotSize.Y * GetZoomAmount()));
+                double newPosY = ((-MaxAcceptedLineValue*100f) * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount())) + (GraphFrameSizeHeight - ((DotSize.Y*4f) * GetZoomAmount()));
                 AcceptedLineValuePos = new Rectangle(
                     AcceptedLineValuePos.X-1000,
                     newPosY,
@@ -146,8 +148,17 @@ namespace SentLogger.ViewModels
         /// </summary>
         public void ExtendGraphLength(double posX)
         {
-            if (GraphFrameSizeWidth <= (posX + DotSize.X)) {
+            if (GraphFrameSizeWidth <= (posX + DotSize.X))
+            {
                 graphFrameSizeOffsetX = (posX + DotSize.X);
+            }
+        }
+
+        public void ExtendGraphHeight(double posY)
+        {
+            if (GraphFrameSizeHeight <= (-posY + DotSize.Y))
+            {
+                graphFrameSizeOffsetY = (-posY + DotSize.Y);
             }
         }
 
@@ -195,7 +206,7 @@ namespace SentLogger.ViewModels
 
         public double GraphFrameSizeHeight
         {
-            get => this.graphFrameSizeHeight;
+            get => Extras.Clamp(this.graphFrameSizeHeight, 0.0, 2140000000);
             set
             {
                 this.graphFrameSizeHeight = value;
@@ -205,7 +216,7 @@ namespace SentLogger.ViewModels
 
         public double GraphFrameSizeWidth
         {
-            get => this.graphFrameSizeWidth;
+            get => Extras.Clamp(this.graphFrameSizeWidth, 0.0, 2140000000);
             set
             {
                 this.graphFrameSizeWidth = value;
@@ -279,12 +290,7 @@ namespace SentLogger.ViewModels
         //-----------------INIT-------------------------
         public GraphViewModel()
         {
-            // PortDataReceived portTest = new PortDataReceived();
-
-            // SerialPortClass serialPortClass = new SerialPortClass();
-            // serialPortClass.Open();
-
-            // SerialPortExample port = new SerialPortExample();
+            DependencyService.Get<IUsbConnectionSerialPort>().Start(this);
         }
 
         //---------------------MISC-----------------
@@ -312,9 +318,9 @@ namespace SentLogger.ViewModels
         /// <summary>
         /// Create a new dot reversed the y pos
         /// </summary>
-        public void AddNewDot(Point pos, double value)
+        public void AddNewDot(double y, double value)
         {
-            AddNewDotToGraphList(new Point(pos.X, -pos.Y), value); // -pos.Y to reverse to fit graph
+            AddNewDotToGraphList(new Point(((1 + GetGraphDotsList().Count) * dotIntervalX), -y), value); // -pos.Y to reverse to fit graph
         }
 
         private void ShouldDotChangeColor(GraphDot dot, double value)
@@ -368,8 +374,8 @@ namespace SentLogger.ViewModels
                     for (int i = 0; i < 10; i++)
                     {
                         Random rnd = new Random();
-                        double yValue = rnd.Next(350);
-                        AddNewDot(new Point(((1 + GetGraphDotsList().Count) * dotIntervalX), yValue), yValue);
+                        double yValue = rnd.Next(200);
+                        AddNewDot(yValue, yValue);
                     }
                 });
             }

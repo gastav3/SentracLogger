@@ -9,11 +9,13 @@ using Windows.Devices.Enumeration;
 using Windows.Devices.SerialCommunication;
 using Windows.Storage.Streams;
 using System.Diagnostics;
+using SentLogger.Resources;
 
 namespace SentLogger.UWP
 {
     public class UwpUsbConnection
     {
+        private DataTranslator dataTranslator;
         private UsbConnectionSerialPort usbConnectionClass;
 
         private SerialDevice serialPort = null;
@@ -24,6 +26,7 @@ namespace SentLogger.UWP
 
         public UwpUsbConnection(UsbConnectionSerialPort usbConn)
         {
+            dataTranslator = new DataTranslator();
             usbConnectionClass = usbConn;
             listOfDevices = new ObservableCollection<DeviceInformation>();
             ListAvailablePorts();
@@ -48,7 +51,6 @@ namespace SentLogger.UWP
             }
         }
 
-
         private async void SerialPortConfiguration()
         {
             string selector = SerialDevice.GetDeviceSelector("COM8");
@@ -58,8 +60,8 @@ namespace SentLogger.UWP
             {
                 DeviceInformation deviceInfo = devices[0];
                 serialPort = await SerialDevice.FromIdAsync(deviceInfo.Id);
-                serialPort.WriteTimeout = TimeSpan.FromMilliseconds(1000);
-                serialPort.ReadTimeout = TimeSpan.FromMilliseconds(1000);
+                serialPort.WriteTimeout = TimeSpan.FromMilliseconds(100);
+                serialPort.ReadTimeout = TimeSpan.FromMilliseconds(100);
                 serialPort.BaudRate = 115200;
                 serialPort.Parity = SerialParity.None;
                 serialPort.StopBits = SerialStopBitCount.One;
@@ -89,7 +91,6 @@ namespace SentLogger.UWP
             }
         }
 
-
         private async Task ManageLed(string value)
         {
             var accendiLed = value;
@@ -109,7 +110,6 @@ namespace SentLogger.UWP
                 Debug.WriteLine("No value sent");
             }
         }
-
 
         private async void Listen()
         {
@@ -146,8 +146,6 @@ namespace SentLogger.UWP
             }
         }
 
-        int i = 0;
-
         private async Task ReadData(CancellationToken cancellationToken)
         {
             Task<UInt32> loadAsyncTask;
@@ -158,9 +156,7 @@ namespace SentLogger.UWP
             UInt32 bytesRead = await loadAsyncTask;
             if (bytesRead > 0)
             {
-                Debug.WriteLine("-----------------" + i + "---------------------");
-                Debug.WriteLine(dataReaderObject.ReadString(bytesRead));
-                i++;
+                usbConnectionClass.ReceiveNewData(dataTranslator.TranslateIntoOneDot(dataReaderObject.ReadString(bytesRead).ToString()));
             }
         }
 
@@ -185,6 +181,5 @@ namespace SentLogger.UWP
             listOfDevices.Clear();
         }
     }
-
 }
 
