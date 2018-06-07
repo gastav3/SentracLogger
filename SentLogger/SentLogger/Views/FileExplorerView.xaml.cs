@@ -13,7 +13,10 @@ namespace SentLogger.Views
     /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FileExplorerView : ContentPage
-    { 
-
+    {
+        public FileExplorerView()
+        {
+            InitializeComponent();
+        }
     }
 }

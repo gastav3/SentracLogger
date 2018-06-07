@@ -9,7 +9,6 @@ namespace SentLogger.Resources
 {
     public class DataTranslator
     {
-
         public DataDotObject TranslateIntoOneDot(string s)
         {
             string sep = "\t"; // split between the tabs

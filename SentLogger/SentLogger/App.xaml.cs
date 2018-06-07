@@ -15,7 +15,8 @@ namespace SentLogger
         public App ()
 		{
 			InitializeComponent();
-            new CSV();
+
+            DependencyService.Get<ICsv>().Start();
 
             MainPage = new  SentLogger.Views.HistogramView();
         }

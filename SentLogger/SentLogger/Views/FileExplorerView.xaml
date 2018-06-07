@@ -19,4 +19,5 @@
                 HorizontalOptions="CenterAndExpand" VerticalOptions='CenterAndExpand'/>
         </StackLayout>
     </ContentPage.Content>
+    
 </ContentPage>
