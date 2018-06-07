@@ -8,8 +8,6 @@ using Xamarin.Forms.Xaml;
 using SentLogger.ViewModels;
 using SentLogger.Models;
 using System.Collections.Specialized;
-using SkiaSharp;
-using SkiaSharp.Views.Forms;
 using System.Diagnostics;
 
 namespace SentLogger.Views
