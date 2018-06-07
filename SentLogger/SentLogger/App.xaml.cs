@@ -15,7 +15,7 @@ namespace SentLogger
 		{
 			InitializeComponent();
 
-            MainPage = new  SentLogger.Views.HistogramView();
+            MainPage = new  SentLogger.Views.SettingsView();
         }
 
         protected override void OnStart ()

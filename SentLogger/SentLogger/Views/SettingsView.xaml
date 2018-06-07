@@ -22,9 +22,30 @@
 
             <ScrollView Orientation="Vertical" Margin="0" Padding="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7">
                 <StackLayout HorizontalOptions="FillAndExpand" Padding="12.5">
-                    <Label Text="   Port: " Font="Arial" FontSize="Small" FontAttributes="Bold" TextColor="#5D74A1"/>
-                    <Label Text="   Data Buffer Size: " Font="Arial" FontSize="Small" FontAttributes="Bold"
-                        TextColor="#5D74A1"/>
+                    <Grid>
+                        <Grid.RowDefinitions TotalHight="0.7*">
+                            <RowDefinition Height="0.3499*"/>
+                            <RowDefinition Height="0.0001*"/>
+                            <RowDefinition Height="0.3499*"/>
+                            <RowDefinition Height="0.0001*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions TotalWidth="1.258332*">
+                            <ColumnDefinition Width="0.1258332*"/>
+                            <ColumnDefinition Width="0.1258332*"/>
+                            <ColumnDefinition Width="0.1258332*"/>
+                            <ColumnDefinition Width="0.1258332*"/>
+                            <ColumnDefinition Width="0.1258332*"/>
+                            <ColumnDefinition Width="0.1258332*"/>
+                            <ColumnDefinition Width="0.5033328*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="   Port: " Font="Arial" FontSize="Small" FontAttributes="Bold" TextColor="#5D74A1"/>
+                        <Picker Title=".csv" FontFamily="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="3"
+                            Grid.ColumnSpan="2"/>
+                        <BoxView BackgroundColor="#5D74A1" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7"/>
+                        <Label Text="   Data Buffer Size: " Font="Arial" FontSize="Small" FontAttributes="Bold"
+                            TextColor="#5D74A1"/>
+                        <BoxView BackgroundColor="#5D74A1" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="7"/>
+                    </Grid>
 
                     <Grid>
                         <Grid.RowDefinitions TotalHight="0.7*">
@@ -45,21 +66,24 @@
                             <ColumnDefinition Width="0.1258332*"/>
                             <ColumnDefinition Width="0.1258332*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Text="File Explorer Settings: " Font="Arial" FontSize="Small" FontAttributes="Bold"
-                            TextColor="#5D74A1" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="1"/>
+                        <Label Text="   File Explorer Settings: " Font="Arial" FontSize="Small" FontAttributes="Bold"
+                            TextColor="#5D74A1" VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0"
+                            Grid.ColumnSpan="2"/>
                         <Label Text="Default location: " Font="Arial" FontSize="Micro" TextColor="#5D74A1"
-                            VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="1"/>
-                        <Entry Placeholder="C:\Users\Jane Doe\SentracLogger\Data" PlaceholderColor="#5D74A1" HorizontalTextAlignment="Center"
-                            Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"/>
+                            VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+                        <Entry Placeholder="C:\Users\Jane Doe\SentracLogger\Data" PlaceholderColor="#5D74A1"
+                            HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3"/>
                         <Label Text="Default file format: " Font="Arial" FontSize="Micro" TextColor="#5D74A1"
-                            VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="1"/>
-                        <!--<Picker/>-->
+                            VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+                        <Picker Title=".csv" FontFamily="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="3"
+                            Grid.ColumnSpan="2"/>
                         <Label Text="Default save mode: " Font="Arial" FontSize="Micro" TextColor="#5D74A1"
-                            VerticalTextAlignment="Center" Grid.Row="3" Grid.Column="1"/>
-                        <!--<Picker/>-->
+                            VerticalTextAlignment="Center" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
+                        <Picker Title="Recieved data" FontFamily="Arial" FontSize="Micro" Grid.Row="3" Grid.Column="3"
+                            Grid.ColumnSpan="2"/>
                     </Grid>
                     
-                    <Label Text="MySQL Database: " Font="Arial" FontSize="Small" FontAttributes="Bold"
+                    <Label Text="   MySQL Database: " Font="Arial" FontSize="Small" FontAttributes="Bold"
                             TextColor="#5D74A1"/>
 
                     <Grid Margin="0" Padding="0">
