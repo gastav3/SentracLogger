@@ -18,7 +18,7 @@ namespace SentLogger
 
             DependencyService.Get<ICsv>().Start();
 
-            MainPage = new  SentLogger.Views.HistogramView();
+            MainPage = new  SentLogger.Views.SettingsView();
         }
 
         protected override void OnStart ()
