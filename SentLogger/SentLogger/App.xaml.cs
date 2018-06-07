@@ -6,6 +6,7 @@ using System.Diagnostics;
 using SentLogger.Resources;
 using Xamarin.Forms;
 using System.IO.Ports;
+using SentLogger.Resources.Data;
 
 namespace SentLogger
 {
@@ -14,6 +15,7 @@ namespace SentLogger
         public App ()
 		{
 			InitializeComponent();
+            new CSV();
 
             MainPage = new  SentLogger.Views.HistogramView();
         }
