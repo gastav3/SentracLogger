@@ -11,7 +11,7 @@ namespace SentLogger.Resources.Data
         public CSV()
         {
             CreateCSVFile();
-            LoadDataFrom(@"C:\Users\Sensor\Desktop\Sentrac_Data.csv");
+            //LoadDataFrom(@"C:\Users\Sensor\Desktop\Sentrac_Data.csv");
         }
 
 

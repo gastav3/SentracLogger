@@ -13,9 +13,9 @@ namespace SentLogger
 	public partial class App : Application
 	{
         public App ()
-		{
-			InitializeComponent();
-            new CSV();
+		    {
+			      InitializeComponent();
+            //new CSV();
 
             MainPage = new  SentLogger.Views.SettingsView();
         }
