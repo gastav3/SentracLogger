@@ -12,15 +12,16 @@ namespace SentLogger
 {
 	public partial class App : Application
 	{
-    public App ()
+        public App ()
 		{
 			InitializeComponent();
-      //new CSV();
 
-      MainPage = new  SentLogger.Views.HistogramView();
-    }
+            DependencyService.Get<ICsv>().Start();
 
-    protected override void OnStart ()
+            MainPage = new  SentLogger.Views.SettingsView();
+        }
+
+        protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}
@@ -35,13 +36,18 @@ namespace SentLogger
 			// Handle when your app resumes
 		}
 
-    /// <summary>
-    /// Buttons handling navigation.
-    /// </summary>
-    /*this.GoToSettingsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;*/
+        /// <summary>
+        /// Buttons handling navigation.
+        /// </summary>
+        /*this.GoToSettingsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;*/
     private void GoToSettingsButton_Clicked(object sender, EventArgs e)
     {
       MainPage = new Views.SettingsView();
+    }
+
+    private void GoToExplorerSaveButton_Clicked(object sender, EventArgs e)
+    {
+      MainPage = new Views.FileExplorerView();
     }
 
     private void GoToHelpButton_Clicked(object sender, EventArgs e)
@@ -52,15 +58,6 @@ namespace SentLogger
     private void GoToExplorerLoadButton_Clicked(object sender, EventArgs e)
     {
       MainPage = new Views.FileExplorerView();
-    }
-
-    /// <summary>
-    /// Upper right corner save button (saves (prechosen data) from any screen).
-    /// </summary>
-    private async void GoToExplorerSaveButton_Clicked(object sender, EventArgs e)
-    {
-      var action = await MainPage.DisplayActionSheet("Save data: ", "Cancel", null, "Yes");
-      Debug.WriteLine("Saved" + action);
     }
 
     /// <summary>
@@ -99,14 +96,5 @@ namespace SentLogger
            MainPage = new Views.HistogramView();
     }
 
-    /// <summary>
-    /// GraphView Button to navigate to tab views starting at GraphTab.
-    /// </summary>
-    private void GoToGraphButton_Clicked(object sender, EventArgs e)
-    {
-      Debug.WriteLine("GoToGraphButton_Clicked");
-      MainPage = new Views.GraphView();
     }
-
-  }
 }

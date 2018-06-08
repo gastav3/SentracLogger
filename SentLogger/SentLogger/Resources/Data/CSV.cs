@@ -10,8 +10,23 @@ namespace SentLogger.Resources.Data
     {
         public CSV()
         {
-            CreateCSVFile();
+            //SaveOrCreateCSV();
+
+            //CreateCSVFile();
             //LoadDataFrom(@"C:\Users\Sensor\Desktop\Sentrac_Data.csv");
+     
+        }
+
+
+        public void SaveOrCreateCSV()
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + "Sentrac_Data.csv";
+
+            using (var fileStream = new FileStream(path, FileMode.OpenOrCreate))
+            using (var streamWriter = new StreamWriter(fileStream))
+            {
+                streamWriter.WriteLine("ID: swag");
+            }
         }
 
 
@@ -27,7 +42,7 @@ namespace SentLogger.Resources.Data
             //Add rows
             data.Rows.Add(DateTime.Now, new TimeSpan(), 1.0, "Accepted");
 
-            using (StreamWriter sw = new StreamWriter(new FileStream(@"C:\Users\Sensor\Desktop\CsvData\Sentrac_Data.csv", FileMode.Create)))
+            using (StreamWriter sw = new StreamWriter(new FileStream(@"C:\Users\Sensor\Desktop\CsvData\Sentrac_Data.csv", FileMode.OpenOrCreate)))
             {
                 for (Int32 i = 0; i < data.Rows.Count; i++)
                 {
