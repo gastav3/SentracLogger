@@ -2,21 +2,101 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SentLogger.Views.FileExplorerView"
-             xmlns:local="clr-namespace:SentLogger.Resources"
              ControlTemplate="{StaticResource TabViewFileExplorerDesign}">
-    
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="TabColor1">#5D74A1</Color>
-            <Color x:Key="TabColor2">#A3B8DD</Color>
-            <Color x:Key="TabColor3">#A3B8DD</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
 
+    <!--FileExplorerView Display Design-->
     <ContentPage.Content>
-        <StackLayout Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3">
-            <Label Text="FileExplorer" FontSize="24"
-                HorizontalOptions="CenterAndExpand" VerticalOptions='CenterAndExpand'/>
-        </StackLayout>
+        <Grid RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions TotalHeight="0.632*">
+                <RowDefinition Height="0.48*"/>
+                <RowDefinition Height="0.177*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions TotalWidth="1.283332*">
+                <ColumnDefinition Width="0.091666*"/>
+                <ColumnDefinition Width="0.125*"/>
+                <ColumnDefinition Width="0.3125*"/>
+                <ColumnDefinition Width="0.11*"/>
+                <ColumnDefinition Width="0.005*"/>
+                <ColumnDefinition Width="0.11*"/>
+                <ColumnDefinition Width="0.3125*"/>
+                <ColumnDefinition Width="0.125*"/>
+                <ColumnDefinition Width="0.091666*"/>
+            </Grid.ColumnDefinitions>
+
+            <ScrollView Orientation="Vertical" Margin="0" Padding="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
+                <StackLayout HorizontalOptions="FillAndExpand" Padding="12.5">
+                    <Label Text="   Folders:" Font="Arial" FontSize="Small" FontAttributes="Bold" TextColor="#5D74A1"/>
+                    <!--<ListView>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding folderNames}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>-->
+                </StackLayout>
+            </ScrollView>
+
+            <BoxView BackgroundColor="#5D74A1" WidthRequest="2" HorizontalOptions="Center" Grid.Row="0" Grid.Column="4"
+                 Margin="0,12.5,0,12.5"/>
+
+            <ScrollView Orientation="Vertical" Margin="0" Padding="0" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="4">
+                <StackLayout HorizontalOptions="FillAndExpand" Padding="12.5">
+                    <Label Text="   Files:" Font="Arial" FontSize="Small" FontAttributes="Bold" TextColor="#5D74A1"/>
+                </StackLayout>
+            </ScrollView>
+
+            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="9" HorizontalOptions="FillAndExpand" Padding="12.5">
+                <Grid.RowDefinitions TotalHight="0.7*">
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions TotalWidth="1.258332*">
+                    <ColumnDefinition Width="0.1258332*"/>
+                    <ColumnDefinition Width="0.1258332*"/>
+                    <ColumnDefinition Width="0.1258332*"/>
+                    <ColumnDefinition Width="0.1258332*"/>
+                    <ColumnDefinition Width="0.1133332*"/>
+                    <ColumnDefinition Width="0.0125*"/>
+                    <ColumnDefinition Width="0.0125*"/>
+                    <ColumnDefinition Width="0.1133332*"/>
+                    <ColumnDefinition Width="0.1258332*"/>
+                    <ColumnDefinition Width="0.1258332*"/>
+                    <ColumnDefinition Width="0.1258332*"/>
+                    <ColumnDefinition Width="0.1258332*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="   Name: " TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="0" Grid.Column="0"
+                    VerticalTextAlignment="Center"/>
+                <!--TODO-Put a binding in placeholder to show the selected file or default the top file else File name
+                    Clicked="LoadButton_Clicked"    Clicked="BrowseButton_Clicked"    Clicked="SaveButton_Clicked"-->
+                <Entry Placeholder="File name" PlaceholderColor="#5D74A1" FontFamily="Arial" FontSize="Micro"
+                    Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="White" Margin="0,0,10,0"
+                    VerticalOptions="Center"/>
+                <Button Text="Load" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="2"
+                    BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,10,0" BorderColor="Transparent"/>
+                <Label Text="   Location: " TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="0"
+                    VerticalTextAlignment="Center"/>
+                <Entry Placeholder="C:\Users\JaneDoe\SentracLogger\Data" PlaceholderColor="#5D74A1" FontFamily="Arial"
+                    FontSize="Micro" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4"
+                    Margin="0,0,10,0" BackgroundColor="White"  VerticalOptions="Center"/>
+                <Button Text="Browse" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="2"
+                    BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,0,0" BorderColor="Transparent"/>
+                <Label Text="   Format: " TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="0"
+                    VerticalTextAlignment="Center"/>
+                <Picker FontFamily="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4"
+                    TextColor="#5D74A1" BackgroundColor="White" Margin="0,0,10,0">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>.csv</x:String>
+                            <x:String>SQLite</x:String>
+                            <x:String>MySQL database</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Button Text="Save" Font="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
+                    BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,10,0" BorderColor="Transparent"/>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
