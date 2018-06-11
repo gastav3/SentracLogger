@@ -4,7 +4,12 @@ using System.Text;
 
 namespace SentLogger.ViewModels
 {
-    class FileExplorerViewModel
+    public class FileExplorerViewModel
     {
+        public FileExplorerViewModel()
+        {
+            
+        }
+
     }
 }

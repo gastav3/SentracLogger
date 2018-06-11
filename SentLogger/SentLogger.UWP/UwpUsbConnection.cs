@@ -10,6 +10,7 @@ using Windows.Devices.SerialCommunication;
 using Windows.Storage.Streams;
 using System.Diagnostics;
 using SentLogger.Resources;
+using SentLogger.Models.Extra;
 
 namespace SentLogger.UWP
 {
@@ -19,21 +20,43 @@ namespace SentLogger.UWP
         private UsbConnectionSerialPort usbConnectionClass;
 
         private SerialDevice serialPort = null;
-        DataWriter dataWriteObject = null;
-        DataReader dataReaderObject = null;
-        private ObservableCollection<DeviceInformation> listOfDevices;
+        private DataWriter dataWriteObject = null;
+        private DataReader dataReaderObject = null;
+        public ObservableCollection<DeviceInformation> listOfDevices;
         private CancellationTokenSource ReadCancellationTokenSource;
+
+        private string portId;
 
         public UwpUsbConnection(UsbConnectionSerialPort usbConn)
         {
-            dataTranslator = new DataTranslator();
-            usbConnectionClass = usbConn;
-            listOfDevices = new ObservableCollection<DeviceInformation>();
-            ListAvailablePorts();
-            SerialPortConfiguration();
+            if (serialPort == null)
+            {
+                this.portId = StaticValues.SelectedPort;
+                dataTranslator = new DataTranslator();
+                usbConnectionClass = usbConn;
+                listOfDevices = new ObservableCollection<DeviceInformation>();
+                ListAvailablePorts();
+                SerialPortConfiguration();
+            }
+            else
+            {
+                SerialPortDisconnect();
+            }
         }
 
-        private async void ListAvailablePorts()
+        public void ChangePort(string id, bool restart)
+        {
+            this.portId = id;
+
+            if (restart) {
+                SerialPortDisconnect();
+                dataTranslator = new DataTranslator();
+                SerialPortConfiguration();
+                Debug.WriteLine("Change Port - UWPUSBCONNECTION");
+            }
+        }
+
+        public async void ListAvailablePorts()
         {
             try
             {
@@ -42,7 +65,6 @@ namespace SentLogger.UWP
                 for (int i = 0; i < dis.Count; i++)
                 {
                     listOfDevices.Add(dis[i]);
-                    Debug.WriteLine(dis[i].Name);
                 }
             }
             catch (Exception ex)
@@ -53,27 +75,29 @@ namespace SentLogger.UWP
 
         private async void SerialPortConfiguration()
         {
-            string selector = SerialDevice.GetDeviceSelector("COM8");
-            DeviceInformationCollection devices = await DeviceInformation.FindAllAsync(selector);
+            // string selector = SerialDevice.GetDeviceSelector("COM8");
+            // DeviceInformationCollection devices = await DeviceInformation.FindAllAsync(selector);
 
-            try
-            {
-                DeviceInformation deviceInfo = devices[0];
-                serialPort = await SerialDevice.FromIdAsync(deviceInfo.Id);
-                serialPort.WriteTimeout = TimeSpan.FromMilliseconds(100);
-                serialPort.ReadTimeout = TimeSpan.FromMilliseconds(100);
-                serialPort.BaudRate = 115200;
-                serialPort.Parity = SerialParity.None;
-                serialPort.StopBits = SerialStopBitCount.One;
-                serialPort.DataBits = 8;
-                serialPort.Handshake = SerialHandshake.None;
-                ReadCancellationTokenSource = new CancellationTokenSource();
-                Debug.WriteLine("Connection configuration completed");
-                Listen();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
+            if (portId != null && serialPort == null) {
+                try
+                {
+                    // DeviceInformation deviceInfo = devices[0];
+                    serialPort = await SerialDevice.FromIdAsync(portId);
+                    serialPort.WriteTimeout = TimeSpan.FromMilliseconds(100);
+                    serialPort.ReadTimeout = TimeSpan.FromMilliseconds(100);
+                    serialPort.BaudRate = 115200;
+                    serialPort.Parity = SerialParity.None;
+                    serialPort.StopBits = SerialStopBitCount.One;
+                    serialPort.DataBits = 8;
+                    serialPort.Handshake = SerialHandshake.None;
+                    ReadCancellationTokenSource = new CancellationTokenSource();
+                    Debug.WriteLine("Connection configuration completed");
+                    Listen();
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message + " - Failed to connect.");
+                }
             }
         }
 
@@ -84,10 +108,11 @@ namespace SentLogger.UWP
                 CancelReadTask();
                 CloseDevice();
                 ListAvailablePorts();
+                Debug.WriteLine("Disconnect from the connection.");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.Message + " Failed to disconnect.");
             }
         }
 
@@ -149,7 +174,7 @@ namespace SentLogger.UWP
         private async Task ReadData(CancellationToken cancellationToken)
         {
             Task<UInt32> loadAsyncTask;
-            uint ReadBufferLength = 1024;
+            uint ReadBufferLength = 128;
             cancellationToken.ThrowIfCancellationRequested();
             dataReaderObject.InputStreamOptions = InputStreamOptions.Partial;
             loadAsyncTask = dataReaderObject.LoadAsync(ReadBufferLength).AsTask(cancellationToken);

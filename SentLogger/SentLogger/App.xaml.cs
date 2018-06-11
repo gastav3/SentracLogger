@@ -6,7 +6,6 @@ using System.Diagnostics;
 using SentLogger.Resources;
 using Xamarin.Forms;
 using System.IO.Ports;
-using SentLogger.Resources.Data;
 
 namespace SentLogger
 {
@@ -16,7 +15,7 @@ namespace SentLogger
 		{
 			InitializeComponent();
 
-            DependencyService.Get<ICsv>().Start();
+           // DependencyService.Get<ICsv>().Start();
 
             MainPage = new  SentLogger.Views.SettingsView();
         }
