@@ -324,7 +324,8 @@
                         <ColumnDefinition Width="0.125*" />
                         <ColumnDefinition Width="0.3125*" />
                         <ColumnDefinition Width="0.225*" />
-                        <ColumnDefinition Width="0.3125*" />
+                        <ColumnDefinition Width="0.1013887*"/>
+                        <ColumnDefinition Width="0.2111113*"/>
                         <ColumnDefinition Width="0.125*" />
                         <ColumnDefinition Width="0.091666*" />
                         <ColumnDefinition Width="0.0125*" />
@@ -338,7 +339,7 @@
 
                     <Image Source=
                         "{local:ImageResourceExtension SentLogger.Resources.Images.limpa.png}"
-                        Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="5" Aspect="Fill"/>
+                        Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="6" Aspect="Fill"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.whiteLogo.png}"
                         HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="4"/>
@@ -350,12 +351,12 @@
                         Released="CurTimeAndDateButton_Released" TextColor="White" FontSize="Micro"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.save.png}"
-                        Aspect="AspectFit" Grid.Row="0" Grid.Column="8" Margin="2"/>
+                        Aspect="AspectFit" Grid.Row="0" Grid.Column="9" Margin="2"/>
                     <Button x:Name="GoToExplorerSaveButton" BackgroundColor="Transparent" Grid.Row="0"
-                        Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerSaveButton_Clicked"/>
+                        Grid.Column="9" BorderWidth="0" Clicked="GoToExplorerSaveButton_Clicked"/>
 
                     <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2"
-                         Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="9" VerticalOptions="FillAndExpand">
+                         Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="10" VerticalOptions="FillAndExpand">
                         <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True"
                              HorizontalOptions="FillAndExpand">
                             <BoxView Color="#A3B8DD"/>
@@ -371,7 +372,7 @@
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2"
-                             Grid.Column="1" Grid.ColumnSpan="9" VerticalOptions="FillAndExpand">
+                             Grid.Column="1" Grid.ColumnSpan="10" VerticalOptions="FillAndExpand">
                         <Button Text="File Explorer" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
                            Clicked="FileExplorerTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
                            Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
@@ -384,12 +385,12 @@
                     </StackLayout>
 
                     <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True" Grid.Row="3"
-                         Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="9">
+                         Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="10" >
                         <BoxView Color="#5D74A1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
                     </Frame>
 
                     <Frame CornerRadius="6" Margin="0" Padding="0" IsClippedToBounds="True"
-                         Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="7">
+                         Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="5">
                         <BoxView Color="White" HorizontalOptions="Fill" VerticalOptions="Fill"/>
                     </Frame>
 
@@ -400,7 +401,7 @@
 
                     <Image Source=
                         "{local:ImageResourceExtension SentLogger.Resources.Images.limpa.png}"
-                        Rotation="180" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="5" Aspect="Fill"/>
+                        Rotation="180" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="6" Aspect="Fill"/>
 
                     <Label Text="Graph" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
                         FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="4"/>
@@ -411,14 +412,14 @@
                         Clicked="GoToGraphButton_Clicked"/>
 
                     <Label Text="Sentrac Logger" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
-                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="6"/>
+                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="6" Grid.ColumnSpan="2"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
-                        Aspect="AspectFit" Grid.Row="8" Grid.Column="8" Margin="2"/>
+                        Aspect="AspectFit" Grid.Row="8" Grid.Column="9" Margin="2"/>
                     <Button x:Name="GoToExplorerLoadButton" BackgroundColor="Transparent" Grid.Row="8"
-                        Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerLoadButton_Clicked"/>
+                        Grid.Column="9" BorderWidth="0" Clicked="GoToExplorerLoadButton_Clicked"/>
 
-                    <ContentPresenter Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="7"/>
+                    <ContentPresenter Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="8"/>
                 </Grid>
             </ControlTemplate>
 

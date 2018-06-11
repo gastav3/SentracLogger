@@ -15,10 +15,10 @@ namespace SentLogger
     public App ()
 		{
 			InitializeComponent();
-      MainPage = new  SentLogger.Views.FileExplorerView();
+      MainPage = new  SentLogger.Views.GraphView();
     }
 
-        protected override void OnStart ()
+    protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}
