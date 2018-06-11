@@ -41,10 +41,18 @@
                         </Grid.ColumnDefinitions>
                         <Label Text="   Port: " Font="Arial" FontSize="Small" FontAttributes="Bold" TextColor="#5D74A1"
                             Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalTextAlignment="Center"/>
+                        
                         <Picker x:Name="portPicker" FontFamily="Arial" FontSize="Micro" TextColor="#5D74A1" Grid.Row="0"
-                            Grid.Column="2" Grid.ColumnSpan="2" VerticalOptions="Center"/>
+                            Grid.Column="2" Grid.ColumnSpan="2" ItemsSource="{Binding Ports, Mode=OneWay}"
+                                SelectedItem="{Binding SelectedPort}"
+                                ItemDisplayBinding="{Binding Name}"
+                                Focused="portPicker_Focused"
+                                SelectedIndexChanged="portPicker_SelectedIndexChanged"
+                                Title=""/>
+                        
                         <BoxView BackgroundColor="#5D74A1" HeightRequest="2" Grid.Row="1" Grid.Column="0"
                             Grid.ColumnSpan="7" VerticalOptions="Center" Margin="0,20,0,20"/>
+                        
                         <Label Text="   Data Buffer Size: " Font="Arial" FontSize="Small" FontAttributes="Bold"
                             TextColor="#5D74A1" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                             VerticalTextAlignment="Center"/>
@@ -146,7 +154,7 @@
                             VerticalOptions="Center"/>
                         <Button BackgroundColor="#5D74A1" BorderColor="#5D74A1" Text="Test connection"
                             TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="7"
-                            Grid.ColumnSpan="2"/>
+                            Grid.ColumnSpan="2" Clicked="Button_Clicked_Test_Connection"/>
                         <BoxView BackgroundColor="#5D74A1" HeightRequest="2" Grid.Row="3" Grid.Column="0"
                             Grid.ColumnSpan="10" VerticalOptions="Center"/>
                     </Grid>

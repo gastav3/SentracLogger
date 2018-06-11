@@ -9,6 +9,7 @@ using SentLogger.ViewModels;
 using SentLogger.Models;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using SentLogger.Models.Extra;
 
 namespace SentLogger.Views
 {
@@ -23,15 +24,14 @@ namespace SentLogger.Views
         {
             InitializeComponent();
 
-            graphViewModel = new GraphViewModel();
+            graphViewModel = StaticValues.graphViewModel;
+            graphViewModel.Connect();
             this.BindingContext = graphViewModel;
 
             // EVENTS??
             this.SizeChanged += graphViewModel.UpdateUiElement;
             SliderZoom.ValueChanged += KeepScrollPosistion;
-           // SliderZoom.ValueChanged += graphViewModel.UpdateUiElement;
             AcceptedLineValueEntry.TextChanged += graphViewModel.UpdateAcceptedValueLine;
-      //      AcceptedLineValueEntry.TextChanged += graphViewModel.UpdateUiElement;
             graphViewModel.GetGraphDotsList().CollectionChanged += DrawChangedDots;
         }
 
@@ -47,7 +47,6 @@ namespace SentLogger.Views
                 foreach (GraphDot dot in e.NewItems)
                 {
                     DrawNewDot(dot);
-                    // graphViewModel.HelloVar = dot.Positon.X.ToString();
                 }
             }
             if (e.OldItems != null)

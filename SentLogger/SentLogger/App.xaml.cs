@@ -6,7 +6,6 @@ using System.Diagnostics;
 using SentLogger.Resources;
 using Xamarin.Forms;
 using System.IO.Ports;
-using SentLogger.Resources.Data;
 
 namespace SentLogger
 {

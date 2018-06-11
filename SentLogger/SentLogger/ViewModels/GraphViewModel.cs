@@ -13,6 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.IO.Ports;
 using Plugin.DeviceInfo;
+using SentLogger.Models.Extra;
 
 namespace SentLogger.ViewModels
 {
@@ -21,8 +22,6 @@ namespace SentLogger.ViewModels
     /// </summary>
     public class GraphViewModel : INotifyPropertyChanged
     {
-
-        private ObservableCollection<GraphDot> graphDots = new ObservableCollection<GraphDot>();
 
         private Point dotSize = new Point(5.0, 5.0); // the dot size
 
@@ -122,7 +121,7 @@ namespace SentLogger.ViewModels
 
             ShouldDotChangeColor(tempDot, MaxAcceptedLineValue);
 
-            this.graphDots.Add(tempDot); // add to the dot list
+            GetGraphDotsList().Add(tempDot); // add to the dot list
 
             ExtendGraphLength(newPosX);
             ExtendGraphHeight(newPosY);
@@ -284,11 +283,15 @@ namespace SentLogger.ViewModels
 
         public ObservableCollection<GraphDot> GetGraphDotsList()
         {
-            return this.graphDots;
+            return StaticValues.graphDots;
         }
 
         //-----------------INIT-------------------------
         public GraphViewModel()
+        {
+        }
+
+        public void Connect()
         {
             DependencyService.Get<IUsbConnectionSerialPort>().Start(this);
         }
@@ -327,11 +330,11 @@ namespace SentLogger.ViewModels
         {
             if (dot.Value <= value)
             {
-                dot.GraphicDot.Color = Color.Red;
+                dot.GraphicDot.Color = Color.Green;
             }
             else
             {
-                dot.GraphicDot.Color = Color.Green;
+                dot.GraphicDot.Color = Color.Red;
             }
         }
 
@@ -387,9 +390,9 @@ namespace SentLogger.ViewModels
             {
                 return new Command(() =>
                 {
-                    if (graphDots.Count > 0)
+                    if (GetGraphDotsList().Count > 0)
                     {
-                        this.graphDots.RemoveAt(graphDots.Count - 1);
+                        GetGraphDotsList().RemoveAt(GetGraphDotsList().Count - 1);
                         UpdateUiElement(this, EventArgs.Empty);
                     }
                 });
