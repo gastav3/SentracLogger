@@ -13,6 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\graphView.png" />
     <None Remove="Resources\Images\help.png" />
     <None Remove="Resources\Images\limpa.png" />
     <None Remove="Resources\Images\load.png" />
@@ -23,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Images\graphView.png" />
     <EmbeddedResource Include="Resources\Images\help.png" />
     <EmbeddedResource Include="Resources\Images\limpa.png" />
     <EmbeddedResource Include="Resources\Images\load.png" />

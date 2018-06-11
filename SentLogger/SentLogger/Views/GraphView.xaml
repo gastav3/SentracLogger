@@ -4,54 +4,82 @@
              x:Class="SentLogger.Views.GraphView"
              ControlTemplate="{StaticResource TabViewGraphDesign}">
 
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="TabColor1">#A3B8DD</Color>
-            <Color x:Key="TabColor2">#5D74A1</Color>
-            <Color x:Key="TabColor3">#A3B8DD</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
-
     <ContentPage.Content>
-        <StackLayout Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="7">
-            <Frame Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="7" Margin="0" Padding="0">
-                <StackLayout Margin="0" Padding="0">
-                    <ScrollView Orientation="Both" x:Name="GraphScroller">
-                        <Frame BackgroundColor="#DCE2ED" Margin="0" Padding="0">
-                            <AbsoluteLayout
-                                x:Name="GraphDrawArea"
-                                HeightRequest="{Binding GraphFrameSizeHeight}"
-                                WidthRequest="{Binding GraphFrameSizeWidth}"
-                                BackgroundColor="#DCE2ED"
-                                Margin="0"
-                                Padding="0">
+        <Grid Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="7">
+            <Grid.RowDefinitions TotalHeight="0.632*">
+                <RowDefinition Height="0.079*"/>
+                <RowDefinition Height="0.079*"/>
+                <RowDefinition Height="0.079*"/>
+                <RowDefinition Height="0.079*"/>
+                <RowDefinition Height="0.079*"/>
+                <RowDefinition Height="0.079*"/>
+                <RowDefinition Height="0.079*"/>
+                <RowDefinition Height="0.079*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions TotalWidth="1.283332*">
+                <ColumnDefinition Width="0.091666*"/>
+                <ColumnDefinition Width="0.125*"/>
+                <ColumnDefinition Width="0.3125*"/>
+                <ColumnDefinition Width="0.11*"/>
+                <ColumnDefinition Width="0.005*"/>
+                <ColumnDefinition Width="0.11*"/>
+                <ColumnDefinition Width="0.3125*"/>
+                <ColumnDefinition Width="0.125*"/>
+                <ColumnDefinition Width="0.091666*"/>
+            </Grid.ColumnDefinitions>
+            
+            <StackLayout Margin="0" Padding="0" Grid.Row="0"  Grid.RowSpan="8" Grid.Column="0" Grid.ColumnSpan="6">
+                <ScrollView Orientation="Both" x:Name="GraphScroller">
+                    <Frame BackgroundColor="#DCE2ED" Margin="0" Padding="0">
+                        <AbsoluteLayout
+                            x:Name="GraphDrawArea"
+                            HeightRequest="{Binding GraphFrameSizeHeight}"
+                            WidthRequest="{Binding GraphFrameSizeWidth}"
+                            BackgroundColor="#DCE2ED"
+                            Margin="0"
+                            Padding="0">
 
-                                <BoxView
-                                    x:Name="AcceptedValueLine"
-                                    BackgroundColor="Red"
-                                    AbsoluteLayout.LayoutBounds="{Binding AcceptedLineValuePos}"
-                                    AbsoluteLayout.LayoutFlags="None"/>
+                            <BoxView
+                                x:Name="AcceptedValueLine"
+                                BackgroundColor="Red"
+                                AbsoluteLayout.LayoutBounds="{Binding AcceptedLineValuePos}"
+                                AbsoluteLayout.LayoutFlags="None"/>
 
-                                <Label
-                                    x:Name="ToolTipLabel"
-                                    BackgroundColor="Transparent"
-                                    Text="{Binding ToolTipValue}"
-                                    AbsoluteLayout.LayoutBounds="{Binding ToolTipPos}"
-                                    AbsoluteLayout.LayoutFlags="None">
-                                </Label>
-                            </AbsoluteLayout>
-                        </Frame>
-                    </ScrollView>
-                    <Slider x:Name="SliderZoom"
-                        Value="{Binding ZoomAmount, Mode=TwoWay}"
-                        Minimum="-25"
-                        Maximum="25"
-                        Margin="0"/>
-                </StackLayout>
-            </Frame>
+                            <Label
+                                x:Name="ToolTipLabel"
+                                BackgroundColor="Transparent"
+                                Text="{Binding ToolTipValue}"
+                                AbsoluteLayout.LayoutBounds="{Binding ToolTipPos}"
+                                AbsoluteLayout.LayoutFlags="None">
+                            </Label>
+                        </AbsoluteLayout>
+                    </Frame>
+                </ScrollView>
+                <Slider x:Name="SliderZoom"
+                    Value="{Binding ZoomAmount, Mode=TwoWay}"
+                    Minimum="-25"
+                    Maximum="25"
+                    Margin="0"/>
+            </StackLayout>
 
-            <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="7"
-                    VerticalOptions="Start" Margin="0" Padding="0">
+            <Grid Grid.Row="0" Grid.RowSpan="8" Grid.Column="6" Grid.ColumnSpan="3" VerticalOptions="Start"
+                Margin="0" Padding="0">
+                <Grid.RowDefinitions TotalHeight="0.632*">
+                    <RowDefinition Height="0.079*"/>
+                    <RowDefinition Height="0.079*"/>
+                    <RowDefinition Height="0.079*"/>
+                    <RowDefinition Height="0.079*"/>
+                    <RowDefinition Height="0.079*"/>
+                    <RowDefinition Height="0.079*"/>
+                    <RowDefinition Height="0.079*"/>
+                    <RowDefinition Height="0.079*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions TotalWidth="0.529166*">
+                    <ColumnDefinition Width="0.3125*"/>
+                    <ColumnDefinition Width="0.125*"/>
+                    <ColumnDefinition Width="0.091666*"/>
+                </Grid.ColumnDefinitions>
+                
                 <Entry x:Name="AcceptedLineValueEntry"
                     Text="{Binding MaxAcceptedLineValue, Mode=TwoWay}"
                     HorizontalOptions="FillAndExpand">
@@ -71,18 +99,17 @@
                          Command="{Binding NextDotCommand}"
                         HorizontalOptions="FillAndExpand"
                          Margin="0"/>
-            </StackLayout>
-
-            <Button Text="Add Random Dot"
+                <Button Text="Add Random Dot"
                          VerticalOptions="Center"
                          HorizontalOptions="Center"
                          Command="{Binding AddNewRandomDotCommand}"
                          Margin="0"/>
 
-            <Button Text="Remove Last Dot"
+                <Button Text="Remove Last Dot"
                          Command="{Binding RemoveLastGraphDotCommand}"
                          Margin="0"/>
 
-        </StackLayout>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

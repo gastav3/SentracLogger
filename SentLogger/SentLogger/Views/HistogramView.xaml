@@ -12,6 +12,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>-->
 
+    <!--HistogramView Display Design-->
     <ContentPage.Content>
         <StackLayout Grid.Row="3" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="7">
             <Label Text="Histogram View" Font="Arial" FontSize="Small" TextColor="Black" HorizontalOptions="CenterAndExpand"

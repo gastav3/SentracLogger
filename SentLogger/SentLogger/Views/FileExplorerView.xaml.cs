@@ -9,15 +9,33 @@ using SentLogger.ViewModels;
 
 namespace SentLogger.Views
 {
-    /// <summary>
-    /// View for the File Explorer.
-    /// </summary>
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FileExplorerView : ContentPage
+  /// <summary>
+  /// View for the File Explorer.
+  /// </summary>
+  [XamlCompilation(XamlCompilationOptions.Compile)]
+  public partial class FileExplorerView : ContentPage
+  {
+    public FileExplorerView()
     {
-        public FileExplorerView()
-        {
-            InitializeComponent();
-        }
+      InitializeComponent();
     }
+
+    /*private void LoadButton_Clicked(object sender, EventArgs e)
+    {
+
+    }
+    */
+    /*
+    private void SaveButton_Clicked(object sender, EventArgs e)
+    {
+
+    }
+    */
+    /*
+    private void BrowseButton_Clicked(object sender, EventArgs e)
+    {
+      
+    }
+    */
+  }
 }

@@ -11,14 +11,11 @@ namespace SentLogger
 {
 	public partial class App : Application
 	{
-        public App ()
+    public App ()
 		{
 			InitializeComponent();
-
-           // DependencyService.Get<ICsv>().Start();
-
-            MainPage = new  SentLogger.Views.SettingsView();
-        }
+      MainPage = new  SentLogger.Views.FileExplorerView();
+    }
 
         protected override void OnStart ()
 		{
@@ -35,18 +32,12 @@ namespace SentLogger
 			// Handle when your app resumes
 		}
 
-        /// <summary>
-        /// Buttons handling navigation.
-        /// </summary>
-        /*this.GoToSettingsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;*/
+    /// <summary>
+    /// Buttons handling navigation.
+    /// </summary>
     private void GoToSettingsButton_Clicked(object sender, EventArgs e)
     {
       MainPage = new Views.SettingsView();
-    }
-
-    private void GoToExplorerSaveButton_Clicked(object sender, EventArgs e)
-    {
-      MainPage = new Views.FileExplorerView();
     }
 
     private void GoToHelpButton_Clicked(object sender, EventArgs e)
@@ -57,6 +48,15 @@ namespace SentLogger
     private void GoToExplorerLoadButton_Clicked(object sender, EventArgs e)
     {
       MainPage = new Views.FileExplorerView();
+    }
+
+    /// <summary>
+    /// Upper right corner save button (saves (prechosen data) from any screen).
+    /// </summary>
+    private async void GoToExplorerSaveButton_Clicked(object sender, EventArgs e)
+    {
+      var action = await MainPage.DisplayActionSheet("Save data: ", "Cancel", null, "Yes");
+      Debug.WriteLine("Saved" + action);
     }
 
     /// <summary>
@@ -95,5 +95,13 @@ namespace SentLogger
            MainPage = new Views.HistogramView();
     }
 
+    /// <summary>
+    /// GraphView Button to navigate to tab views starting at GraphTab.
+    /// </summary>
+    private void GoToGraphButton_Clicked(object sender, EventArgs e)
+    {
+      Debug.WriteLine("GoToGraphButton_Clicked");
+      MainPage = new Views.GraphView();
     }
+  }
 }

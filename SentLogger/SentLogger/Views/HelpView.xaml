@@ -5,6 +5,7 @@
              x:Class="SentLogger.Views.HelpView"
              ControlTemplate="{StaticResource HelpDesign}">
 
+    <!--HelpView Display Design-->
     <ContentPage.Content>
         <Grid RowSpacing="0" ColumnSpacing="0">
             <Grid.RowDefinitions TotalHeight="0.725*">
