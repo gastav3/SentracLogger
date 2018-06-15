@@ -33,9 +33,26 @@ namespace SentLogger.Views
             SliderZoom.ValueChanged += KeepScrollPosistion;
             AcceptedLineValueEntry.TextChanged += graphViewModel.UpdateAcceptedValueLine;
             graphViewModel.GetGraphDotsList().CollectionChanged += DrawChangedDots;
+
+            DrawExistingDots();
         }
 
         // -----------------------DRAW--------------------------------
+
+
+        /// <summary>
+        /// Draw dots already created
+        /// </summary>
+        private void DrawExistingDots()
+        {
+            foreach (GraphDot dot in graphViewModel.GetGraphDotsList())
+            {
+                if (dot.GraphicDot != null)
+                {
+                    DrawNewDot(dot);
+                }
+            }
+        }
 
         /// <summary>
         /// Add or remove the dots when the GetGraphDotsList() is changed

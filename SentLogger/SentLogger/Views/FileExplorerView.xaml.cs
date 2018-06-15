@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SentLogger.ViewModels;
+using Plugin.FilePicker;
+using System.Diagnostics;
 
 namespace SentLogger.Views
 {
@@ -15,27 +17,43 @@ namespace SentLogger.Views
   [XamlCompilation(XamlCompilationOptions.Compile)]
   public partial class FileExplorerView : ContentPage
   {
-    public FileExplorerView()
-    {
-      InitializeComponent();
-    }
+        private FileExplorerViewModel fileExplorerViewModel;
 
-    /*private void LoadButton_Clicked(object sender, EventArgs e)
-    {
+        public FileExplorerView()
+        {
+            InitializeComponent();
+            fileExplorerViewModel = new FileExplorerViewModel();
+        }
 
-    }
-    */
-    /*
-    private void SaveButton_Clicked(object sender, EventArgs e)
-    {
+        private async void Browse_Button_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                fileExplorerViewModel.GetChoosenFile = await CrossFilePicker.Current.PickFile();
+                fileExplorerViewModel.GetFileExplorerFiles(fileExplorerViewModel.GetChoosenFile.FilePath);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
 
+        /*private void LoadButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        */
+        /*
+        private void SaveButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        */
+        /*
+        private void BrowseButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        */
     }
-    */
-    /*
-    private void BrowseButton_Clicked(object sender, EventArgs e)
-    {
-      
-    }
-    */
-  }
 }

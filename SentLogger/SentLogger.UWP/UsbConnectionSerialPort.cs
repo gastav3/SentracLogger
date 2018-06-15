@@ -1,12 +1,7 @@
 ﻿using SentLogger.Resources;
 using SentLogger.UWP;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
-using System.Diagnostics;
 using SentLogger.Models;
 using SentLogger.ViewModels;
 using Windows.Devices.Enumeration;
@@ -64,7 +59,6 @@ namespace SentLogger.UWP
                 port.Id = dInfo.Id; // Had to assign it again dident work otherwise.
                 ports.Add(port);
             }
-
             return ports;
         }
 

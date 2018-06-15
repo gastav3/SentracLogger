@@ -14,7 +14,7 @@ namespace SentLogger
     public App ()
 		{
 			InitializeComponent();
-      MainPage = new  SentLogger.Views.FileExplorerView();
+            MainPage = new  SentLogger.Views.FileExplorerView();
     }
 
         protected override void OnStart ()

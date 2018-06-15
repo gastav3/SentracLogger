@@ -81,7 +81,7 @@
                     FontSize="Micro" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4"
                     Margin="0,0,10,0" BackgroundColor="White"  VerticalOptions="Center"/>
                 <Button Text="Browse" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="2"
-                    BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,0,0" BorderColor="Transparent"/>
+                    BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,0,0" BorderColor="Transparent" Clicked="Browse_Button_Clicked"/>
                 <Label Text="   Format: " TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="0"
                     VerticalTextAlignment="Center"/>
                 <Picker FontFamily="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4"

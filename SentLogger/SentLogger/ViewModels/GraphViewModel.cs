@@ -128,6 +128,11 @@ namespace SentLogger.ViewModels
             hasCreatedDot = true;
         }
 
+
+        /// <summary>
+        /// The method called by the update graph button
+        /// Updates where the red line should be on the graph.
+        /// </summary>
         public void UpdateAcceptedValueLine(object sender, EventArgs e)
         {
             if (hasCreatedDot)
@@ -205,7 +210,7 @@ namespace SentLogger.ViewModels
 
         public double GraphFrameSizeHeight
         {
-            get => Extras.Clamp(this.graphFrameSizeHeight, 0.0, 2140000000);
+            get => Extras.Clamp(this.graphFrameSizeHeight, 0.0, 2140000000); // dont go higher than 2140000000
             set
             {
                 this.graphFrameSizeHeight = value;
@@ -261,6 +266,10 @@ namespace SentLogger.ViewModels
             return (1f + (ZoomAmount / 100f));
         }
 
+
+        /// <summary>
+        /// The value over the selected dot
+        /// </summary>
         public string ToolTipValue
         {
             get => this.toolTipValue;
@@ -271,6 +280,9 @@ namespace SentLogger.ViewModels
             }
         }
 
+        /// <summary>
+        /// The position of the text over the selected dot
+        /// </summary>
         public Rectangle ToolTipPos
         {
             get => this.toolTipPos;
@@ -281,15 +293,16 @@ namespace SentLogger.ViewModels
             }
         }
 
+        /// <summary>
+        /// The list that contain all the dots
+        /// </summary>
         public ObservableCollection<GraphDot> GetGraphDotsList()
         {
             return StaticValues.graphDots;
         }
 
         //-----------------INIT-------------------------
-        public GraphViewModel()
-        {
-        }
+
 
         public void Connect()
         {
@@ -297,6 +310,10 @@ namespace SentLogger.ViewModels
         }
 
         //---------------------MISC-----------------
+        /// <summary>
+        /// Returns a delay depending on the amount of dots created.
+        /// For faster updates when there are few dots.
+        /// </summary>
         private int GetDynamicUpdateDelay()
         {
            int delay = Extras.Clamp((GetGraphDotsList().Count / 150), 0, 2);
@@ -326,6 +343,10 @@ namespace SentLogger.ViewModels
             AddNewDotToGraphList(new Point(((1 + GetGraphDotsList().Count) * dotIntervalX), -y), value); // -pos.Y to reverse to fit graph
         }
 
+        /// <summary>
+        /// If the dots are below the line make them green
+        /// if they are over make them red
+        /// </summary>
         private void ShouldDotChangeColor(GraphDot dot, double value)
         {
             if (dot.Value <= value)
@@ -338,6 +359,10 @@ namespace SentLogger.ViewModels
             }
         }
 
+
+        /// <summary>
+        /// Selects the dot
+        /// </summary>
         public void SelectDot(int newSelected, int oldSelected)
         {
             try
