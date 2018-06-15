@@ -14,7 +14,7 @@ namespace SentLogger
     public App ()
 		{
 			InitializeComponent();
-      MainPage = new  SentLogger.Views.GraphView();
+            MainPage = new  SentLogger.Views.GraphView();
     }
 
     protected override void OnStart ()

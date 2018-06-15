@@ -4,11 +4,31 @@ using System.Text;
 using SentLogger.Models;
 using System.Diagnostics;
 using System.Linq;
+using System.Data;
 
 namespace SentLogger.Resources
 {
     public class DataTranslator
     {
+
+        public DataTable DataDotObjectsToDataTable(List<DataDotObject> objs)
+        {
+            //Create Table
+            DataTable data = new DataTable("Data");
+            data.Columns.Add("Date", typeof(DateTime));
+            data.Columns.Add("Time", typeof(TimeSpan));
+            data.Columns.Add("Value", typeof(Double));
+            data.Columns.Add("Result", typeof(String));
+
+            foreach (DataDotObject obj in objs)
+            {
+                if (obj != null) {
+                    data.Rows.Add(obj.Date, obj.Time, obj.Value, obj.Accepted);
+                }
+            }
+            return data;
+        }
+
         public DataDotObject TranslateIntoOneDot(string s)
         {
             string sep = "\t"; // split between the tabs

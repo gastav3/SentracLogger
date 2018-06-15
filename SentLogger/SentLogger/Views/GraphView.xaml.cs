@@ -25,7 +25,8 @@ namespace SentLogger.Views
             InitializeComponent();
 
             graphViewModel = StaticValues.graphViewModel;
-            graphViewModel.Connect();
+            graphViewModel.SwitchToThisView();
+
             this.BindingContext = graphViewModel;
 
             // EVENTS??

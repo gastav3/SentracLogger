@@ -8,6 +8,9 @@ using Xamarin.Forms.Xaml;
 using SentLogger.ViewModels;
 using Plugin.FilePicker;
 using System.Diagnostics;
+using SentLogger.Resources;
+using SentLogger.Models.Extra;
+using SentLogger.Models;
 
 namespace SentLogger.Views
 {
@@ -25,30 +28,36 @@ namespace SentLogger.Views
             fileExplorerViewModel = new FileExplorerViewModel();
         }
 
-        private async void Browse_Button_Clicked(object sender, EventArgs e)
+        private void Browse_Button_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void LoadButton_Clicked(object sender, EventArgs e)
         {
             try
             {
-                fileExplorerViewModel.GetChoosenFile = await CrossFilePicker.Current.PickFile();
-                fileExplorerViewModel.GetFileExplorerFiles(fileExplorerViewModel.GetChoosenFile.FilePath);
+                StaticValues.dotList.AddRange(await DependencyService.Get<ICsv>().LoadFile());
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
             }
         }
-
-        /*private void LoadButton_Clicked(object sender, EventArgs e)
-        {
-
-        }
-        */
-        /*
+        
+        
         private void SaveButton_Clicked(object sender, EventArgs e)
         {
-
+            try
+            {
+                DependencyService.Get<ICsv>().SaveFile();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
         }
-        */
+        
         /*
         private void BrowseButton_Clicked(object sender, EventArgs e)
         {
