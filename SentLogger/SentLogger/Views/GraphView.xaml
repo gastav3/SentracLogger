@@ -83,25 +83,25 @@
                     <ColumnDefinition Width="0.20763865*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Reject limit: " Font="Arial" FontSize="Small" TextColor="White" Grid.Row="0" Grid.Column="0"
+                <Label Text="Reject Limit: " Font="Arial" FontSize="Small" TextColor="White" Grid.Row="0" Grid.Column="0"
                     VerticalTextAlignment="Center" Margin="10,0,0,0"/>
                 <Entry x:Name="AcceptedLineValueEntry" Grid.Row="0" Grid.Column="1" BackgroundColor="White"
                     Text="{Binding MaxAcceptedLineValue, Mode=TwoWay}" FontSize="Small" TextColor="#5D74A1"
                     Margin="10"/>
 
-                <Button Text="Previous Dot" Grid.Row="1" Grid.Column="0" Command="{Binding PreviousDotCommand}"
+                <Button Text="Previous Value" Grid.Row="1" Grid.Column="0" Command="{Binding PreviousDotCommand}"
                     BackgroundColor="White" BorderColor="Transparent" Font="Arial" FontSize="Default" TextColor="#5D74A1"
                     BorderWidth="0" Margin="10"/>
 
-                <Button Text="Next Dot" Grid.Row="1" Grid.Column="1" Command="{Binding NextDotCommand}" BorderWidth="0"
+                <Button Text="Next Value" Grid.Row="1" Grid.Column="1" Command="{Binding NextDotCommand}" BorderWidth="0"
                     BackgroundColor="White" BorderColor="Transparent" Font="Arial" FontSize="Default" TextColor="#5D74A1"
                     Margin="10"/>
 
-                <Button Text="Add Random Dot" Grid.Row="2" Grid.Column="0" Command="{Binding AddNewRandomDotCommand}"
+                <Button Text="Add Random Value" Grid.Row="2" Grid.Column="0" Command="{Binding AddNewRandomDotCommand}"
                     BackgroundColor="White" BorderColor="Transparent" Font="Arial" FontSize="Default" TextColor="#5D74A1"
                     BorderWidth="0" Margin="10"/>
 
-                <Button Text="Remove Last Dot" Grid.Row="2" Grid.Column="1" Command="{Binding RemoveLastGraphDotCommand}"
+                <Button Text="Remove Last Value" Grid.Row="2" Grid.Column="1" Command="{Binding RemoveLastGraphDotCommand}"
                     BackgroundColor="White" BorderColor="Transparent" Font="Arial" FontSize="Default" TextColor="#5D74A1"
                     BorderWidth="0" Margin="10"/>
 
@@ -110,9 +110,11 @@
                     Margin="10"/>
 
                 <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.play.png}" Aspect="AspectFit"
-                    Grid.Row="3" Grid.Column="1" Margin="10"/>
+                    Grid.Row="3" Grid.Column="1" Margin="10" x:Name="PlayButtonImage" IsVisible="True"/>
+                <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.stop.png}" Aspect="AspectFit"
+                    Grid.Row="3" Grid.Column="1" Margin="10" x:Name="StopButtonImage" IsVisible="False"/>
                 <Button BackgroundColor="Transparent" BorderColor="Transparent" Grid.Row="3" Grid.Column="1" BorderWidth="0"
-                    Margin="10"/>
+                    Margin="10" Command="{Binding PlayStopButtonCommand}" Clicked="PlayStopButton_Clicked"/>
 
                 <Label Text="Input: " TextColor="White" Font="Arial" FontSize="Small" VerticalTextAlignment="Center"
                     Grid.Row="4" Grid.Column="0" Margin="10,0,0,0"/>
@@ -125,17 +127,17 @@
                     </Picker.ItemsSource>
                 </Picker>
 
-                <Label Text="Total number of tests: " TextColor="White" Font="Arial" FontSize="Small"
+                <Label Text="Total number of Values: " TextColor="White" Font="Arial" FontSize="Small"
                     VerticalTextAlignment="Center" Grid.Row="5" Grid.Column="0" Margin="10,0,0,0"/>
                 <Entry  BackgroundColor="White" FontSize="Small" TextColor="#5D74A1" Margin="10" Grid.Row="5"
                     Grid.Column="1"/>
 
-                <Label Text="Number of rejects: " TextColor="White" Font="Arial" FontSize="Small"
+                <Label Text="Number of Rejects: " TextColor="White" Font="Arial" FontSize="Small"
                     VerticalTextAlignment="Center" Grid.Row="6" Grid.Column="0" Margin="10,0,0,0"/>
                 <Entry  BackgroundColor="White" FontSize="Small" TextColor="#5D74A1" Margin="10" Grid.Row="6"
                     Grid.Column="1"/>
                 
-                <Label Text="Leak percentage: " TextColor="White" Font="Arial" FontSize="Small"
+                <Label Text="Reject Percentage: " TextColor="White" Font="Arial" FontSize="Small"
                     VerticalTextAlignment="Center" Grid.Row="7" Grid.Column="0" Margin="10,0,0,0"/>
                 <Entry  BackgroundColor="White" FontSize="Small" TextColor="#5D74A1" Margin="10" Grid.Row="7"
                     Grid.Column="1"/>

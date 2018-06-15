@@ -476,13 +476,33 @@ namespace SentLogger.ViewModels
             }
         }
 
+        private bool StreamingPlay = false;
 
-        //--------ON PROPERTY CHANGED STUFF-----------
+        public Command PlayStopButtonCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    if (StreamingPlay == false)
+                    {
+                        StreamingPlay = true;
+                    }
+                    else
+                    {
+                        StreamingPlay = false;
+                    }
+                });
+            }
+        }
 
-        /// <summary>
-        /// A standard PropertyChangedEventHandler
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+
+    //--------ON PROPERTY CHANGED STUFF-----------
+
+    /// <summary>
+    /// A standard PropertyChangedEventHandler
+    /// </summary>
+    public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
