@@ -2,35 +2,36 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SentLogger.Views.GraphView"
+             xmlns:local="clr-namespace:SentLogger.Resources"
              ControlTemplate="{StaticResource TabViewGraphDesign}">
 
     <ContentPage.Content>
-        <Grid Grid.Row="4" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="7">
+        <Grid RowSpacing="0" ColumnSpacing="0">
             <Grid.RowDefinitions TotalHeight="0.632*">
-                <RowDefinition Height="0.079*"/>
-                <RowDefinition Height="0.079*"/>
-                <RowDefinition Height="0.079*"/>
-                <RowDefinition Height="0.079*"/>
-                <RowDefinition Height="0.079*"/>
-                <RowDefinition Height="0.079*"/>
-                <RowDefinition Height="0.079*"/>
-                <RowDefinition Height="0.079*"/>
+                <RowDefinition Height="0.0125*"/>
+                <RowDefinition Height="0.607*"/>
+                <RowDefinition Height="0.0125*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions TotalWidth="1.283332*">
-                <ColumnDefinition Width="0.091666*"/>
+                <ColumnDefinition Width="0.0125*"/>
+                <ColumnDefinition Width="0.079166*"/>
                 <ColumnDefinition Width="0.125*"/>
                 <ColumnDefinition Width="0.3125*"/>
-                <ColumnDefinition Width="0.11*"/>
-                <ColumnDefinition Width="0.005*"/>
-                <ColumnDefinition Width="0.11*"/>
-                <ColumnDefinition Width="0.3125*"/>
+                <ColumnDefinition Width="0.225*"/>
+                <ColumnDefinition Width="0.0888887*"/>
+                <ColumnDefinition Width="0.0125*"/>
+                <ColumnDefinition Width="0.0125*"/>
+                <ColumnDefinition Width="0.1986113*"/>
                 <ColumnDefinition Width="0.125*"/>
-                <ColumnDefinition Width="0.091666*"/>
+                <ColumnDefinition Width="0.079166*"/>
+                <ColumnDefinition Width="0.0125*"/>
             </Grid.ColumnDefinitions>
             
-            <StackLayout Margin="0" Padding="0" Grid.Row="0"  Grid.RowSpan="8" Grid.Column="0" Grid.ColumnSpan="6">
-                <ScrollView Orientation="Both" x:Name="GraphScroller">
-                    <Frame BackgroundColor="#DCE2ED" Margin="0" Padding="0">
+            <StackLayout Margin="0" Padding="0" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5">
+                <Frame Margin="0" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                    CornerRadius="6" IsClippedToBounds="True">
+                    <ScrollView Orientation="Both" x:Name="GraphScroller" BackgroundColor="#DCE2ED">
+                    <Frame Margin="0" Padding="0">
                         <AbsoluteLayout
                             x:Name="GraphDrawArea"
                             HeightRequest="{Binding GraphFrameSizeHeight}"
@@ -55,6 +56,8 @@
                         </AbsoluteLayout>
                     </Frame>
                 </ScrollView>
+                </Frame>
+                    
                 <Slider x:Name="SliderZoom"
                     Value="{Binding ZoomAmount, Mode=TwoWay}"
                     Minimum="-25"
@@ -62,53 +65,85 @@
                     Margin="0"/>
             </StackLayout>
 
-            <Grid Grid.Row="0" Grid.RowSpan="8" Grid.Column="6" Grid.ColumnSpan="3" VerticalOptions="Start"
-                Margin="0" Padding="0">
-                <Grid.RowDefinitions TotalHeight="0.632*">
-                    <RowDefinition Height="0.079*"/>
-                    <RowDefinition Height="0.079*"/>
-                    <RowDefinition Height="0.079*"/>
-                    <RowDefinition Height="0.079*"/>
-                    <RowDefinition Height="0.079*"/>
-                    <RowDefinition Height="0.079*"/>
-                    <RowDefinition Height="0.079*"/>
-                    <RowDefinition Height="0.079*"/>
+            <Grid Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="4" VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand" Margin="0" Padding="0">
+                <Grid.RowDefinitions TotalHeight="0.607*">
+                    <RowDefinition Height="0.0674444*"/>
+                    <RowDefinition Height="0.0674444*"/>
+                    <RowDefinition Height="0.0674444*"/>
+                    <RowDefinition Height="0.0674444*"/>
+                    <RowDefinition Height="0.0674444*"/>
+                    <RowDefinition Height="0.0674444*"/>
+                    <RowDefinition Height="0.0674444*"/>
+                    <RowDefinition Height="0.0674444*"/>
+                    <RowDefinition Height="0.0674444*"/>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions TotalWidth="0.529166*">
-                    <ColumnDefinition Width="0.3125*"/>
-                    <ColumnDefinition Width="0.125*"/>
-                    <ColumnDefinition Width="0.091666*"/>
+                <Grid.ColumnDefinitions TotalWidth="0.4152773*">
+                    <ColumnDefinition Width="0.20763865*"/>
+                    <ColumnDefinition Width="0.20763865*"/>
                 </Grid.ColumnDefinitions>
+
+                <Label Text="Reject limit: " Font="Arial" FontSize="Small" TextColor="White" Grid.Row="0" Grid.Column="0"
+                    VerticalTextAlignment="Center" Margin="10,0,0,0"/>
+                <Entry x:Name="AcceptedLineValueEntry" Grid.Row="0" Grid.Column="1" BackgroundColor="White"
+                    Text="{Binding MaxAcceptedLineValue, Mode=TwoWay}" FontSize="Small" TextColor="#5D74A1"
+                    Margin="10"/>
+
+                <Button Text="Previous Dot" Grid.Row="1" Grid.Column="0" Command="{Binding PreviousDotCommand}"
+                    BackgroundColor="White" BorderColor="Transparent" Font="Arial" FontSize="Default" TextColor="#5D74A1"
+                    BorderWidth="0" Margin="10"/>
+
+                <Button Text="Next Dot" Grid.Row="1" Grid.Column="1" Command="{Binding NextDotCommand}" BorderWidth="0"
+                    BackgroundColor="White" BorderColor="Transparent" Font="Arial" FontSize="Default" TextColor="#5D74A1"
+                    Margin="10"/>
+
+                <Button Text="Add Random Dot" Grid.Row="2" Grid.Column="0" Command="{Binding AddNewRandomDotCommand}"
+                    BackgroundColor="White" BorderColor="Transparent" Font="Arial" FontSize="Default" TextColor="#5D74A1"
+                    BorderWidth="0" Margin="10"/>
+
+                <Button Text="Remove Last Dot" Grid.Row="2" Grid.Column="1" Command="{Binding RemoveLastGraphDotCommand}"
+                    BackgroundColor="White" BorderColor="Transparent" Font="Arial" FontSize="Default" TextColor="#5D74A1"
+                    BorderWidth="0" Margin="10"/>
+
+                <Button Text="Update" Grid.Row="3" Grid.Column="0" Command="{Binding UpdateUiCommand}" BorderWidth="0"
+                    BackgroundColor="White" BorderColor="Transparent" Font="Arial" FontSize="Default" TextColor="#5D74A1"
+                    Margin="10"/>
+
+                <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.play.png}" Aspect="AspectFit"
+                    Grid.Row="3" Grid.Column="1" Margin="10"/>
+                <Button BackgroundColor="Transparent" BorderColor="Transparent" Grid.Row="3" Grid.Column="1" BorderWidth="0"
+                    Margin="10"/>
+
+                <Label Text="Input: " TextColor="White" Font="Arial" FontSize="Small" VerticalTextAlignment="Center"
+                    Grid.Row="4" Grid.Column="0" Margin="10,0,0,0"/>
+                <Picker FontFamily="Arial" FontSize="Default" Grid.Row="4" Grid.Column="1" BackgroundColor="White"
+                    TextColor="#5D74A1" Margin="10">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Streaming</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <Label Text="Total number of tests: " TextColor="White" Font="Arial" FontSize="Small"
+                    VerticalTextAlignment="Center" Grid.Row="5" Grid.Column="0" Margin="10,0,0,0"/>
+                <Entry  BackgroundColor="White" FontSize="Small" TextColor="#5D74A1" Margin="10" Grid.Row="5"
+                    Grid.Column="1"/>
+
+                <Label Text="Number of rejects: " TextColor="White" Font="Arial" FontSize="Small"
+                    VerticalTextAlignment="Center" Grid.Row="6" Grid.Column="0" Margin="10,0,0,0"/>
+                <Entry  BackgroundColor="White" FontSize="Small" TextColor="#5D74A1" Margin="10" Grid.Row="6"
+                    Grid.Column="1"/>
                 
-                <Entry x:Name="AcceptedLineValueEntry"
-                    Text="{Binding MaxAcceptedLineValue, Mode=TwoWay}"
-                    HorizontalOptions="FillAndExpand">
-                </Entry>
+                <Label Text="Leak percentage: " TextColor="White" Font="Arial" FontSize="Small"
+                    VerticalTextAlignment="Center" Grid.Row="7" Grid.Column="0" Margin="10,0,0,0"/>
+                <Entry  BackgroundColor="White" FontSize="Small" TextColor="#5D74A1" Margin="10" Grid.Row="7"
+                    Grid.Column="1"/>
 
-                <Button Text="Update"
-                         Command="{Binding UpdateUiCommand}"
-                         HorizontalOptions="FillAndExpand"
-                         Margin="0"/>
-
-                <Button Text="Previous Dot"
-                         Command="{Binding PreviousDotCommand}"
-                         HorizontalOptions="FillAndExpand"
-                         Margin="0"/>
-
-                <Button Text="Next Dot"
-                         Command="{Binding NextDotCommand}"
-                        HorizontalOptions="FillAndExpand"
-                         Margin="0"/>
-                <Button Text="Add Random Dot"
-                         VerticalOptions="Center"
-                         HorizontalOptions="Center"
-                         Command="{Binding AddNewRandomDotCommand}"
-                         Margin="0"/>
-
-                <Button Text="Remove Last Dot"
-                         Command="{Binding RemoveLastGraphDotCommand}"
-                         Margin="0"/>
-
+                <Label Text="Max Value: " TextColor="White" Font="Arial" FontSize="Small"
+                    VerticalTextAlignment="Center" Grid.Row="8" Grid.Column="0" Margin="10,0,0,0"/>
+                <Entry  BackgroundColor="White" FontSize="Small" TextColor="#5D74A1" Margin="10" Grid.Row="8"
+                    Grid.Column="1"/>
             </Grid>
         </Grid>
     </ContentPage.Content>

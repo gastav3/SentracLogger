@@ -6,6 +6,9 @@ using System.Diagnostics;
 
 namespace SentLogger.Models
 {
+  /// <summary>
+  /// Part of the data translation from Sentrac.
+  /// </summary>
     public class DataDotObject
     {
         public DateTime Date { get; set; }
