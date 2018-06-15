@@ -70,7 +70,7 @@ namespace SentLogger.Resources.Data
             {
                 for (int column = 0; column < dtData.Columns.Count; column++)
                 {
-                    ////Making sure that end of the line, shoould not have comma delimiter.
+                    //Making sure that end of the line, shoould not have comma delimiter.
                     if (column == dtData.Columns.Count - 1)
                         data.Append(dtData.Rows[row][column].ToString().Replace(",", ";"));
                     else
@@ -89,29 +89,30 @@ namespace SentLogger.Resources.Data
             List<DataDotObject> dataObjects = new List<DataDotObject>();
             DataTranslator dataTranslator = new DataTranslator();
 
-                if (file != null)
+            if (file != null)
+            {
+                string fileContent = await FileIO.ReadTextAsync(file);
+                string newString = fileContent.Replace(",", "\t");
+
+                string sep = "\n"; // split between the \n
+                string[] splitContent = newString.ToString().Split(sep.ToCharArray());
+
+                foreach(string s in splitContent)
                 {
-                    string fileContent = await FileIO.ReadTextAsync(file);
-                    string newString = fileContent.Replace(",", "\t");
-
-                    string sep = "\n"; // split between the \n
-                    string[] splitContent = newString.ToString().Split(sep.ToCharArray());
-
-                    foreach(string s in splitContent)
+                    try
                     {
-                        try
-                        {
-                            dataObjects.Add(dataTranslator.TranslateIntoOneDot(s));
+                        dataObjects.Add(dataTranslator.TranslateIntoOneDot(s));
 
-                        }catch(IndexOutOfRangeException e)
-                        {
-                            Debug.WriteLine(e.Message);
-                        }
                     }
-                 return dataObjects;
+                    catch (IndexOutOfRangeException e)
+                    {
+                        Debug.WriteLine(e.Message);
+                    }
                 }
-            return dataObjects;
+              return dataObjects;
             }
+        return dataObjects;
+        }
 
         public DataTable DataDotObjectsToDataTable(List<DataDotObject> objs)
         {

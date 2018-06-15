@@ -20,6 +20,8 @@ namespace SentLogger.Views
       InitializeComponent();
     }
 
+
+
     /*private void LoadButton_Clicked(object sender, EventArgs e)
     {
 
