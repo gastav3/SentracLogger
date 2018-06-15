@@ -301,13 +301,6 @@ namespace SentLogger.ViewModels
             return StaticValues.graphDots;
         }
 
-        //-----------------INIT-------------------------
-
-
-        public void Connect()
-        {
-            DependencyService.Get<IUsbConnectionSerialPort>().Start(this);
-        }
 
         //---------------------MISC-----------------
         /// <summary>
@@ -359,7 +352,6 @@ namespace SentLogger.ViewModels
             }
         }
 
-
         /// <summary>
         /// Selects the dot
         /// </summary>
@@ -388,6 +380,18 @@ namespace SentLogger.ViewModels
             catch (ArgumentNullException e)
             {
                 Debug.WriteLine(e);
+            }
+        }
+
+        //-----------UPDATE WHEN SWTCHING TO GRAPH VIEW------
+        public void SwitchToThisView()
+        {
+            GetGraphDotsList().Clear();
+            foreach (DataDotObject dot in StaticValues.dotList)
+            {
+                if (dot != null) {
+                    AddNewDot(dot.Value, dot.Value);
+                }
             }
         }
 

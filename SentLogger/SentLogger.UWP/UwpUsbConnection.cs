@@ -75,13 +75,10 @@ namespace SentLogger.UWP
 
         private async void SerialPortConfiguration()
         {
-            // string selector = SerialDevice.GetDeviceSelector("COM8");
-            // DeviceInformationCollection devices = await DeviceInformation.FindAllAsync(selector);
 
             if (portId != null && serialPort == null) {
                 try
                 {
-                    // DeviceInformation deviceInfo = devices[0];
                     serialPort = await SerialDevice.FromIdAsync(portId);
                     serialPort.WriteTimeout = TimeSpan.FromMilliseconds(100);
                     serialPort.ReadTimeout = TimeSpan.FromMilliseconds(100);

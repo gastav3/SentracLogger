@@ -11,6 +11,7 @@ using Windows.Storage.AccessCache;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using SentLogger.Models;
+using SentLogger.Models.Extra;
 
 [assembly: Dependency(typeof(UwpCSV))]
 namespace SentLogger.Resources.Data
@@ -23,18 +24,37 @@ namespace SentLogger.Resources.Data
 
         public void Start()
         {
-           // SelectFile();
         }
 
-        public async void SelectFile()
+        public async Task<List<DataDotObject>> LoadFile()
         {
-            FileSavePicker picker = new FileSavePicker();
-            picker.FileTypeChoices.Add("file style", new string[] { ".csv" });
-            picker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-            picker.SuggestedFileName = "Data.csv";
-            file = await picker.PickSaveFileAsync();
+            FileOpenPicker openPicker = new FileOpenPicker();
+            openPicker.ViewMode = PickerViewMode.Thumbnail;
+            openPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            openPicker.FileTypeFilter.Add(".csv");
 
-           await ReadCsvFile(file);
+            StorageFile file = await openPicker.PickSingleFileAsync();
+            if (file != null)
+            {
+                return await ReadCsvFile(file);
+            }
+            return null;
+        }
+
+        public async void SaveFile()
+        {
+            DataTranslator translator = new DataTranslator();
+
+            FileSavePicker savePicker = new FileSavePicker();
+            savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+            savePicker.FileTypeChoices.Add("CSV", new List<string>() { ".csv" });
+            savePicker.SuggestedFileName = "Sentrac Data";
+
+            StorageFile file = await savePicker.PickSaveFileAsync();
+            if (file != null)
+            {
+                WriteToFile(file, translator.DataDotObjectsToDataTable(StaticValues.dotList));
+            }
         }
 
         public async void WriteToFile(StorageFile file, DataTable data)
@@ -99,37 +119,20 @@ namespace SentLogger.Resources.Data
 
                 foreach(string s in splitContent)
                 {
-                    try
-                    {
-                        dataObjects.Add(dataTranslator.TranslateIntoOneDot(s));
-
-                    }
-                    catch (IndexOutOfRangeException e)
-                    {
-                        Debug.WriteLine(e.Message);
+                    if (!string.Equals(s, "") || s != null) {
+                        try
+                        {
+                            dataObjects.Add(dataTranslator.TranslateIntoOneDot(s));
+                        }
+                        catch (IndexOutOfRangeException e)
+                        {
+                            Debug.WriteLine(e.Message);
+                        }
                     }
                 }
               return dataObjects;
             }
         return dataObjects;
         }
-
-        public DataTable DataDotObjectsToDataTable(List<DataDotObject> objs)
-        {
-            //Create Table
-            DataTable data = new DataTable("Data");
-            data.Columns.Add("Date", typeof(DateTime));
-            data.Columns.Add("Time", typeof(TimeSpan));
-            data.Columns.Add("Value", typeof(Double));
-            data.Columns.Add("Result", typeof(String));
-
-            foreach(DataDotObject obj in objs)
-            {
-                data.Rows.Add(obj.Date, obj.Time, obj.Value, obj.Accepted);
-            }
-            return data;
-        }
-
-
     }
 }

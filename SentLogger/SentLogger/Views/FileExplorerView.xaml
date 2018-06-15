@@ -74,7 +74,7 @@
                     Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="White" Margin="0,0,10,0"
                     VerticalOptions="Center"/>
                 <Button Text="Load" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="2"
-                    BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,10,0" BorderColor="Transparent"/>
+                    BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,10,0" BorderColor="Transparent" Clicked="LoadButton_Clicked"/>
                 <Label Text="   Location: " TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="0"
                     VerticalTextAlignment="Center"/>
                 <Entry Placeholder="C:\Users\JaneDoe\SentracLogger\Data" PlaceholderColor="#5D74A1" FontFamily="Arial"
@@ -95,7 +95,7 @@
                     </Picker.ItemsSource>
                 </Picker>
                 <Button Text="Save" Font="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
-                    BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,10,0" BorderColor="Transparent"/>
+                    BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,10,0" BorderColor="Transparent" Clicked="SaveButton_Clicked"/>
             </Grid>
         </Grid>
     </ContentPage.Content>
