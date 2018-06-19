@@ -65,23 +65,22 @@
                     <ColumnDefinition Width="0.1258332*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="   Name: " TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="0" Grid.Column="0"
+                <!--<Label Text="   Name: " TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="0" Grid.Column="0"
                     VerticalTextAlignment="Center"/>
-<!--TODO-Put a binding in placeholder to show the selected file or default the top file else File name-->
                 <Entry Placeholder="File name" PlaceholderColor="#5D74A1" FontFamily="Arial" FontSize="Micro"
                     Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="White" Margin="0,0,10,0"
-                    VerticalOptions="Center"/>
+                    VerticalOptions="Center"/>-->
                 <Button Text="Load" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="2"
                     BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,10,0" BorderColor="Transparent"
                     Clicked="LoadButton_Clicked"/>
-                <Label Text="   Location: " TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="0"
+                <!--<Label Text="   Location: " TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="0"
                     VerticalTextAlignment="Center"/>
                 <Entry Placeholder="C:\Users\JaneDoe\SentracLogger\Data" PlaceholderColor="#5D74A1" FontFamily="Arial"
                     FontSize="Micro" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4"
                     Margin="0,0,10,0" BackgroundColor="White"  VerticalOptions="Center"/>
                 <Button Text="Browse" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="2"
                     BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,0,0" BorderColor="Transparent"
-                    Clicked="Browse_Button_Clicked"/>
+                    Clicked="Browse_Button_Clicked"/>-->
                 <Label Text="   Format: " TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="0"
                     VerticalTextAlignment="Center"/>
                 <Picker FontFamily="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4"
@@ -93,6 +92,7 @@
                             <x:String>MySQL database</x:String>
                         </x:Array>
                     </Picker.ItemsSource>
+                    <Picker.SelectedIndex>0</Picker.SelectedIndex>
                 </Picker>
                 <Button Text="Save" Font="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
                     BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,10,0" BorderColor="Transparent"
