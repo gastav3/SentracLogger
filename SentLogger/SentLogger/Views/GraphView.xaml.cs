@@ -10,6 +10,7 @@ using SentLogger.Models;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using SentLogger.Models.Extra;
+using static SentLogger.Resources.ImageResourceExtension;
 
 namespace SentLogger.Views
 {
@@ -94,8 +95,7 @@ namespace SentLogger.Views
                     graphViewModel.dotSelected = dot.Index;
 
                 })
-            }
-      );
+            });
             GraphDrawArea.Children.Add(dot.GraphicDot);
         }
 
@@ -111,6 +111,25 @@ namespace SentLogger.Views
             Point graphScrollRatio = new Point(graphScrollXRatio, graphScrollYRatio);
 
             GraphScroller.ScrollToAsync(GraphScroller.Width * graphScrollRatio.X, GraphScroller.Height * graphScrollRatio.Y, false);
+        }
+
+        
+
+        private void PlayStopButton_Clicked(object sender, EventArgs e)
+        {
+            var PlayButtonImage = this.FindByName<Image>("PlayButtonImage");
+            var StopButtonImage = this.FindByName<Image>("StopButtonImage");
+
+            if (PlayButtonImage.IsVisible == true)
+            {
+                PlayButtonImage.IsVisible = false;
+                StopButtonImage.IsVisible = true;
+            }
+            else
+            {
+                PlayButtonImage.IsVisible = true;
+                StopButtonImage.IsVisible = false;
+            } 
         }
     }
 }
