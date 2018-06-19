@@ -37,13 +37,28 @@ namespace SentLogger.Views
 
         private async void LoadButton_Clicked(object sender, EventArgs e)
         {
-            try
+            switch (FormatPicker.SelectedIndex)
             {
-                StaticValues.dotList.AddRange(await DependencyService.Get<ICsv>().LoadFile());
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
+                case 0:
+                {
+                    try
+                    {
+                        StaticValues.dotList.AddRange(await DependencyService.Get<ICsv>().LoadFile());
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex.Message);
+                    }
+                    break;
+                }
+                case 1:
+                {
+// TODO - Make a actionsheet for choosing date to load from....change from DateTime.Now
+// to binding from action sheet.
+                    sentracDataAccess.GetFilteredSentracData(DateTime.Now);
+                    break;
+                }
+                
             }
         }
         
@@ -65,7 +80,7 @@ namespace SentLogger.Views
                 }
                 case 1:
                 {
-                    sentracDataAccess.SaveSentracSQLiteData
+                    sentracDataAccess.AddNewSentracSQLiteData();
                     break;
                 }
             }

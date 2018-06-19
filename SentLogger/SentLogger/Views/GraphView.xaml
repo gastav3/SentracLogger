@@ -132,22 +132,26 @@
                 <Label Text="Total number of Values: " TextColor="White" Font="Arial" FontSize="Small"
                     VerticalTextAlignment="Center" Grid.Row="5" Grid.Column="0" Margin="10,0,0,0"/>
                 <Label Text="{Binding NumberOfTests}" Font="Arial" FontSize="Small" TextColor="White"
-                    Margin="10,0,0,0" Grid.Row="5" Grid.Column="1" x:Name="TotalValues"/>
+                    Margin="10,0,0,0" Grid.Row="5" Grid.Column="1" x:Name="TotalValues" VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"/>
 
                 <Label Text="Number of Rejects: " TextColor="White" Font="Arial" FontSize="Small"
                     VerticalTextAlignment="Center" Grid.Row="6" Grid.Column="0" Margin="10,0,0,0"/>
                 <Label Text="{Binding NumberOfRejects}" Font="Arial" FontSize="Small" TextColor="White"
-                    Margin="10,0,0,0" Grid.Row="6" Grid.Column="1" x:Name="NumOfRejects"/>
+                    Margin="10,0,0,0" Grid.Row="6" Grid.Column="1" x:Name="NumOfRejects" VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"/>
                 
                 <Label Text="Reject Percentage: " TextColor="White" Font="Arial" FontSize="Small"
                     VerticalTextAlignment="Center" Grid.Row="7" Grid.Column="0" Margin="10,0,0,0"/>
                 <Label Text="{Binding LeakPrecentage}" Font="Arial" FontSize="Small" TextColor="White"
-                    Margin="10,0,0,0" Grid.Row="7" Grid.Column="1" x:Name="RejectPercentage"/>
+                    Margin="10,0,0,0" Grid.Row="7" Grid.Column="1" x:Name="RejectPercentage" VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"/>
 
                 <Label Text="Max Value: " TextColor="White" Font="Arial" FontSize="Small"
                     VerticalTextAlignment="Center" Grid.Row="8" Grid.Column="0" Margin="10,0,0,0"/>
                 <Label Text="{Binding MaxValue}" Font="Arial" FontSize="Small" TextColor="White"
-                    Margin="10,0,0,0" Grid.Row="8" Grid.Column="1" x:Name="MaxValue"/>
+                    Margin="10,0,0,0" Grid.Row="8" Grid.Column="1" x:Name="MaxValue" VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"/>
             </Grid>
         </Grid>
     </ContentPage.Content>

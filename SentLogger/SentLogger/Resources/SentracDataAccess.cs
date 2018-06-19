@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using System;
 using SentLogger.Resources;
+using SentLogger.Models;
 
 namespace LocalDataAccess
 
@@ -36,14 +37,14 @@ namespace LocalDataAccess
       this.SentracData.
       Add(new SentracSQLiteData
       {
-        Date = (DateTime.Now.Date), //'yyyy-MM-dd'
-        Time = (DateTime.Now.TimeOfDay), //'HH:mm:ss'
+        Date = (DateTime.Now.Date),
+        Time = (DateTime.Now.TimeOfDay),
         Value = 0.0,
-        Result = "Accept" // Hämta in värdena från sentracen här...
+        Result = "Accept"
       });
     }
 
-    // Use LINQ to query and filter data
+    // Use LINQ to query and filter data in other words to load SQLite Data
     public IEnumerable<SentracSQLiteData> GetFilteredSentracData(DateTime theDate)
     {
       // Use locks to avoid database collitions
