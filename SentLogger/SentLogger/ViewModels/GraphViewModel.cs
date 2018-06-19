@@ -342,7 +342,7 @@ namespace SentLogger.ViewModels
         /// </summary>
         private void ShouldDotChangeColor(GraphDot dot, double value)
         {
-            if (dot.Value <= value)
+            if (dot.Value < value)
             {
                 dot.GraphicDot.Color = Color.Green;
             }
@@ -500,13 +500,64 @@ namespace SentLogger.ViewModels
             }
         }
 
+        // TEMPORARY STUFF!!!!
+        // Somethings wrong, kanske egen klass med else för att hantera om det inte finns några värden i listan.
+        // Eller någon slags throw catch för exception...
+        /*public int TotalValues
+        {
+            get
+            {
+                return TotalValues = GetGraphDotsList().Count;
+            }
+            set
+            {
+                this.TotalValues = value;
+            } 
+        }
 
-    //--------ON PROPERTY CHANGED STUFF-----------
+        // TODO - Fix names in here and MaxAcceptedLineValue should be RejectValueLine?! Tror default för denna finns i MALV.
+        public int NumOfRejects
+        {
+            get
+            {
+                return NumOfRejects = (graphDot >= MaxAcceptedLineValue).Count;
+            }
+            set
+            {
+                this.NumOfRejects = value;
+            }
+        }
 
-    /// <summary>
-    /// A standard PropertyChangedEventHandler
-    /// </summary>
-    public event PropertyChangedEventHandler PropertyChanged;
+        public int RejectPercentage
+        {
+            get
+            {
+                return RejectPercentage = (((NumOfRejects) / (TotalValues)) * 100);
+            }
+            set
+            {
+                this.RejectPercentage = value;
+            }
+        }
+
+        public int MaxValue
+        {
+            get
+            {
+                return MaxValue = (DataTranslator.DataDotObjectsToDataTable.Value.Max);
+            }
+            set
+            {
+                this.MaxValue = value;
+            }
+        }*/
+
+        //--------ON PROPERTY CHANGED STUFF-----------
+
+        /// <summary>
+        /// A standard PropertyChangedEventHandler
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

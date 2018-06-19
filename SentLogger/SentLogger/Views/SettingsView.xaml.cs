@@ -13,17 +13,17 @@ using System.Collections.ObjectModel;
 
 namespace SentLogger.Views
 {
-  /// <summary>
-  /// SettingsView.
-  /// </summary>
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SettingsView : ContentPage
-	{
+    /// <summary>
+    /// SettingsView.
+    /// </summary>
+	  [XamlCompilation(XamlCompilationOptions.Compile)]
+	  partial class SettingsView : ContentPage
+	  {
         private SettingsViewModel settingsViewModel;
 
         public SettingsView ()
-		{
-			InitializeComponent ();
+		    {
+			      InitializeComponent ();
 
             settingsViewModel = new SettingsViewModel();
             this.BindingContext = settingsViewModel;
@@ -62,7 +62,7 @@ namespace SentLogger.Views
         {
             try
             {
-                portPicker.Title = portPicker.Items[portPicker.SelectedIndex];
+                portPicker.SelectedItem = portPicker.Items[portPicker.SelectedIndex]; //List and string...?
                 portPicker.Items.Clear();
             }
             catch (Exception ex)

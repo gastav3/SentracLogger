@@ -43,10 +43,68 @@ namespace LocalDataAccess
       });
     }
 
-    /// <summary>
-    /// TODO-Se om det behövs mer sql hantering. Kolla fig 12 i artikeln.
-    /// https://msdn.microsoft.com/en-us/magazine/mt736454.aspx?f=255&MSPPError=-2147217396
-    /// </summary>
+    // Use LINQ to query and filter data
+    public IEnumerable<SentracSQLiteData> GetFilteredSentracData(DateTime theDate)
+    {
+      // Use locks to avoid database collitions
+      lock (collisionLock)
+      {
+        var query = from SentracData in database.Table<SentracSQLiteData>()
+                    where SentracData.Date == theDate
+                    select SentracData;
+        return query.AsEnumerable();
+      }
+    }
+
+                        // TODO - Do I need to have Id to be able to avoid collision and do saves etc...?
+    public int SaveSentracSQLiteData(SentracSQLiteData sentracSQLiteDataInstance)
+    {
+      lock (collisionLock)
+      {
+        if (sentracSQLiteDataInstance.Id != 0)
+        {
+          database.Update(sentracSQLiteDataInstance);
+          return sentracSQLiteDataInstance.Id;
+        }
+        else
+        {
+          database.Insert(sentracSQLiteDataInstance);
+          return sentracSQLiteDataInstance.Id;
+        }
+      }
+    }
+
+    public void SaveAllSentracData()
+    {
+      lock (collisionLock)
+      {
+        foreach (var sentracSQLiteDataInstance in this.SentracData)
+        {
+          if (sentracSQLiteDataInstance.Id != 0)
+          {
+            database.Update(sentracSQLiteDataInstance);
+          }
+          else
+          {
+            database.Insert(sentracSQLiteDataInstance);
+          }
+        }
+      }
+    }
+
+    public int DeleteSentracSQLiteData(SentracSQLiteData sentracSQLiteDataInstance)
+    {
+      var id = sentracSQLiteDataInstance.Id;
+      if (id != 0)
+      {
+        lock (collisionLock)
+        {
+          database.Delete<SentracSQLiteData>(id);
+        }
+      }
+      this.SentracData.Remove(sentracSQLiteDataInstance);
+      return id;
+    }
 
   }
 }

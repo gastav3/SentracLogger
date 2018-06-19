@@ -12,6 +12,21 @@ namespace LocalDataAccess
   [Table("SentracData")]
   public class SentracSQLiteData : INotifyPropertyChanged
   {
+    private int _id;
+    [PrimaryKey, AutoIncrement]
+    public int Id
+    {
+      get
+      {
+        return _id;
+      }
+      set
+      {
+        this._id = value;
+        OnPropertyChanged(nameof(Id));
+      }
+    }
+
     private DateTime _date;
     [NotNull]
     public DateTime Date

@@ -23,27 +23,35 @@
                 <ColumnDefinition Width="0.091666*"/>
             </Grid.ColumnDefinitions>
 
-            <ScrollView Orientation="Vertical" Margin="0" Padding="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
+            <ScrollView Orientation="Vertical" Margin="0" Padding="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8">
                 <StackLayout HorizontalOptions="FillAndExpand" Padding="12.5">
-                    <Label Text="   Folders:" Font="Arial" FontSize="Small" FontAttributes="Bold" TextColor="#5D74A1"/>
-                    <!--<ListView>
+                    <Label Text="   Data:" Font="Arial" FontSize="Small" FontAttributes="Bold" TextColor="#5D74A1"/>
+                    <ListView x:Name="SentracDataView" ItemsSource="{Binding Path=SentracData}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <TextCell Text="{Binding folderNames}"/>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Entry Text="{Binding Id}" IsEnabled="False"/>
+                                        <Entry Text="{Binding Date}"/>
+                                        <Entry Text="{Binding Time}"/>
+                                        <Entry Text="{Binding Value}"/>
+                                        <Entry Text="{Binding Result}"/>
+                                    </StackLayout>
+                                </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
-                    </ListView>-->
+                    </ListView>
                 </StackLayout>
             </ScrollView>
 
-            <BoxView BackgroundColor="#5D74A1" WidthRequest="2" HorizontalOptions="Center" Grid.Row="0" Grid.Column="4"
+            <!--<BoxView BackgroundColor="#5D74A1" WidthRequest="2" HorizontalOptions="Center" Grid.Row="0" Grid.Column="4"
                  Margin="0,12.5,0,12.5"/>
 
             <ScrollView Orientation="Vertical" Margin="0" Padding="0" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="4">
                 <StackLayout HorizontalOptions="FillAndExpand" Padding="12.5">
                     <Label Text="   Files:" Font="Arial" FontSize="Small" FontAttributes="Bold" TextColor="#5D74A1"/>
                 </StackLayout>
-            </ScrollView>
+            </ScrollView>-->
 
             <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="9" HorizontalOptions="FillAndExpand" Padding="12.5">
                 <Grid.RowDefinitions TotalHight="0.7*">
