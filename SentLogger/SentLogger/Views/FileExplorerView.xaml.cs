@@ -37,51 +37,54 @@ namespace SentLogger.Views
 
         private async void LoadButton_Clicked(object sender, EventArgs e)
         {
-            switch (FormatPicker.SelectedIndex)
+            if (FormatPicker.SelectedIndex == 0)
             {
-                case 0:
+                try
                 {
-                    try
-                    {
-                        StaticValues.dotList.AddRange(await DependencyService.Get<ICsv>().LoadFile());
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine(ex.Message);
-                    }
-                    break;
+                    StaticValues.dotList.AddRange(await DependencyService.Get<ICsv>().LoadFile());
                 }
-                case 1:
+                catch (Exception ex)
                 {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+            else if (FormatPicker.SelectedIndex == 1)
+            {
 // TODO - Make a actionsheet for choosing date to load from....change from DateTime.Now
-// to binding from action sheet.
+// to binding from action sheet.    
+                try
+                {
                     sentracDataAccess.GetFilteredSentracData(DateTime.Now);
-                    break;
                 }
-                
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
             }
         }
         
         private void SaveButton_Clicked(object sender, EventArgs e)
         {
-            switch (FormatPicker.SelectedIndex)
+            if (FormatPicker.SelectedIndex == 0)
             {
-                case 0:
+                try
                 {
-                    try
-                    {
-                        DependencyService.Get<ICsv>().SaveFile();
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine(ex.Message);
-                    }
-                    break;
+                    DependencyService.Get<ICsv>().SaveFile();
                 }
-                case 1:
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+            else if (FormatPicker.SelectedIndex == 1)
+            {
+                try
                 {
                     sentracDataAccess.AddNewSentracSQLiteData();
-                    break;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
                 }
             }
         }
