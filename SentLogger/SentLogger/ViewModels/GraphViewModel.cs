@@ -57,6 +57,8 @@ namespace SentLogger.ViewModels
         private double leakPrecentage = 0.0;
         private double maxValue = 0.0;
 
+        private bool streamingPlay = false;
+
 
         //----------------UI-------------------
         /// <summary>
@@ -66,7 +68,7 @@ namespace SentLogger.ViewModels
         {
             if (!Extras.IsTaskRunning(updateUITask))
             {
-                RunUpdateUITask();
+               RunUpdateUITask();
             }
 
             UpdateAcceptedValueLine(this, EventArgs.Empty);
@@ -359,7 +361,7 @@ namespace SentLogger.ViewModels
                 }
                 try
                 {
-                    this.leakPrecentage = Math.Round((rejected / GetGraphDotsList().Count) * 100.0, 3);
+                    this.leakPrecentage = Math.Round((rejected / GetGraphDotsList().Count) * 100.0, 1);
                 }
                 catch (DivideByZeroException ex)
                 {
@@ -381,6 +383,15 @@ namespace SentLogger.ViewModels
             }
         }
 
+        public bool StreamingPlay
+        {
+            get => this.streamingPlay;
+            set
+            {
+                this.streamingPlay = value;
+                OnPropertyChanged();
+            }
+        }
 
         //---------------------MISC-----------------
         /// <summary>
@@ -466,6 +477,7 @@ namespace SentLogger.ViewModels
         //-----------UPDATE WHEN SWTCHING TO GRAPH VIEW------
         public void SwitchToThisView()
         {
+            StreamingPlay = false;
             GetGraphDotsList().Clear();
             foreach (DataDotObject dot in StaticValues.dotList)
             {
@@ -487,7 +499,7 @@ namespace SentLogger.ViewModels
                     for (int i = 0; i < 10; i++)
                     {
                         Random rnd = new Random();
-                        double yValue = rnd.Next(200);
+                        double yValue = rnd.Next(25);
                         AddNewDot(yValue, yValue);
                     }
                 });
@@ -561,21 +573,19 @@ namespace SentLogger.ViewModels
             }
         }
 
-        private bool StreamingPlay = false;
-
         public Command PlayStopButtonCommand
         {
             get
             {
                 return new Command(() =>
                 {
-                    if (StreamingPlay == false)
+                    if (streamingPlay == false)
                     {
-                        StreamingPlay = true;
+                        streamingPlay = true;
                     }
                     else
                     {
-                        StreamingPlay = false;
+                        streamingPlay = false;
                     }
                 });
             }

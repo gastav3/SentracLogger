@@ -99,7 +99,9 @@ namespace SentLogger.Resources.Data
 
                 //Making sure that end of the file, should not have a new line.
                 if (row != dtData.Rows.Count - 1)
-                    data.Append(Environment.NewLine);
+                {
+                      data.Append(Environment.NewLine);
+                }
             }
             return data;
         }

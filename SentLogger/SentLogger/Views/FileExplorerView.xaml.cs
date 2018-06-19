@@ -39,8 +39,8 @@ namespace SentLogger.Views
         {
             if (FormatPicker.SelectedIndex == 0)
             {
-                try
-                {
+                try { 
+                    StaticValues.dotList.Clear();
                     StaticValues.dotList.AddRange(await DependencyService.Get<ICsv>().LoadFile());
                 }
                 catch (Exception ex)
