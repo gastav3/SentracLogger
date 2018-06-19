@@ -128,22 +128,22 @@
                 <Label Text="Total number of tests: " TextColor="White" Font="Arial" FontSize="Small"
                     VerticalTextAlignment="Center" Grid.Row="5" Grid.Column="0" Margin="10,0,0,0"/>
                 <Entry  BackgroundColor="White" FontSize="Small" TextColor="#5D74A1" Margin="10" Grid.Row="5"
-                    Grid.Column="1"/>
+                    Grid.Column="1" Text="{Binding NumberOfTests}"/>
 
                 <Label Text="Number of rejects: " TextColor="White" Font="Arial" FontSize="Small"
                     VerticalTextAlignment="Center" Grid.Row="6" Grid.Column="0" Margin="10,0,0,0"/>
                 <Entry  BackgroundColor="White" FontSize="Small" TextColor="#5D74A1" Margin="10" Grid.Row="6"
-                    Grid.Column="1"/>
+                    Grid.Column="1" Text="{Binding NumberOfRejects}"/>
                 
                 <Label Text="Leak percentage: " TextColor="White" Font="Arial" FontSize="Small"
                     VerticalTextAlignment="Center" Grid.Row="7" Grid.Column="0" Margin="10,0,0,0"/>
                 <Entry  BackgroundColor="White" FontSize="Small" TextColor="#5D74A1" Margin="10" Grid.Row="7"
-                    Grid.Column="1"/>
+                    Grid.Column="1" Text="{Binding LeakPrecentage}"/>
 
                 <Label Text="Max Value: " TextColor="White" Font="Arial" FontSize="Small"
                     VerticalTextAlignment="Center" Grid.Row="8" Grid.Column="0" Margin="10,0,0,0"/>
                 <Entry  BackgroundColor="White" FontSize="Small" TextColor="#5D74A1" Margin="10" Grid.Row="8"
-                    Grid.Column="1"/>
+                    Grid.Column="1" Text="{Binding MaxValue}"/>
             </Grid>
         </Grid>
     </ContentPage.Content>

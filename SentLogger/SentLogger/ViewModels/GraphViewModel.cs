@@ -52,6 +52,12 @@ namespace SentLogger.ViewModels
         private double maxAcceptedLineValue = 10.0;
         private Rectangle acceptedLineValuePos;
 
+        private int numberOfTests = 0;
+        private int numberOfRejects = 0;
+        private double leakPrecentage = 0.0;
+        private double maxValue = 0.0;
+
+
         //----------------UI-------------------
         /// <summary>
         /// Called by events when the graph and its elements needs to be updated
@@ -92,6 +98,7 @@ namespace SentLogger.ViewModels
 
                 ExtendGraphLength(newPosX);
                 ExtendGraphHeight(newPosY);
+
                 i++;
                 await Task.Delay(GetDynamicUpdateDelay()); // a bit of delay so we dont crash
             }
@@ -120,8 +127,12 @@ namespace SentLogger.ViewModels
             AbsoluteLayout.SetLayoutFlags(tempDot.GraphicDot, AbsoluteLayoutFlags.None);
 
             ShouldDotChangeColor(tempDot, MaxAcceptedLineValue);
-
             GetGraphDotsList().Add(tempDot); // add to the dot list
+
+            if (value > MaxValue)
+            {
+                MaxValue = value;
+            }
 
             ExtendGraphLength(newPosX);
             ExtendGraphHeight(newPosY);
@@ -266,7 +277,6 @@ namespace SentLogger.ViewModels
             return (1f + (ZoomAmount / 100f));
         }
 
-
         /// <summary>
         /// The value over the selected dot
         /// </summary>
@@ -299,6 +309,46 @@ namespace SentLogger.ViewModels
         public ObservableCollection<GraphDot> GetGraphDotsList()
         {
             return StaticValues.graphDots;
+        }
+
+        public int NumberOfTests
+        {
+            get => this.numberOfTests;
+            set
+            {
+                value = GetGraphDotsList().Count;
+                OnPropertyChanged();
+            }
+        }
+
+        public int NumberOfRejects
+        {
+            get => this.numberOfRejects;
+            set
+            {
+                value = GetGraphDotsList().Count;
+                OnPropertyChanged();
+            }
+        }
+
+        public double LeakPrecentage
+        {
+            get => this.leakPrecentage;
+            set
+            {
+                value = GetGraphDotsList().Count;
+                OnPropertyChanged();
+            }
+        }
+
+        public double MaxValue
+        {
+            get => this.maxValue;
+            set
+            {
+                value = GetGraphDotsList().Count;
+                OnPropertyChanged();
+            }
         }
 
 
@@ -334,6 +384,7 @@ namespace SentLogger.ViewModels
         public void AddNewDot(double y, double value)
         {
             AddNewDotToGraphList(new Point(((1 + GetGraphDotsList().Count) * dotIntervalX), -y), value); // -pos.Y to reverse to fit graph
+            NumberOfTests = StaticValues.dotList.Count;
         }
 
         /// <summary>
@@ -342,6 +393,7 @@ namespace SentLogger.ViewModels
         /// </summary>
         private void ShouldDotChangeColor(GraphDot dot, double value)
         {
+
             if (dot.Value <= value)
             {
                 dot.GraphicDot.Color = Color.Green;
@@ -349,6 +401,7 @@ namespace SentLogger.ViewModels
             else
             {
                 dot.GraphicDot.Color = Color.Red;
+                NumberOfRejects += 1;
             }
         }
 
