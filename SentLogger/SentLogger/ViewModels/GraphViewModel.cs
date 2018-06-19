@@ -77,6 +77,11 @@ namespace SentLogger.ViewModels
             frozenZoomUpdate = GetZoomAmount();
             updateUITask = DoUpdateUIElements();
             int result = await updateUITask;
+
+            NumberOfTests = StaticValues.dotList.Count;
+            NumberOfRejects = 0;
+            LeakPrecentage = 0;
+
         }
 
         /// <summary>
@@ -316,7 +321,7 @@ namespace SentLogger.ViewModels
             get => this.numberOfTests;
             set
             {
-                value = GetGraphDotsList().Count;
+                this.numberOfTests = GetGraphDotsList().Count;
                 OnPropertyChanged();
             }
         }
@@ -326,7 +331,15 @@ namespace SentLogger.ViewModels
             get => this.numberOfRejects;
             set
             {
-                value = GetGraphDotsList().Count;
+                int rejected = 0;
+                foreach (GraphDot dot in GetGraphDotsList())
+                {
+                    if (dot.Value > MaxAcceptedLineValue)
+                    {
+                        rejected += 1;
+                    }
+                }
+                this.numberOfRejects = rejected;
                 OnPropertyChanged();
             }
         }
@@ -336,7 +349,24 @@ namespace SentLogger.ViewModels
             get => this.leakPrecentage;
             set
             {
-                value = GetGraphDotsList().Count;
+                double rejected = 0;
+                foreach (GraphDot dot in GetGraphDotsList())
+                {
+                    if (dot.Value > MaxAcceptedLineValue)
+                    {
+                        rejected += 1;
+                    }
+                }
+                try
+                {
+                    this.leakPrecentage = Math.Round((rejected/GetGraphDotsList().Count)*100.0, 3);
+                }
+                catch(DivideByZeroException ex)
+                {
+                    this.leakPrecentage = 0.0;
+                    Debug.WriteLine(ex.Message);
+                }
+
                 OnPropertyChanged();
             }
         }
@@ -346,7 +376,7 @@ namespace SentLogger.ViewModels
             get => this.maxValue;
             set
             {
-                value = GetGraphDotsList().Count;
+                this.maxValue = value;
                 OnPropertyChanged();
             }
         }
@@ -384,7 +414,6 @@ namespace SentLogger.ViewModels
         public void AddNewDot(double y, double value)
         {
             AddNewDotToGraphList(new Point(((1 + GetGraphDotsList().Count) * dotIntervalX), -y), value); // -pos.Y to reverse to fit graph
-            NumberOfTests = StaticValues.dotList.Count;
         }
 
         /// <summary>
@@ -401,7 +430,6 @@ namespace SentLogger.ViewModels
             else
             {
                 dot.GraphicDot.Color = Color.Red;
-                NumberOfRejects += 1;
             }
         }
 
