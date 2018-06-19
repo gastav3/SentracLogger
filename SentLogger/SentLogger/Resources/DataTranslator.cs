@@ -23,7 +23,7 @@ namespace SentLogger.Resources
             foreach (DataDotObject obj in objs)
             {
                 if (obj != null) {
-                    data.Rows.Add(obj.Date, obj.Time, obj.Value, obj.Accepted);
+                    data.Rows.Add(obj.Date, obj.Time, obj.Value, obj.Result);
                 }
             }
             return data;
