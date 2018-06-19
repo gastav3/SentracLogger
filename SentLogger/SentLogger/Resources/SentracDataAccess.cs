@@ -56,7 +56,6 @@ namespace LocalDataAccess
       }
     }
 
-                        // TODO - Do I need to have Id to be able to avoid collision and do saves etc...?
     public int SaveSentracSQLiteData(SentracSQLiteData sentracSQLiteDataInstance)
     {
       lock (collisionLock)

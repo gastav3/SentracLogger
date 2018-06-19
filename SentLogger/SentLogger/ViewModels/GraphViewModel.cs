@@ -394,7 +394,7 @@ namespace SentLogger.ViewModels
         private void ShouldDotChangeColor(GraphDot dot, double value)
         {
 
-            if (dot.Value <= value)
+            if (dot.Value < value)
             {
                 dot.GraphicDot.Color = Color.Green;
             }

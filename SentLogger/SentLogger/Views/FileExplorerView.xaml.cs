@@ -11,21 +11,23 @@ using System.Diagnostics;
 using SentLogger.Resources;
 using SentLogger.Models.Extra;
 using SentLogger.Models;
+using LocalDataAccess;
 
 namespace SentLogger.Views
 {
-  /// <summary>
-  /// View for the File Explorer.
-  /// </summary>
-  [XamlCompilation(XamlCompilationOptions.Compile)]
-  public partial class FileExplorerView : ContentPage
-  {
+    /// <summary>
+    /// View for the File Explorer.
+    /// </summary>
+    public partial class FileExplorerView : ContentPage
+    {
         private FileExplorerViewModel fileExplorerViewModel;
+        private SentracDataAccess sentracDataAccess;
 
         public FileExplorerView()
         {
             InitializeComponent();
             fileExplorerViewModel = new FileExplorerViewModel();
+            sentracDataAccess = new SentracDataAccess();
         }
 
         private void Browse_Button_Clicked(object sender, EventArgs e)
@@ -45,24 +47,28 @@ namespace SentLogger.Views
             }
         }
         
-        
         private void SaveButton_Clicked(object sender, EventArgs e)
         {
-            try
+            switch (FormatPicker.SelectedIndex)
             {
-                DependencyService.Get<ICsv>().SaveFile();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
+                case 0:
+                {
+                    try
+                    {
+                        DependencyService.Get<ICsv>().SaveFile();
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex.Message);
+                    }
+                    break;
+                }
+                case 1:
+                {
+                    sentracDataAccess.SaveSentracSQLiteData
+                    break;
+                }
             }
         }
-        
-        /*
-        private void BrowseButton_Clicked(object sender, EventArgs e)
-        {
-
-        }
-        */
     }
 }
