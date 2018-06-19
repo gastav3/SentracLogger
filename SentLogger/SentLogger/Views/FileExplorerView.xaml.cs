@@ -48,7 +48,7 @@ namespace SentLogger.Views
         }
         
         private void SaveButton_Clicked(object sender, EventArgs e)
-        {
+        {/*
             switch (FormatPicker.SelectedIndex)
             {
                 case 0:
@@ -65,10 +65,10 @@ namespace SentLogger.Views
                 }
                 case 1:
                 {
-                    sentracDataAccess.SaveSentracSQLiteData
+                   sentracDataAccess.SaveSentracSQLiteData
                     break;
                 }
-            }
+            }*/
         }
     }
 }

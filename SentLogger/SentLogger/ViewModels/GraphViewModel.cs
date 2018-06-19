@@ -66,7 +66,7 @@ namespace SentLogger.ViewModels
         {
             if (!Extras.IsTaskRunning(updateUITask))
             {
-              RunUpdateUITask();
+                RunUpdateUITask();
             }
 
             UpdateAcceptedValueLine(this, EventArgs.Empty);
@@ -77,6 +77,11 @@ namespace SentLogger.ViewModels
             frozenZoomUpdate = GetZoomAmount();
             updateUITask = DoUpdateUIElements();
             int result = await updateUITask;
+
+            NumberOfTests = StaticValues.dotList.Count;
+            NumberOfRejects = 0;
+            LeakPrecentage = 0;
+
         }
 
         /// <summary>
@@ -85,13 +90,13 @@ namespace SentLogger.ViewModels
         private async Task<int> DoUpdateUIElements()
         {
             GraphFrameSizeWidth = (Application.Current.MainPage.Width * frozenZoomUpdate) + graphFrameSizeOffsetX;
-            GraphFrameSizeHeight = ((Application.Current.MainPage.Height / 2f)) * (frozenZoomUpdate*2f) + graphFrameSizeOffsetY;
+            GraphFrameSizeHeight = ((Application.Current.MainPage.Height / 2f)) * (frozenZoomUpdate * 2f) + graphFrameSizeOffsetY;
 
             int i = 0;
             foreach (GraphDot dot in GetGraphDotsList()) // loop through all dots
             {
                 double newPosX = (dot.StartPoint.X * (((GraphFrameSizeWidth - graphFrameSizeOffsetX) / windowStartSizeX) * frozenZoomUpdate));
-                double newPosY = (dot.StartPoint.Y * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * frozenZoomUpdate)) + (GraphFrameSizeHeight - ((DotSize.Y*4f) * frozenZoomUpdate));
+                double newPosY = (dot.StartPoint.Y * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * frozenZoomUpdate)) + (GraphFrameSizeHeight - ((DotSize.Y * 4f) * frozenZoomUpdate));
 
                 ShouldDotChangeColor(dot, MaxAcceptedLineValue);
                 AbsoluteLayout.SetLayoutBounds(dot.GraphicDot, new Rectangle(newPosX, newPosY, DotSize.X * frozenZoomUpdate, DotSize.Y * frozenZoomUpdate));
@@ -113,7 +118,7 @@ namespace SentLogger.ViewModels
             SetWindowStartSize();
 
             GraphFrameSizeWidth = (Application.Current.MainPage.Width * GetZoomAmount()) + graphFrameSizeOffsetX;
-            GraphFrameSizeHeight = ((Application.Current.MainPage.Height / 2f)) * (GetZoomAmount()*2f) + graphFrameSizeOffsetY;
+            GraphFrameSizeHeight = ((Application.Current.MainPage.Height / 2f)) * (GetZoomAmount() * 2f) + graphFrameSizeOffsetY;
 
             GraphDot tempDot = new GraphDot(new Point(pos.X, (pos.Y * 100f)), value);
             tempDot.Index = GetGraphDotsList().Count;
@@ -121,7 +126,7 @@ namespace SentLogger.ViewModels
             tempDot.ScreenSizeCreated = new Point(GraphFrameSizeWidth, GraphFrameSizeHeight);
 
             double newPosX = (tempDot.StartPoint.X * (((GraphFrameSizeWidth - graphFrameSizeOffsetX) / windowStartSizeX) * GetZoomAmount()));
-            double newPosY = (tempDot.StartPoint.Y * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount())) + (GraphFrameSizeHeight - ((DotSize.Y*4f) * GetZoomAmount()));
+            double newPosY = (tempDot.StartPoint.Y * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount())) + (GraphFrameSizeHeight - ((DotSize.Y * 4f) * GetZoomAmount()));
 
             AbsoluteLayout.SetLayoutBounds(tempDot.GraphicDot, new Rectangle(newPosX, newPosY, DotSize.X * GetZoomAmount(), DotSize.Y * GetZoomAmount()));
             AbsoluteLayout.SetLayoutFlags(tempDot.GraphicDot, AbsoluteLayoutFlags.None);
@@ -148,11 +153,11 @@ namespace SentLogger.ViewModels
         {
             if (hasCreatedDot)
             {
-                double newPosY = ((-MaxAcceptedLineValue*100f) * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount())) + (GraphFrameSizeHeight - ((DotSize.Y*4f) * GetZoomAmount()));
+                double newPosY = ((-MaxAcceptedLineValue * 100f) * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount())) + (GraphFrameSizeHeight - ((DotSize.Y * 4f) * GetZoomAmount()));
                 AcceptedLineValuePos = new Rectangle(
-                    AcceptedLineValuePos.X-1000,
+                    AcceptedLineValuePos.X - 1000,
                     newPosY,
-                    GraphFrameSizeWidth*100.0,
+                    GraphFrameSizeWidth * 100.0,
                     1.0
                     );
             }
@@ -316,7 +321,7 @@ namespace SentLogger.ViewModels
             get => this.numberOfTests;
             set
             {
-                value = GetGraphDotsList().Count;
+                this.numberOfTests = GetGraphDotsList().Count;
                 OnPropertyChanged();
             }
         }
@@ -326,7 +331,15 @@ namespace SentLogger.ViewModels
             get => this.numberOfRejects;
             set
             {
-                value = GetGraphDotsList().Count;
+                int rejected = 0;
+                foreach (GraphDot dot in GetGraphDotsList())
+                {
+                    if (dot.Value > MaxAcceptedLineValue)
+                    {
+                        rejected += 1;
+                    }
+                }
+                this.numberOfRejects = rejected;
                 OnPropertyChanged();
             }
         }
@@ -336,7 +349,24 @@ namespace SentLogger.ViewModels
             get => this.leakPrecentage;
             set
             {
-                value = GetGraphDotsList().Count;
+                double rejected = 0;
+                foreach (GraphDot dot in GetGraphDotsList())
+                {
+                    if (dot.Value > MaxAcceptedLineValue)
+                    {
+                        rejected += 1;
+                    }
+                }
+                try
+                {
+                    this.leakPrecentage = Math.Round((rejected / GetGraphDotsList().Count) * 100.0, 3);
+                }
+                catch (DivideByZeroException ex)
+                {
+                    this.leakPrecentage = 0.0;
+                    Debug.WriteLine(ex.Message);
+                }
+
                 OnPropertyChanged();
             }
         }
@@ -346,7 +376,7 @@ namespace SentLogger.ViewModels
             get => this.maxValue;
             set
             {
-                value = GetGraphDotsList().Count;
+                this.maxValue = value;
                 OnPropertyChanged();
             }
         }
@@ -359,9 +389,9 @@ namespace SentLogger.ViewModels
         /// </summary>
         private int GetDynamicUpdateDelay()
         {
-           int delay = Extras.Clamp((GetGraphDotsList().Count / 150), 0, 2);
+            int delay = Extras.Clamp((GetGraphDotsList().Count / 150), 0, 2);
 
-              return delay;
+            return delay;
         }
 
         /// <summary>
@@ -384,7 +414,6 @@ namespace SentLogger.ViewModels
         public void AddNewDot(double y, double value)
         {
             AddNewDotToGraphList(new Point(((1 + GetGraphDotsList().Count) * dotIntervalX), -y), value); // -pos.Y to reverse to fit graph
-            NumberOfTests = StaticValues.dotList.Count;
         }
 
         /// <summary>
@@ -393,15 +422,13 @@ namespace SentLogger.ViewModels
         /// </summary>
         private void ShouldDotChangeColor(GraphDot dot, double value)
         {
-
-            if (dot.Value < value)
+            if (dot.Value <= value)
             {
                 dot.GraphicDot.Color = Color.Green;
             }
             else
             {
                 dot.GraphicDot.Color = Color.Red;
-                NumberOfRejects += 1;
             }
         }
 
@@ -442,7 +469,8 @@ namespace SentLogger.ViewModels
             GetGraphDotsList().Clear();
             foreach (DataDotObject dot in StaticValues.dotList)
             {
-                if (dot != null) {
+                if (dot != null)
+                {
                     AddNewDot(dot.Value, dot.Value);
                 }
             }
@@ -499,7 +527,7 @@ namespace SentLogger.ViewModels
             {
                 return new Command(() =>
                 {
-                    if ((GetGraphDotsList().Count - 1 ) > dotSelected)
+                    if ((GetGraphDotsList().Count - 1) > dotSelected)
                     {
                         SelectDot(dotSelected + 1, dotSelected);
                         dotSelected += 1;
@@ -554,12 +582,12 @@ namespace SentLogger.ViewModels
         }
 
 
-    //--------ON PROPERTY CHANGED STUFF-----------
+        //--------ON PROPERTY CHANGED STUFF-----------
 
-    /// <summary>
-    /// A standard PropertyChangedEventHandler
-    /// </summary>
-    public event PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// A standard PropertyChangedEventHandler
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

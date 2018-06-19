@@ -27,10 +27,11 @@ namespace LocalDataAccess
       // If the table is empty, initialize the collection
       if (!database.Table<SentracSQLiteData>().Any())
       {
-        AddNewSentracSQLiteData();
+     //   AddNewSentracSQLiteData();
       }
     }
 
+    
     public void AddNewSentracSQLiteData()
     {
       this.SentracData.
