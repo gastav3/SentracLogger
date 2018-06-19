@@ -15,7 +15,7 @@ namespace SentLogger.Models
         public TimeSpan Time { get; set; }
 
         public double Value { get; set; }
-        public string Accepted { get; set; }
+        public string Result { get; set; }
 
         public DataDotObject(DateTime date, TimeSpan time, double val, string acc)
         {
@@ -23,13 +23,13 @@ namespace SentLogger.Models
             this.Time = time;
 
             this.Value = val;
-            this.Accepted = acc;
+            this.Result = acc;
 
             Debug.WriteLine("Created new dot object with values" +
                 "\nDate: " + this.Date.ToString("dd/MM/yyyy") +
                 "\nTime: " + this.Time +
                 "\nValue: " + this.Value +
-                "\nAccepted: " +  this.Accepted);
+                "\nAccepted: " +  this.Result);
         }
     }
 }

@@ -131,17 +131,17 @@
 
                 <Label Text="Total number of Values: " TextColor="White" Font="Arial" FontSize="Small"
                     VerticalTextAlignment="Center" Grid.Row="5" Grid.Column="0" Margin="10,0,0,0"/>
-                <Label Text="{Binding TotalValues}" Font="Arial" FontSize="Small" TextColor="White"
+                <Label Text="{Binding NumberOfTests}" Font="Arial" FontSize="Small" TextColor="White"
                     Margin="10,0,0,0" Grid.Row="5" Grid.Column="1" x:Name="TotalValues"/>
 
                 <Label Text="Number of Rejects: " TextColor="White" Font="Arial" FontSize="Small"
                     VerticalTextAlignment="Center" Grid.Row="6" Grid.Column="0" Margin="10,0,0,0"/>
-                <Label Text="{Binding NumOfRejects}" Font="Arial" FontSize="Small" TextColor="White"
+                <Label Text="{Binding NumberOfRejects}" Font="Arial" FontSize="Small" TextColor="White"
                     Margin="10,0,0,0" Grid.Row="6" Grid.Column="1" x:Name="NumOfRejects"/>
                 
                 <Label Text="Reject Percentage: " TextColor="White" Font="Arial" FontSize="Small"
                     VerticalTextAlignment="Center" Grid.Row="7" Grid.Column="0" Margin="10,0,0,0"/>
-                <Label Text="{Binding RejectPercentage}" Font="Arial" FontSize="Small" TextColor="White"
+                <Label Text="{Binding LeakPrecentage}" Font="Arial" FontSize="Small" TextColor="White"
                     Margin="10,0,0,0" Grid.Row="7" Grid.Column="1" x:Name="RejectPercentage"/>
 
                 <Label Text="Max Value: " TextColor="White" Font="Arial" FontSize="Small"
