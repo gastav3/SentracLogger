@@ -83,7 +83,6 @@ namespace SentLogger.ViewModels
             NumberOfTests = StaticValues.dotList.Count;
             NumberOfRejects = 0;
             LeakPrecentage = 0;
-
         }
 
         /// <summary>

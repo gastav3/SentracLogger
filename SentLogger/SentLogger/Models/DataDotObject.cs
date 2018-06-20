@@ -17,6 +17,9 @@ namespace SentLogger.Models
         public double Value { get; set; }
         public string Result { get; set; }
 
+        public string StringDate { get; set; }
+        public string StringTime { get; set; }
+
         public DataDotObject(DateTime date, TimeSpan time, double val, string res)
         {
             this.Date = date;
@@ -24,6 +27,9 @@ namespace SentLogger.Models
 
             this.Value = val;
             this.Result = res;
+
+            this.StringDate = date.ToString("yyyy/MM/dd");
+            this.StringTime = time.ToString();
 
             Debug.WriteLine("Created new dot object with values" +
                 "\nDate: " + this.Date.ToString("dd/MM/yyyy") +
