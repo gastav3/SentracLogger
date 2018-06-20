@@ -12,6 +12,7 @@ using SentLogger.Resources;
 using SentLogger.Models.Extra;
 using SentLogger.Models;
 using LocalDataAccess;
+using System.Collections.ObjectModel;
 
 namespace SentLogger.Views
 {
@@ -20,6 +21,8 @@ namespace SentLogger.Views
     /// </summary>
     public partial class FileExplorerView : ContentPage
     {
+        private ObservableCollection<DataDotObject> TextDataList = new ObservableCollection<DataDotObject>();
+
         private FileExplorerViewModel fileExplorerViewModel;
         private SentracDataAccess sentracDataAccess;
 
@@ -34,9 +37,11 @@ namespace SentLogger.Views
         {
             if (FormatPicker.SelectedIndex == 0)
             {
-                try
-                {
+                try { 
+                    StaticValues.dotList.Clear();
                     StaticValues.dotList.AddRange(await DependencyService.Get<ICsv>().LoadFile());
+                    SentracDataView.ItemsSource = TextDataList;
+                    await LoadDataTextElements();
                 }
                 catch (Exception ex)
                 {
@@ -83,5 +88,23 @@ namespace SentLogger.Views
                 }
             }
         }
+
+
+        private async Task<int> LoadDataTextElements()
+        {
+            int i = 0;
+            foreach (DataDotObject dot in StaticValues.dotList)
+            {
+                if (dot != null) {
+                    TextDataList.Add(dot);
+                    i++;
+
+                    await Task.Delay(50);
+                }
+            }
+            return i;
+        }
+
+
     }
 }

@@ -27,8 +27,10 @@ namespace SentLogger.UWP
 
         public void ReceiveNewData(DataDotObject data)
         {
-            StaticValues.dotList.Add(data);
-            StaticValues.graphViewModel.AddNewDot(data.Value, data.Value);
+            if (StaticValues.graphViewModel.StreamingPlay) {
+                StaticValues.dotList.Add(data);
+                StaticValues.graphViewModel.AddNewDot(data.Value, data.Value);
+            }
         }
 
         public List<DataDotObject> GetList()

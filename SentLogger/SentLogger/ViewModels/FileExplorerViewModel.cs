@@ -18,20 +18,11 @@ namespace SentLogger.ViewModels
           
         }
 
-        public void PrintFiles(List<string> list)
-        {
-            foreach (var s in list)
-            {
-                Debug.WriteLine(s);
-            }
-        }
 
         public List<string> GetFileExplorerFiles(string path)
         {
             string[] files = System.IO.Directory.GetFiles(path);
             List<string> fileList = new List<string>(files);
-
-            PrintFiles(fileList);
 
             return fileList;
         }

@@ -23,26 +23,25 @@
                 <ColumnDefinition Width="0.091666*"/>
             </Grid.ColumnDefinitions>
 
-            <ScrollView Orientation="Vertical" Margin="0" Padding="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="9">
-                <StackLayout HorizontalOptions="FillAndExpand" Padding="12.5">
+            <Frame  Margin="0" Padding="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8">
+                <StackLayout x:Name="DataStackLayout" HorizontalOptions="FillAndExpand" Padding="12.5">
                     <Label Text="   Data:" Font="Arial" FontSize="Small" FontAttributes="Bold" TextColor="#5D74A1"/>
-                    <ListView x:Name="SentracDataView" ItemsSource="{Binding Path=SentracData}">
+                    <ListView x:Name="SentracDataView">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal">
-                                        <Entry Text="{Binding Id}" IsEnabled="False"/>
-                                        <Entry Text="{Binding Date}"/>
-                                        <Entry Text="{Binding Time}"/>
-                                        <Entry Text="{Binding Value}"/>
-                                        <Entry Text="{Binding Result}"/>
+                                        <Label Text="{Binding StringDate}"/>
+                                        <Label Text="{Binding StringTime}"/>
+                                        <Label Text="{Binding Value}"/>
+                                        <Label Text="{Binding Result}"/>
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-            </ScrollView>
+            </Frame>
 
             <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="9" HorizontalOptions="FillAndExpand" Padding="12.5">
                 <Grid.RowDefinitions TotalHight="0.7*">

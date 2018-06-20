@@ -60,8 +60,8 @@
                     
                 <Slider x:Name="SliderZoom"
                     Value="{Binding ZoomAmount, Mode=TwoWay}"
-                    Minimum="-25"
-                    Maximum="25"
+                    Minimum="-50"
+                    Maximum="50"
                     Margin="0"/>
             </StackLayout>
 
