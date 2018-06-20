@@ -68,15 +68,14 @@
             <Grid Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="4" VerticalOptions="FillAndExpand"
                  HorizontalOptions="FillAndExpand" Margin="0" Padding="0">
                 <Grid.RowDefinitions TotalHeight="0.607*">
-                    <RowDefinition Height="0.0674444*"/>
-                    <RowDefinition Height="0.0674444*"/>
-                    <RowDefinition Height="0.0674444*"/>
-                    <RowDefinition Height="0.0674444*"/>
-                    <RowDefinition Height="0.0674444*"/>
-                    <RowDefinition Height="0.0674444*"/>
-                    <RowDefinition Height="0.0674444*"/>
-                    <RowDefinition Height="0.0674444*"/>
-                    <RowDefinition Height="0.0674444*"/>
+                    <RowDefinition Height="0.075875*"/>
+                    <RowDefinition Height="0.075875*"/>
+                    <RowDefinition Height="0.075875*"/>
+                    <RowDefinition Height="0.075875*"/>
+                    <RowDefinition Height="0.075875*"/>
+                    <RowDefinition Height="0.075875*"/>
+                    <RowDefinition Height="0.075875*"/>
+                    <RowDefinition Height="0.075875*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions TotalWidth="0.4152773*">
                     <ColumnDefinition Width="0.20763865*"/>
@@ -97,18 +96,12 @@
                     BackgroundColor="White" BorderColor="Transparent" Font="Arial" FontSize="Default" TextColor="#5D74A1"
                     Margin="10"/>
 
-                <Button Text="Add Random Value" Grid.Row="2" Grid.Column="0" Command="{Binding AddNewRandomDotCommand}"
-                    BackgroundColor="White" BorderColor="Transparent" Font="Arial" FontSize="Default" TextColor="#5D74A1"
-                    BorderWidth="0" Margin="10"/>
-
-                <Button Text="Remove Last Value" Grid.Row="2" Grid.Column="1" Command="{Binding RemoveLastGraphDotCommand}"
-                    BackgroundColor="White" BorderColor="Transparent" Font="Arial" FontSize="Default" TextColor="#5D74A1"
-                    BorderWidth="0" Margin="10"/>
-
-                <Button Text="Update" Grid.Row="3" Grid.Column="0" Command="{Binding UpdateUiCommand}" BorderWidth="0"
+                <Button Text="Update" Grid.Row="2" Grid.Column="0" Command="{Binding UpdateUiCommand}" BorderWidth="0"
                     BackgroundColor="White" BorderColor="Transparent" Font="Arial" FontSize="Default" TextColor="#5D74A1"
                     Margin="10"/>
 
+                <Label Text="Stream: " TextColor="White" Font="Arial" FontSize="Small" VerticalTextAlignment="Center"
+                    Grid.Row="3" Grid.Column="0" Margin="10,0,0,0"/>
                 <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.play.png}" Aspect="AspectFit"
                     Grid.Row="3" Grid.Column="1" Margin="10" x:Name="PlayButtonImage" IsVisible="True"/>
                 <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.stop.png}" Aspect="AspectFit"
@@ -116,41 +109,28 @@
                 <Button BackgroundColor="Transparent" BorderColor="Transparent" Grid.Row="3" Grid.Column="1" BorderWidth="0"
                     Margin="10" Command="{Binding PlayStopButtonCommand}" Clicked="PlayStopButton_Clicked"/>
 
-                <Label Text="Input: " TextColor="White" Font="Arial" FontSize="Small" VerticalTextAlignment="Center"
-                    Grid.Row="4" Grid.Column="0" Margin="10,0,0,0"/>
-                <Picker FontFamily="Arial" FontSize="Default" Grid.Row="4" Grid.Column="1" BackgroundColor="White"
-                    TextColor="#5D74A1" Margin="10">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Streaming</x:String>
-                            <x:String>From Saved File</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                    <Picker.SelectedIndex>0</Picker.SelectedIndex>
-                </Picker>
-
                 <Label Text="Total number of Values: " TextColor="White" Font="Arial" FontSize="Small"
-                    VerticalTextAlignment="Center" Grid.Row="5" Grid.Column="0" Margin="10,0,0,0"/>
+                    VerticalTextAlignment="Center" Grid.Row="4" Grid.Column="0" Margin="10,0,0,0"/>
                 <Label Text="{Binding NumberOfTests}" Font="Arial" FontSize="Small" TextColor="White"
-                    Margin="10,0,0,0" Grid.Row="5" Grid.Column="1" x:Name="TotalValues" VerticalTextAlignment="Center"
+                    Margin="10,0,0,0" Grid.Row="4" Grid.Column="1" x:Name="TotalValues" VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Center"/>
 
                 <Label Text="Number of Rejects: " TextColor="White" Font="Arial" FontSize="Small"
-                    VerticalTextAlignment="Center" Grid.Row="6" Grid.Column="0" Margin="10,0,0,0"/>
+                    VerticalTextAlignment="Center" Grid.Row="5" Grid.Column="0" Margin="10,0,0,0"/>
                 <Label Text="{Binding NumberOfRejects}" Font="Arial" FontSize="Small" TextColor="White"
-                    Margin="10,0,0,0" Grid.Row="6" Grid.Column="1" x:Name="NumOfRejects" VerticalTextAlignment="Center"
+                    Margin="10,0,0,0" Grid.Row="5" Grid.Column="1" x:Name="NumOfRejects" VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Center"/>
                 
                 <Label Text="Reject Percentage: " TextColor="White" Font="Arial" FontSize="Small"
-                    VerticalTextAlignment="Center" Grid.Row="7" Grid.Column="0" Margin="10,0,0,0"/>
+                    VerticalTextAlignment="Center" Grid.Row="6" Grid.Column="0" Margin="10,0,0,0"/>
                 <Label Text="{Binding LeakPrecentage}" Font="Arial" FontSize="Small" TextColor="White"
-                    Margin="10,0,0,0" Grid.Row="7" Grid.Column="1" x:Name="RejectPercentage" VerticalTextAlignment="Center"
+                    Margin="10,0,0,0" Grid.Row="6" Grid.Column="1" x:Name="RejectPercentage" VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Center"/>
 
                 <Label Text="Max Value: " TextColor="White" Font="Arial" FontSize="Small"
-                    VerticalTextAlignment="Center" Grid.Row="8" Grid.Column="0" Margin="10,0,0,0"/>
+                    VerticalTextAlignment="Center" Grid.Row="7" Grid.Column="0" Margin="10,0,0,0"/>
                 <Label Text="{Binding MaxValue}" Font="Arial" FontSize="Small" TextColor="White"
-                    Margin="10,0,0,0" Grid.Row="8" Grid.Column="1" x:Name="MaxValue" VerticalTextAlignment="Center"
+                    Margin="10,0,0,0" Grid.Row="7" Grid.Column="1" x:Name="MaxValue" VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Center"/>
             </Grid>
         </Grid>
