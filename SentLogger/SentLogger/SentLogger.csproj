@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <ApplicationIcon>Resources\Images\inficon_icon_app_5Mrlda_256px.ico</ApplicationIcon>
+    <Win32Resource />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -16,6 +18,7 @@
     <None Remove="Resources\Images\graphView.png" />
     <None Remove="Resources\Images\help.png" />
     <None Remove="Resources\Images\INFICON_Icon_App.png" />
+    <None Remove="Resources\Images\inficon_icon_app_5Mrlda_256px.ico" />
     <None Remove="Resources\Images\limpa.png" />
     <None Remove="Resources\Images\load.png" />
     <None Remove="Resources\Images\play.png" />
@@ -30,6 +33,7 @@
     <EmbeddedResource Include="Resources\Images\graphView.png" />
     <EmbeddedResource Include="Resources\Images\help.png" />
     <EmbeddedResource Include="Resources\Images\INFICON_Icon_App.png" />
+    <EmbeddedResource Include="Resources\Images\inficon_icon_app_5Mrlda_256px.ico" />
     <EmbeddedResource Include="Resources\Images\limpa.png" />
     <EmbeddedResource Include="Resources\Images\load.png" />
     <EmbeddedResource Include="Resources\Images\play.png" />

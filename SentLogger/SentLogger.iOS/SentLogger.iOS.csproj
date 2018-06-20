@@ -92,7 +92,7 @@
     <AppExtensionDebugBundleId />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>inficon_icon_app_5Mrlda_256px.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\inficon_icon_app_5Mrlda_256px.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DatabaseConnection_iOS.cs" />
@@ -158,5 +158,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="inficon_icon_app_5Mrlda_256px.ico" />
+    <BundleResource Include="Resources\inficon_icon_app_5Mrlda_256px.ico" />
   </ItemGroup>
 </Project>
