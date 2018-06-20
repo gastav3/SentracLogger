@@ -48,16 +48,16 @@ namespace SentLogger.ViewModels
         private Task<int> updateUITask; // The task that updates the ui
         private double frozenZoomUpdate; // Used when the foreach loop is running so the user dosent change zoom midway through
 
-        private bool hasCreatedDot = false;
-        private double maxAcceptedLineValue = 10.0;
-        private Rectangle acceptedLineValuePos;
+        private bool hasCreatedDot = false; // simple boolean to check if a dot has been created
+        private double maxAcceptedLineValue = 0.0; // The value the line has
+        private Rectangle acceptedLineValuePos; // The positon of the red line on the graph
 
         private int numberOfTests = 0;
         private int numberOfRejects = 0;
         private double leakPrecentage = 0.0;
         private double maxValue = 0.0;
 
-        private bool streamingPlay = false;
+        private bool streamingPlay = false; 
 
 
         //----------------UI-------------------
@@ -68,7 +68,7 @@ namespace SentLogger.ViewModels
         {
             if (!Extras.IsTaskRunning(updateUITask))
             {
-               RunUpdateUITask();
+               RunUpdateUITask(); // maybe await this?
             }
 
             UpdateAcceptedValueLine(this, EventArgs.Empty);
@@ -78,11 +78,12 @@ namespace SentLogger.ViewModels
         {
             frozenZoomUpdate = GetZoomAmount();
             updateUITask = DoUpdateUIElements();
-            int result = await updateUITask;
 
-            NumberOfTests = StaticValues.dotList.Count;
-            NumberOfRejects = 0;
-            LeakPrecentage = 0;
+            int result = await updateUITask; 
+
+            NumberOfTests = StaticValues.dotList.Count; 
+            NumberOfRejects = 0; // need to update these somehow, which is done by setting a random value
+            LeakPrecentage = 0; // need to update these somehow, which is done by setting a random value
         }
 
         /// <summary>
@@ -94,16 +95,17 @@ namespace SentLogger.ViewModels
             GraphFrameSizeHeight = ((Application.Current.MainPage.Height / 2f)) * (frozenZoomUpdate * 2f) + graphFrameSizeOffsetY;
 
             int i = 0;
-            foreach (GraphDot dot in GetGraphDotsList()) // loop through all dots
+            foreach (GraphDot dot in GetGraphDotsList()) // loop through all in dots
             {
+                // Give the dots new positons in the graph.
                 double newPosX = (dot.StartPoint.X * (((GraphFrameSizeWidth - graphFrameSizeOffsetX) / windowStartSizeX) * frozenZoomUpdate));
                 double newPosY = (dot.StartPoint.Y * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * frozenZoomUpdate)) + (GraphFrameSizeHeight - ((DotSize.Y * 4f) * frozenZoomUpdate));
 
-                ShouldDotChangeColor(dot, MaxAcceptedLineValue);
+                ShouldDotChangeColor(dot, MaxAcceptedLineValue); // check if the dot should change color
                 AbsoluteLayout.SetLayoutBounds(dot.GraphicDot, new Rectangle(newPosX, newPosY, DotSize.X * frozenZoomUpdate, DotSize.Y * frozenZoomUpdate));
 
-                ExtendGraphLength(newPosX);
-                ExtendGraphHeight(newPosY);
+                ExtendGraphLength(newPosX); // extend the graph length
+                ExtendGraphHeight(newPosY); // extend the graph height
 
                 i++;
                 await Task.Delay(GetDynamicUpdateDelay()); // a bit of delay so we dont crash
@@ -137,7 +139,7 @@ namespace SentLogger.ViewModels
 
             if (value > MaxValue)
             {
-                MaxValue = value;
+                MaxValue = value;// Set the new max value
             }
 
             ExtendGraphLength(newPosX);
@@ -175,6 +177,9 @@ namespace SentLogger.ViewModels
             }
         }
 
+        /// <summary>
+        /// Extend the height of the graph draw area
+        /// </summary>
         public void ExtendGraphHeight(double posY)
         {
             if (GraphFrameSizeHeight <= (-posY + DotSize.Y))
@@ -443,7 +448,7 @@ namespace SentLogger.ViewModels
         }
 
         /// <summary>
-        /// Selects the dot
+        /// Selects the dot to show value and change color to blue.
         /// </summary>
         public void SelectDot(int newSelected, int oldSelected)
         {
@@ -474,53 +479,28 @@ namespace SentLogger.ViewModels
         }
 
         //-----------UPDATE WHEN SWTCHING TO GRAPH VIEW------
+        /// <summary>
+        /// Called evrytime switching to graph view
+        /// </summary>
         public void SwitchToThisView()
         {
-            StreamingPlay = false;
-            GetGraphDotsList().Clear();
-            foreach (DataDotObject dot in StaticValues.dotList)
+            StreamingPlay = false; // stop streaming data
+            GetGraphDotsList().Clear(); // clear the list that contains all the drawn dots/values
+
+            foreach (DataDotObject dot in StaticValues.dotList) // Add all existing dots to the graph - Maybe should make this async...
             {
                 if (dot != null)
                 {
-                    AddNewDot(dot.Value, dot.Value);
+                    AddNewDot(dot.Value, dot.Value); 
                 }
             }
         }
 
         //-----------COMMANDS FOR BUTTONS-------------
 
-        public Command AddNewRandomDotCommand
-        {
-            get
-            {
-                return new Command(() =>
-                {
-                    for (int i = 0; i < 10; i++)
-                    {
-                        Random rnd = new Random();
-                        double yValue = rnd.Next(25);
-                        AddNewDot(yValue, yValue);
-                    }
-                });
-            }
-        }
-
-        public Command RemoveLastGraphDotCommand
-        {
-            get
-            {
-                return new Command(() =>
-                {
-                    if (GetGraphDotsList().Count > 0)
-                    {
-                        GetGraphDotsList().RemoveAt(GetGraphDotsList().Count - 1);
-                        UpdateUiElement(this, EventArgs.Empty);
-                    }
-                });
-            }
-        }
-
-
+        /// <summary>
+        /// Calls the update method
+        /// </summary>
         public Command UpdateUiCommand
         {
             get
