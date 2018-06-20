@@ -23,7 +23,7 @@
                 <ColumnDefinition Width="0.091666*"/>
             </Grid.ColumnDefinitions>
 
-            <Frame  Margin="0" Padding="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8">
+            <Frame  Margin="0" Padding="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="9">
                 <StackLayout x:Name="DataStackLayout" HorizontalOptions="FillAndExpand" Padding="12.5">
                     <Label Text="   Data:" Font="Arial" FontSize="Small" FontAttributes="Bold" TextColor="#5D74A1"/>
                     <ListView x:Name="SentracDataView">
