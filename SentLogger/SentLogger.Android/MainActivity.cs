@@ -9,8 +9,9 @@ using Android.OS;
 
 namespace SentLogger.Droid
 {
-    [Activity(Label = "SentLogger", Icon = "@drawable/icon", Theme = "@style/MainTheme",
-    MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "SentLogger", Icon = "@drawable/INFICON_Icon_App", Theme = "@style/MainTheme",
+    MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
+    ScreenOrientation = ScreenOrientation.Landscape)]
 
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {

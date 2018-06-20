@@ -30,11 +30,6 @@ namespace SentLogger.Views
             sentracDataAccess = new SentracDataAccess();
         }
 
-        private void Browse_Button_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
         private async void LoadButton_Clicked(object sender, EventArgs e)
         {
             if (FormatPicker.SelectedIndex == 0)
@@ -50,8 +45,8 @@ namespace SentLogger.Views
             }
             else if (FormatPicker.SelectedIndex == 1)
             {
-// TODO - Make a actionsheet for choosing date to load from....change from DateTime.Now
-// to binding from action sheet.    
+// TODO - Make a actionsheet for choosing date to load from (or fix browser plus entry)....change from DateTime.Now
+// to binding from action sheet.
                 try
                 {
                     sentracDataAccess.GetFilteredSentracData(DateTime.Now);

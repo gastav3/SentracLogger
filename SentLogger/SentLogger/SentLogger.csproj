@@ -15,6 +15,7 @@
   <ItemGroup>
     <None Remove="Resources\Images\graphView.png" />
     <None Remove="Resources\Images\help.png" />
+    <None Remove="Resources\Images\INFICON_Icon_App.png" />
     <None Remove="Resources\Images\limpa.png" />
     <None Remove="Resources\Images\load.png" />
     <None Remove="Resources\Images\play.png" />
@@ -28,6 +29,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\Images\graphView.png" />
     <EmbeddedResource Include="Resources\Images\help.png" />
+    <EmbeddedResource Include="Resources\Images\INFICON_Icon_App.png" />
     <EmbeddedResource Include="Resources\Images\limpa.png" />
     <EmbeddedResource Include="Resources\Images\load.png" />
     <EmbeddedResource Include="Resources\Images\play.png" />

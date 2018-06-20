@@ -23,7 +23,7 @@
                 <ColumnDefinition Width="0.091666*"/>
             </Grid.ColumnDefinitions>
 
-            <ScrollView Orientation="Vertical" Margin="0" Padding="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8">
+            <ScrollView Orientation="Vertical" Margin="0" Padding="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="9">
                 <StackLayout HorizontalOptions="FillAndExpand" Padding="12.5">
                     <Label Text="   Data:" Font="Arial" FontSize="Small" FontAttributes="Bold" TextColor="#5D74A1"/>
                     <ListView x:Name="SentracDataView" ItemsSource="{Binding Path=SentracData}">
@@ -73,17 +73,9 @@
                 <Button Text="Load" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="2"
                     BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,10,0" BorderColor="Transparent"
                     Clicked="LoadButton_Clicked"/>
-                <!--<Label Text="   Location: " TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="0"
+                <Label Text="   Format: " TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="0"
                     VerticalTextAlignment="Center"/>
-                <Entry Placeholder="C:\Users\JaneDoe\SentracLogger\Data" PlaceholderColor="#5D74A1" FontFamily="Arial"
-                    FontSize="Micro" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4"
-                    Margin="0,0,10,0" BackgroundColor="White"  VerticalOptions="Center"/>
-                <Button Text="Browse" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="2"
-                    BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,0,0" BorderColor="Transparent"
-                    Clicked="Browse_Button_Clicked"/>-->
-                <Label Text="   Format: " TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="0"
-                    VerticalTextAlignment="Center"/>
-                <Picker FontFamily="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4"
+                <Picker FontFamily="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4"
                     TextColor="#5D74A1" BackgroundColor="White" Margin="0,0,10,0" x:Name="FormatPicker">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
@@ -94,6 +86,11 @@
                     </Picker.ItemsSource>
                     <Picker.SelectedIndex>0</Picker.SelectedIndex>
                 </Picker>
+                <!--<Label Text="   Location: " TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="0"
+                    VerticalTextAlignment="Center"/>
+                <Entry Placeholder="C:\Users\JaneDoe\SentracLogger\Data" PlaceholderColor="#5D74A1" FontFamily="Arial"
+                    FontSize="Micro" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4"
+                    Margin="0,0,10,0" BackgroundColor="White"  VerticalOptions="Center"/>-->
                 <Button Text="Save" Font="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
                     BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,10,0" BorderColor="Transparent"
                     Clicked="SaveButton_Clicked"/>
