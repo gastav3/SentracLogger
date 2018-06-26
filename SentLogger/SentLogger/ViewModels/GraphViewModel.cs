@@ -36,9 +36,6 @@ namespace SentLogger.ViewModels
         private double graphFrameSizeWidth; // Binded to the graph width
         private double graphFrameSizeHeight; // Binded to the graph height
 
-        private double minimumGraphFrameSizeWidth; // Binded to the minimum graph width
-        private double minimumGraphFrameSizeHeight; // Binded to the minimum graph height
-
         private double graphFrameSizeOffsetX; // How much should the graph width increase 2140000000
         private double graphFrameSizeOffsetY; // How much should the graph height increase
 
@@ -118,15 +115,15 @@ namespace SentLogger.ViewModels
         /// </summary>
         public void AddNewDotToGraphList(Point pos, double value)
         {
-            SetWindowStartSize();
+            SetWindowStartSize(); // Set the screen size when the first dot was created, in order to scale UI objects correctly
 
             GraphFrameSizeWidth = (Application.Current.MainPage.Width * GetZoomAmount()) + graphFrameSizeOffsetX;
             GraphFrameSizeHeight = ((Application.Current.MainPage.Height / 2f)) * (GetZoomAmount() * 2f) + graphFrameSizeOffsetY;
 
             GraphDot tempDot = new GraphDot(new Point(pos.X, (pos.Y * 100f)), value);
-            tempDot.Index = GetGraphDotsList().Count;
+            tempDot.Index = GetGraphDotsList().Count; // index of the dot tell the diffrence easily.
 
-            tempDot.ScreenSizeCreated = new Point(GraphFrameSizeWidth, GraphFrameSizeHeight);
+            tempDot.ScreenSizeCreated = new Point(GraphFrameSizeWidth, GraphFrameSizeHeight); // Set the screen size when the first dot was created, in order to scale the dots correctly
 
             double newPosX = (tempDot.StartPoint.X * (((GraphFrameSizeWidth - graphFrameSizeOffsetX) / windowStartSizeX) * GetZoomAmount()));
             double newPosY = (tempDot.StartPoint.Y * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount())) + (GraphFrameSizeHeight - ((DotSize.Y * 4f) * GetZoomAmount()));
@@ -190,6 +187,9 @@ namespace SentLogger.ViewModels
 
         //------ PROPERTIES -----
 
+        /// <summary>
+        /// The size of every dot/value
+        /// </summary>
         public Point DotSize
         {
             get => this.dotSize;
@@ -200,6 +200,9 @@ namespace SentLogger.ViewModels
             }
         }
 
+        /// <summary>
+        /// The red line positon
+        /// </summary>
         public Rectangle AcceptedLineValuePos
         {
             get => this.acceptedLineValuePos;
@@ -210,6 +213,9 @@ namespace SentLogger.ViewModels
             }
         }
 
+        /// <summary>
+        /// The value of the red line
+        /// </summary>
         public double MaxAcceptedLineValue
         {
             get => Extras.Clamp(this.maxAcceptedLineValue, 0.0, GraphFrameSizeHeight);
@@ -220,6 +226,9 @@ namespace SentLogger.ViewModels
             }
         }
 
+        /// <summary>
+        /// The interval between the dots/values
+        /// </summary>
         public double GetDotIntervalX
         {
             get => this.dotIntervalX;
@@ -230,6 +239,9 @@ namespace SentLogger.ViewModels
             }
         }
 
+        /// <summary>
+        /// The height the graph is.
+        /// </summary>
         public double GraphFrameSizeHeight
         {
             get => Extras.Clamp(this.graphFrameSizeHeight, 0.0, 2140000000); // dont go higher than 2140000000
@@ -240,32 +252,15 @@ namespace SentLogger.ViewModels
             }
         }
 
+        /// <summary>
+        /// The width the size is.
+        /// </summary>
         public double GraphFrameSizeWidth
         {
             get => Extras.Clamp(this.graphFrameSizeWidth, 0.0, 2140000000);
             set
             {
                 this.graphFrameSizeWidth = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public double MinimumGraphFrameSizeHeight
-        {
-            get => this.minimumGraphFrameSizeHeight;
-            set
-            {
-                this.minimumGraphFrameSizeHeight = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public double MinimumGraphFrameSizeWidth
-        {
-            get => this.minimumGraphFrameSizeWidth;
-            set
-            {
-                this.minimumGraphFrameSizeWidth = value;
                 OnPropertyChanged();
             }
         }
@@ -322,6 +317,9 @@ namespace SentLogger.ViewModels
             return StaticValues.graphDots;
         }
 
+        /// <summary>
+        /// The total amount of dots/values
+        /// </summary>
         public int NumberOfTests
         {
             get => this.numberOfTests;
@@ -332,6 +330,9 @@ namespace SentLogger.ViewModels
             }
         }
 
+        /// <summary>
+        /// How many of the dots/values are above the allowed limit
+        /// </summary>
         public int NumberOfRejects
         {
             get => this.numberOfRejects;
@@ -350,6 +351,10 @@ namespace SentLogger.ViewModels
             }
         }
 
+
+        /// <summary>
+        /// Calculates the precentage of dots/values that have been rejected.
+        /// </summary>
         public double LeakPrecentage
         {
             get => this.leakPrecentage;
@@ -377,6 +382,10 @@ namespace SentLogger.ViewModels
             }
         }
 
+
+        /// <summary>
+        /// The dot/value with the highest value.
+        /// </summary>
         public double MaxValue
         {
             get => this.maxValue;
@@ -387,6 +396,10 @@ namespace SentLogger.ViewModels
             }
         }
 
+
+        /// <summary>
+        /// Simple bool to allowed data to be streamed into the graph.
+        /// </summary>
         public bool StreamingPlay
         {
             get => this.streamingPlay;
@@ -499,7 +512,7 @@ namespace SentLogger.ViewModels
         //-----------COMMANDS FOR BUTTONS-------------
 
         /// <summary>
-        /// Calls the update method
+        /// Calls the update method which updates all the dots/values
         /// </summary>
         public Command UpdateUiCommand
         {
@@ -512,6 +525,10 @@ namespace SentLogger.ViewModels
             }
         }
 
+
+        /// <summary>
+        /// Selects the next dot in the graphList, shows the value and changes color to blue
+        /// </summary>
         public Command NextDotCommand
         {
             get
@@ -532,6 +549,9 @@ namespace SentLogger.ViewModels
             }
         }
 
+        /// <summary>
+        /// Selects the previous dot in the graphList, shows the value and changes color to blue
+        /// </summary>
         public Command PreviousDotCommand
         {
             get
@@ -552,6 +572,9 @@ namespace SentLogger.ViewModels
             }
         }
 
+        /// <summary>
+        /// Toggle the streaming data.
+        /// </summary>
         public Command PlayStopButtonCommand
         {
             get
