@@ -6,9 +6,13 @@ using System.Diagnostics;
 using SentLogger.Resources;
 using Xamarin.Forms;
 using System.IO.Ports;
+using Rg.Plugins.Popup.Services;
 
 namespace SentLogger
 {
+  /// <summary>
+  /// Common code behind
+  /// </summary>
 	public partial class App : Application
 	{
     public App ()
@@ -33,7 +37,7 @@ namespace SentLogger
 		}
 
     /// <summary>
-    /// Buttons handling navigation.
+    /// Buttons handling navigation
     /// </summary>
     private void GoToSettingsButton_Clicked(object sender, EventArgs e)
     {
@@ -51,16 +55,15 @@ namespace SentLogger
     }
 
     /// <summary>
-    /// Upper right corner save button (saves (prechosen data) from any screen).
+    /// Upper right corner save button (saves current data (in the graph) from any screen in .csv format)
     /// </summary>
-    private async void GoToExplorerSaveButton_Clicked(object sender, EventArgs e)
+    private void SaveActionButton_Clicked(object sender, EventArgs e)
     {
-      var action = await MainPage.DisplayActionSheet("Save data: ", "Cancel", null, "Yes");
-      Debug.WriteLine("Saved" + action);
+      PopupNavigation.Instance.PushAsync(new Views.SPopup());
     }
 
     /// <summary>
-    /// Time and date on press button.
+    /// Time and date on press button
     /// </summary>
     private void CurTimeAndDateButton_Pressed(object sender, EventArgs e)
     {
@@ -75,7 +78,7 @@ namespace SentLogger
     }
 
     /// <summary>
-    /// Tab buttons.
+    /// Tab buttons
     /// </summary>
     private void FileExplorerTabButton_Clicked(object sender, EventArgs e)
     {
@@ -96,7 +99,7 @@ namespace SentLogger
     }
 
     /// <summary>
-    /// GraphView Button to navigate to tab views starting at GraphTab.
+    /// GraphView Button to navigate to tab views starting at GraphTab
     /// </summary>
     private void GoToGraphButton_Clicked(object sender, EventArgs e)
     {

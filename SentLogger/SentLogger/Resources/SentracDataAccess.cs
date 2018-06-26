@@ -10,14 +10,16 @@ using SentLogger.Models.Extra;
 using System.Diagnostics;
 
 namespace LocalDataAccess
-
 {
-  class SentracDataAccess
-  {
-    private SQLiteConnection database;
-    private static object collisionLock = new object();
+    /// <summary>
+    /// To be able to handle and access SQLite data.
+    /// </summary>
+    class SentracDataAccess
+    {
+        private SQLiteConnection database;
+        private static object collisionLock = new object();
 
-    public ObservableCollection<SentracSQLiteData> SentracData { get; set; }
+        public ObservableCollection<SentracSQLiteData> SentracData { get; set; }
 
     public SentracDataAccess()
     {
@@ -73,67 +75,69 @@ namespace LocalDataAccess
       });
     }
 
-    // Use LINQ to query and filter data in other words to load SQLite Data
+    /// <summary>
+    /// Use LINQ to query and filter data in other words to load SQLite Data.
+    /// </summary>
+    /// <param name="theDate">In parameter to be able to load from a specific date.</param>
     public IEnumerable<SentracSQLiteData> GetFilteredSentracData(DateTime theDate)
-    {
-      // Use locks to avoid database collitions
-      lock (collisionLock)
-      {
-        var query = from SentracData in database.Table<SentracSQLiteData>()
-                    where SentracData.Date == theDate
-                    select SentracData;
-        return query.AsEnumerable();
-      }
-    }
-
-    public int SaveSentracSQLiteData(SentracSQLiteData sentracSQLiteDataInstance)
-    {
-      lock (collisionLock)
-      {
-        if (sentracSQLiteDataInstance.Id != 0)
         {
-          database.Update(sentracSQLiteDataInstance);
-          return sentracSQLiteDataInstance.Id;
+            // Use locks to avoid database collitions
+            lock (collisionLock)
+            {
+              var query = from SentracData in database.Table<SentracSQLiteData>()
+                          where SentracData.Date == theDate
+                          select SentracData;
+              return query.AsEnumerable();
+            }
         }
-        else
-        {
-          database.Insert(sentracSQLiteDataInstance);
-          return sentracSQLiteDataInstance.Id;
-        }
-      }
-    }
 
-    public void SaveAllSentracData()
-    {
-      lock (collisionLock)
-      {
-        foreach (var sentracSQLiteDataInstance in this.SentracData)
+        public int SaveSentracSQLiteData(SentracSQLiteData sentracSQLiteDataInstance)
         {
-          if (sentracSQLiteDataInstance.Id != 0)
-          {
-            database.Update(sentracSQLiteDataInstance);
-          }
-          else
-          {
-            database.Insert(sentracSQLiteDataInstance);
-          }
+            lock (collisionLock)
+            {
+                if (sentracSQLiteDataInstance.Id != 0)
+                {
+                    database.Update(sentracSQLiteDataInstance);
+                    return sentracSQLiteDataInstance.Id;
+                }
+                else
+                {
+                    database.Insert(sentracSQLiteDataInstance);
+                    return sentracSQLiteDataInstance.Id;
+                }
+            }
         }
-      }
-    }
 
-    public int DeleteSentracSQLiteData(SentracSQLiteData sentracSQLiteDataInstance)
-    {
-      var id = sentracSQLiteDataInstance.Id;
-      if (id != 0)
-      {
-        lock (collisionLock)
+        public void SaveAllSentracData()
         {
-          database.Delete<SentracSQLiteData>(id);
+            lock (collisionLock)
+            {
+                foreach (var sentracSQLiteDataInstance in this.SentracData)
+                {
+                    if (sentracSQLiteDataInstance.Id != 0)
+                    {
+                        database.Update(sentracSQLiteDataInstance);
+                    }
+                    else
+                    {
+                        database.Insert(sentracSQLiteDataInstance);
+                    }
+                }
+            }
         }
-      }
-      this.SentracData.Remove(sentracSQLiteDataInstance);
-      return id;
-    }
 
-  }
+        public int DeleteSentracSQLiteData(SentracSQLiteData sentracSQLiteDataInstance)
+        {
+            var id = sentracSQLiteDataInstance.Id;
+            if (id != 0)
+            {
+                lock (collisionLock)
+                {
+                    database.Delete<SentracSQLiteData>(id);
+                }
+            }
+            this.SentracData.Remove(sentracSQLiteDataInstance);
+            return id;
+        }
+    }
 }

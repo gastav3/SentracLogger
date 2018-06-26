@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SentLogger.Views.LoadSQLitePopup"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+
+    <!-- Display Design for the popup for the load button on FileExplorerView when the format is set for SQLite -->
+    <StackLayout>
+        <Label Text="   Date: " Font="Arial" FontSize="Micro" FontAttributes="Bold" TextColor="#5D74A1"/>
+        <Entry Placeholder="0000-00-00" FontSize="Micro" FontAttributes="Bold" TextColor="#5D74A1" x:Name="DateParameter"/>
+        <Button Text="Load" Font="Arial" FontSize="Micro" TextColor="White" BackgroundColor="#5D74A1"
+            HorizontalOptions="Center" Clicked="LoadSQLiteDataButton_Clicked"/>
+        <Button Text="Cancel" Font="Arial" FontSize="Micro" TextColor="White" BackgroundColor="#5D74A1"
+            HorizontalOptions="Center" Clicked="CloseLoadSQLitePopupButton_Clicked"/>
+    </StackLayout>
+</pages:PopupPage>

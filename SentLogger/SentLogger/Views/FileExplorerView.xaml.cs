@@ -13,16 +13,16 @@ using SentLogger.Models.Extra;
 using SentLogger.Models;
 using LocalDataAccess;
 using System.Collections.ObjectModel;
+using Rg.Plugins.Popup.Services;
 
 namespace SentLogger.Views
 {
     /// <summary>
-    /// View for the File Explorer.
+    /// File Explorer Code Behind
     /// </summary>
     public partial class FileExplorerView : ContentPage
     {
         private ObservableCollection<DataDotObject> TextDataList = new ObservableCollection<DataDotObject>();
-
         private FileExplorerViewModel fileExplorerViewModel;
         private SentracDataAccess sentracDataAccess;
 
@@ -33,6 +33,9 @@ namespace SentLogger.Views
             sentracDataAccess = new SentracDataAccess();
         }
 
+        /// <summary>
+        /// On Clicked for Save and Load Buttons
+        /// </summary>
         private async void LoadButton_Clicked(object sender, EventArgs e)
         {
             if (FormatPicker.SelectedIndex == 0)
@@ -50,16 +53,7 @@ namespace SentLogger.Views
             }
             else if (FormatPicker.SelectedIndex == 1)
             {
-// TODO - Make a actionsheet for choosing date to load from (or fix browser plus entry)....change from DateTime.Now
-// to binding from action sheet.
-                try
-                {
-                    sentracDataAccess.GetFilteredSentracData(DateTime.Now);
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex.Message);
-                }
+                await PopupNavigation.Instance.PushAsync(new LoadSQLitePopup());
             }
         }
         
@@ -80,8 +74,7 @@ namespace SentLogger.Views
             {
                 try
                 {
-                    sentracDataAccess.SaveAllSQLData();
-                  
+                    sentracDataAccess.SaveAllSentracData();
                 }
                 catch (Exception ex)
                 {
@@ -90,7 +83,9 @@ namespace SentLogger.Views
             }
         }
 
-
+        /// <summary>
+        /// Loads the data from saved data to the display for viewing purposes
+        /// </summary>
         private async Task<int> LoadDataTextElements()
         {
             int i = 0;
@@ -105,7 +100,5 @@ namespace SentLogger.Views
             }
             return i;
         }
-
-
     }
 }

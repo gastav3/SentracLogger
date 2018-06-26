@@ -5,6 +5,7 @@
              xmlns:local="clr-namespace:SentLogger.Resources"
              ControlTemplate="{StaticResource TabViewGraphDesign}">
 
+    <!-- GraphView Display Design -->
     <ContentPage.Content>
         <Grid RowSpacing="0" ColumnSpacing="0">
             <Grid.RowDefinitions TotalHeight="0.632*">
@@ -27,6 +28,7 @@
                 <ColumnDefinition Width="0.0125*"/>
             </Grid.ColumnDefinitions>
             
+            <!-- Graph Layout -->
             <StackLayout Margin="0" Padding="0" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5">
                 <Frame Margin="0" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                     CornerRadius="6" IsClippedToBounds="True">
@@ -65,6 +67,7 @@
                     Margin="0"/>
             </StackLayout>
 
+            <!-- Layout of buttons and statistics beside the graph -->
             <Grid Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="4" VerticalOptions="FillAndExpand"
                  HorizontalOptions="FillAndExpand" Margin="0" Padding="0">
                 <Grid.RowDefinitions TotalHeight="0.607*">
