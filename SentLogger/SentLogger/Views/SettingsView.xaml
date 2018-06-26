@@ -43,13 +43,13 @@
                             Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalTextAlignment="Center"/>
 
                         <Picker x:Name="portPicker" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"
-                                ItemsSource="{Binding Ports, Mode=OneWay}"
-                                SelectedItem="{Binding SelectedPort}"
-                                ItemDisplayBinding="{Binding Name}"
-                                Focused="portPicker_Focused"
-                                SelectedIndexChanged="portPicker_SelectedIndexChanged"
-                                SelectedIndex="0"
-                                FontFamily="Arial" FontSize="Micro" TextColor="#5D74A1"/>
+                            ItemsSource="{Binding Ports, Mode=OneWay}"
+                            SelectedItem="{Binding SelectedPort}"
+                            ItemDisplayBinding="{Binding Name}"
+                            Focused="portPicker_Focused"
+                            SelectedIndexChanged="portPicker_SelectedIndexChanged"
+                            SelectedIndex="0"
+                            FontFamily="Arial" FontSize="Micro" TextColor="#5D74A1"/>
 
                         <BoxView BackgroundColor="#5D74A1" HeightRequest="2" Grid.Row="1" Grid.Column="0"
                             Grid.ColumnSpan="7" VerticalOptions="Center" Margin="0,20,0,20"/>

@@ -39,7 +39,7 @@ namespace SentLogger.UWP
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
+            Rg.Plugins.Popup.Popup.Init(); /// <remarks> To enable the popups in UWP </remarks>
 
             Frame rootFrame = Window.Current.Content as Frame;
 

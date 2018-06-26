@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SentLogger.Views.SPopup"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+
+    <!-- Display Design for the popup for the save button in the upper right corner -->
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White">
+        <Label Text="   Save Data: " Font="Arial" FontSize="Micro" FontAttributes="Bold" TextColor="#5D74A1"/>
+        <Button Text="Yes" Font="Arial" FontSize="Micro" TextColor="White" BackgroundColor="#5D74A1"
+            HorizontalOptions="Center" Clicked="SaveDataFromCornerButton_Clicked"/>
+        <Button Text="No" Font="Arial" FontSize="Micro" TextColor="White" BackgroundColor="#5D74A1"
+            HorizontalOptions="Center" Clicked="CloseSavingPopupButton_Clicked"/>
+    </StackLayout>
+</pages:PopupPage>

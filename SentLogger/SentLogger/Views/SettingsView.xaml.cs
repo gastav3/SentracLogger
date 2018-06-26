@@ -14,7 +14,7 @@ using System.Collections.ObjectModel;
 namespace SentLogger.Views
 {
     /// <summary>
-    /// SettingsView.
+    /// SettingsView Code Behind
     /// </summary>
 	  [XamlCompilation(XamlCompilationOptions.Compile)]
 	  partial class SettingsView : ContentPage
@@ -27,7 +27,6 @@ namespace SentLogger.Views
 
             settingsViewModel = new SettingsViewModel();
             this.BindingContext = settingsViewModel;
-
 
             portPicker.SelectedIndexChanged += (sender, args) =>
             {
@@ -53,11 +52,6 @@ namespace SentLogger.Views
             }          
         }
 
-        private void Button_Clicked_Test_Connection(object sender, EventArgs e)
-        {
-       
-        }
-
         private void portPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -71,7 +65,6 @@ namespace SentLogger.Views
             }
         }
 
-
         private bool CheckListForNameAndId(string name, string id, ObservableCollection<ComPort> ports)
         {
             foreach (ComPort p in ports)
@@ -83,7 +76,10 @@ namespace SentLogger.Views
             }
             return false;
         }
-            
 
+        private void Button_Clicked_Test_Connection(object sender, EventArgs e)
+        {
+
+        }
     }
 }

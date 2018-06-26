@@ -54,8 +54,8 @@ namespace SentLogger.UWP
             foreach (DeviceInformation dInfo in uwpUsbCon.listOfDevices)
             {
                 ComPort port = new ComPort(dInfo.Name, dInfo.Id);
-                port.Name = dInfo.Name; // Had to assign it again dident work otherwise.
-                port.Id = dInfo.Id; // Had to assign it again dident work otherwise.
+                port.Name = dInfo.Name; // Had to assign it again did not work otherwise.
+                port.Id = dInfo.Id; // Had to assign it again did not work otherwise.
                 ports.Add(port);
             }
             return ports;

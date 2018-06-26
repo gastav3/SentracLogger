@@ -45,6 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.4.158-pre" />
     <PackageReference Include="sqlite-net-pcl" Version="1.5.166-beta" />
     <PackageReference Include="System.IO.Ports" Version="4.5.0" />
     <PackageReference Include="Xam.Plugin.DeviceInfo" Version="4.0.0.13" />
@@ -63,6 +64,12 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>AppResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LoadSQLitePopup.xaml.cs">
+      <DependentUpon>LoadSQLitePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SPopup.xaml.cs">
+      <DependentUpon>SPopup.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -83,7 +90,13 @@
     <EmbeddedResource Update="Views\HistogramView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\LoadSQLitePopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\SettingsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

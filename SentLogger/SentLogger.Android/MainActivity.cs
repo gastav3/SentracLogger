@@ -22,6 +22,8 @@ namespace SentLogger.Droid
 
             base.OnCreate(bundle);
 
+            Rg.Plugins.Popup.Popup.Init(this, bundle); /// <remarks> To enable popups in Android </remarks>
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
         }

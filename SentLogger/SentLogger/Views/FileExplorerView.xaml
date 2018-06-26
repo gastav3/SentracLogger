@@ -23,6 +23,7 @@
                 <ColumnDefinition Width="0.091666*"/>
             </Grid.ColumnDefinitions>
 
+            <!-- Shows the loaded list of data from saved data -->
             <Frame  Margin="0" Padding="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="9">
                 <StackLayout x:Name="DataStackLayout" HorizontalOptions="FillAndExpand" Padding="12.5">
                     <Label Text="   Data:" Font="Arial" FontSize="Small" FontAttributes="Bold" TextColor="#5D74A1"/>
@@ -43,6 +44,7 @@
                 </StackLayout>
             </Frame>
 
+            <!-- Save and load -->
             <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="9" HorizontalOptions="FillAndExpand" Padding="12.5">
                 <Grid.RowDefinitions TotalHight="0.7*">
                     <RowDefinition Height="*"/>
@@ -64,11 +66,6 @@
                     <ColumnDefinition Width="0.1258332*"/>
                 </Grid.ColumnDefinitions>
 
-                <!--<Label Text="   Name: " TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="0" Grid.Column="0"
-                    VerticalTextAlignment="Center"/>
-                <Entry Placeholder="File name" PlaceholderColor="#5D74A1" FontFamily="Arial" FontSize="Micro"
-                    Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" BackgroundColor="White" Margin="0,0,10,0"
-                    VerticalOptions="Center"/>-->
                 <Button Text="Load" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="2"
                     BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,10,0" BorderColor="Transparent"
                     Clicked="LoadButton_Clicked"/>
@@ -85,11 +82,6 @@
                     </Picker.ItemsSource>
                     <Picker.SelectedIndex>0</Picker.SelectedIndex>
                 </Picker>
-                <!--<Label Text="   Location: " TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="0"
-                    VerticalTextAlignment="Center"/>
-                <Entry Placeholder="C:\Users\JaneDoe\SentracLogger\Data" PlaceholderColor="#5D74A1" FontFamily="Arial"
-                    FontSize="Micro" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4"
-                    Margin="0,0,10,0" BackgroundColor="White"  VerticalOptions="Center"/>-->
                 <Button Text="Save" Font="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
                     BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,10,0" BorderColor="Transparent"
                     Clicked="SaveButton_Clicked"/>

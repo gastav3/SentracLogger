@@ -54,8 +54,8 @@
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.save.png}"
                     Aspect="AspectFit" Grid.Row="0" Grid.Column="8" Margin="2"/>
-                    <Button x:Name="GoToExplorerSaveButton" BackgroundColor="Transparent" Grid.Row="0"
-                    Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerSaveButton_Clicked"/>
+                    <Button x:Name="SaveActionButton" BackgroundColor="Transparent" Grid.Row="0"
+                    Grid.Column="8" BorderWidth="0" Clicked="SaveActionButton_Clicked"/>
 
                     <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True" Grid.Row="2"
                     Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="9">
@@ -143,8 +143,8 @@
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.save.png}"
                     Aspect="AspectFit" Grid.Row="0" Grid.Column="8" Margin="2"/>
-                    <Button x:Name="GoToExplorerSaveButton" BackgroundColor="Transparent" Grid.Row="0"
-                    Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerSaveButton_Clicked"/>
+                    <Button x:Name="SaveActionButton" BackgroundColor="Transparent" Grid.Row="0"
+                    Grid.Column="8" BorderWidth="0" Clicked="SaveActionButton_Clicked"/>
 
                     <Frame CornerRadius="12" Margin="0" Padding="0" IsClippedToBounds="True" Grid.Row="2"
                     Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="9">
@@ -232,8 +232,8 @@
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.save.png}"
                         Aspect="AspectFit" Grid.Row="0" Grid.Column="8" Margin="2"/>
-                    <Button x:Name="GoToExplorerSaveButton" BackgroundColor="Transparent" Grid.Row="0"
-                        Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerSaveButton_Clicked"/>
+                    <Button x:Name="SaveActionButton" BackgroundColor="Transparent" Grid.Row="0"
+                        Grid.Column="8" BorderWidth="0" Clicked="SaveActionButton_Clicked"/>
 
                     <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2"
                          Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="9" VerticalOptions="FillAndExpand">
@@ -352,8 +352,8 @@
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.save.png}"
                         Aspect="AspectFit" Grid.Row="0" Grid.Column="9" Margin="2"/>
-                    <Button x:Name="GoToExplorerSaveButton" BackgroundColor="Transparent" Grid.Row="0"
-                        Grid.Column="9" BorderWidth="0" Clicked="GoToExplorerSaveButton_Clicked"/>
+                    <Button x:Name="SaveActionButton" BackgroundColor="Transparent" Grid.Row="0"
+                        Grid.Column="9" BorderWidth="0" Clicked="SaveActionButton_Clicked"/>
 
                     <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2"
                          Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="10" VerticalOptions="FillAndExpand">
@@ -471,8 +471,8 @@
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.save.png}"
                         Aspect="AspectFit" Grid.Row="0" Grid.Column="8" Margin="2"/>
-                    <Button x:Name="GoToExplorerSaveButton" BackgroundColor="Transparent" Grid.Row="0"
-                        Grid.Column="8" BorderWidth="0" Clicked="GoToExplorerSaveButton_Clicked"/>
+                    <Button x:Name="SaveActionButton" BackgroundColor="Transparent" Grid.Row="0"
+                        Grid.Column="8" BorderWidth="0" Clicked="SaveActionButton_Clicked"/>
 
                     <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2"
                          Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="9" VerticalOptions="FillAndExpand">
