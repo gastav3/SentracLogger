@@ -80,7 +80,8 @@ namespace SentLogger.Views
             {
                 try
                 {
-                    sentracDataAccess.AddNewSentracSQLiteData();
+                    sentracDataAccess.SaveAllSQLData();
+                  
                 }
                 catch (Exception ex)
                 {

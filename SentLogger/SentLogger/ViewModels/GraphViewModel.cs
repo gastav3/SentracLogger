@@ -22,7 +22,6 @@ namespace SentLogger.ViewModels
     /// </summary>
     public class GraphViewModel : INotifyPropertyChanged
     {
-
         private Point dotSize = new Point(5.0, 5.0); // the dot size
 
         public int dotSelected; // used to get value from a speceific dot in the graph
@@ -54,8 +53,8 @@ namespace SentLogger.ViewModels
         private double leakPrecentage = 0.0;
         private double maxValue = 0.0;
 
-        private bool streamingPlay = false; 
-
+        private bool streamingPlay = false;
+        public ObservableCollection<Label> graphYValues = new ObservableCollection<Label>();
 
         //----------------UI-------------------
         /// <summary>
@@ -144,6 +143,24 @@ namespace SentLogger.ViewModels
             hasCreatedDot = true;
         }
 
+
+        public void DrawYValues()
+        {
+                Label label = new Label();
+                label.BackgroundColor = Color.Red;
+                label.HeightRequest = 100;
+                label.WidthRequest = 100;
+                label.Text = "heifdhuipfdsg";
+
+                double newPosY = (1f * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount())) + (GraphFrameSizeHeight - ((DotSize.Y * 4f) * GetZoomAmount()));
+
+                AbsoluteLayout.SetLayoutBounds(label, new Rectangle(5.0, newPosY, DotSize.X * GetZoomAmount(), DotSize.Y * GetZoomAmount()));
+                AbsoluteLayout.SetLayoutFlags(label, AbsoluteLayoutFlags.None);
+
+                Debug.WriteLine("WTFTFTFT");
+
+                graphYValues.Add(label);
+        }
 
         /// <summary>
         /// The method called by the update graph button
@@ -265,6 +282,9 @@ namespace SentLogger.ViewModels
             }
         }
 
+        /// <summary>
+        /// The amount that the graph should zoom, changed by the zoom slider.
+        /// </summary>
         public float ZoomAmount
         {
             get => this.zoomAmount;
@@ -520,6 +540,7 @@ namespace SentLogger.ViewModels
             {
                 return new Command(() =>
                 {
+                    DrawYValues();
                     UpdateUiElement(this, EventArgs.Empty);
                 });
             }

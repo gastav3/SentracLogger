@@ -38,7 +38,7 @@ namespace SentLogger.Resources
             TimeSpan time = new DateTime().TimeOfDay;
 
             double value = -1.0; // -1.0 to check if later
-            string acceptedString = ""; // maybe better name on this?
+            string resultString = ""; // maybe better name on this?
 
             if (DateTime.TryParse(splitContent[0], out DateTime dateValue)) { 
                 date = dateValue.Date;
@@ -56,15 +56,15 @@ namespace SentLogger.Resources
 
             try
             {
-                acceptedString = splitContent[3];
+                resultString = splitContent[3];
             }
             catch (IndexOutOfRangeException e)
             {
                 Debug.WriteLine(e.Message);
             }
 
-            if (date != null && time != null && value != -1.0 && acceptedString != null) {
-                DataDotObject newDot = new DataDotObject(date, time, value, acceptedString);
+            if (date != null && time != null && value != -1.0 && resultString != null) {
+                DataDotObject newDot = new DataDotObject(date, time, value, resultString);
                 return newDot;
             }
             return null;

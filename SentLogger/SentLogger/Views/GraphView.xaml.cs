@@ -30,12 +30,11 @@ namespace SentLogger.Views
 
             this.BindingContext = graphViewModel;
 
-            // EVENTS??
-            this.SizeChanged += graphViewModel.UpdateUiElement;
+            this.SizeChanged += graphViewModel.UpdateUiElement; // when the window size is changed, move the dots/values to their correct locations
             SliderZoom.ValueChanged += KeepScrollPosistion;
             AcceptedLineValueEntry.TextChanged += graphViewModel.UpdateAcceptedValueLine;
-            graphViewModel.GetGraphDotsList().CollectionChanged += DrawChangedDots;
-
+            graphViewModel.GetGraphDotsList().CollectionChanged += DrawChangedDots; // Called when a new dot/value is added to the graph list
+            graphViewModel.graphYValues.CollectionChanged += DrawYValueListChanged;
             DrawExistingDots();
         }
 
@@ -43,7 +42,7 @@ namespace SentLogger.Views
 
 
         /// <summary>
-        /// Draw dots already created
+        /// Draw dots already in the StaticValues.dotlist
         /// </summary>
         private void DrawExistingDots()
         {
@@ -59,6 +58,8 @@ namespace SentLogger.Views
         /// <summary>
         /// Add or remove the dots when the GetGraphDotsList() is changed
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void DrawChangedDots(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
@@ -81,8 +82,9 @@ namespace SentLogger.Views
         }
 
         /// <summary>
-        /// View for the GraphTab.
+        /// Draw a new dot to the ui graph and add a TapGesture to make the dots/values clickable.
         /// </summary>
+        /// <param name="dot"></param>
         public void DrawNewDot(GraphDot dot)
         {
             // Add the click funconality to the dots
@@ -93,16 +95,44 @@ namespace SentLogger.Views
 
                     graphViewModel.SelectDot(dot.Index, graphViewModel.dotSelected);
                     graphViewModel.dotSelected = dot.Index;
-
                 })
             });
             GraphDrawArea.Children.Add(dot.GraphicDot);
         }
 
+        /// <summary>
+        /// Update the y values when the list is containing the labels are changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void DrawYValueListChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (Label label in e.NewItems)
+                {
+                    if (label != null) {
+                          GraphDrawArea.Children.Add(label);
+                    }
+                }
+            }
+            if (e.OldItems != null)
+            {
+                foreach (Label label in e.OldItems)
+                {
+                    if (label != null)
+                    {
+                     //   GraphDrawArea.Children.Remove(label);
+                    }
+                }
+            }
+        }
 
         /// <summary>
-        /// View for the GraphTab.
+        /// Keep the scroll positon event
         /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void KeepScrollPosistion(object sender, EventArgs e) // maybe remove
         {
             double graphScrollXRatio = GraphScroller.ScrollX / GraphScroller.Width;
@@ -113,8 +143,11 @@ namespace SentLogger.Views
             GraphScroller.ScrollToAsync(GraphScroller.Width * graphScrollRatio.X, GraphScroller.Height * graphScrollRatio.Y, false);
         }
 
-        
-
+        /// <summary>
+        /// Play stop the streaming to the graph list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PlayStopButton_Clicked(object sender, EventArgs e)
         {
             var PlayButtonImage = this.FindByName<Image>("PlayButtonImage");

@@ -3,7 +3,7 @@ using Xamarin.Forms;
 using LocalDataAccess.UWP;
 using Windows.Storage;
 using System.IO;
-
+using System.Diagnostics;
 
 [assembly: Dependency(typeof(DatabaseConnection_UWP))]
 namespace LocalDataAccess.UWP
@@ -18,6 +18,7 @@ namespace LocalDataAccess.UWP
       var dbName = "SentracDb.db3";
       var path = Path.Combine(ApplicationData.
         Current.LocalFolder.Path, dbName);
+
       return new SQLiteConnection(path);
     }
   }

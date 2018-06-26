@@ -6,6 +6,8 @@ using System.Collections.ObjectModel;
 using System;
 using SentLogger.Resources;
 using SentLogger.Models;
+using SentLogger.Models.Extra;
+using System.Diagnostics;
 
 namespace LocalDataAccess
 
@@ -19,29 +21,55 @@ namespace LocalDataAccess
 
     public SentracDataAccess()
     {
-      database =
-        DependencyService.Get<IDatabaseConnection>().
-        DbConnection();
-      database.CreateTable<SentracSQLiteData>();
-      this.SentracData =
-        new ObservableCollection<SentracSQLiteData>(database.Table<SentracSQLiteData>());
-      // If the table is empty, initialize the collection
-      if (!database.Table<SentracSQLiteData>().Any())
+        database = DependencyService.Get<IDatabaseConnection>().DbConnection();
+        database.CreateTable<SentracSQLiteData>();
+        this.SentracData = new ObservableCollection<SentracSQLiteData>(database.Table<SentracSQLiteData>());
+
+            Debug.WriteLine("--------------------------");
+            Debug.WriteLine(database.DatabasePath);
+            Debug.WriteLine("--------------------------");
+
+            // If the table is empty, initialize the collection
+            if (!database.Table<SentracSQLiteData>().Any())
       {
      //   AddNewSentracSQLiteData();
       }
     }
 
+    private void AddDataFromDotListToSQLList()
+    {
+            foreach (var dot in StaticValues.dotList)
+            {
+                if (dot != null)
+                {
+                    AddNewSentracSQLiteData(dot);
+                }
+            }
+    }
+
+    public void SaveAllSQLData()
+    {
+            AddDataFromDotListToSQLList();
+
+            foreach (var data in this.SentracData)
+            {
+                if (data != null)
+                {
+                    SaveSentracSQLiteData(data);
+                }
+            }
+    }
     
-    public void AddNewSentracSQLiteData()
+    
+    public void AddNewSentracSQLiteData(DataDotObject dot)
     {
       this.SentracData.
       Add(new SentracSQLiteData
       {
-        Date = (DateTime.Now.Date),
-        Time = (DateTime.Now.TimeOfDay),
-        Value = 0.0,
-        Result = "Accept"
+        Date = dot.Date,
+        Time = dot.Time,
+        Value = dot.Value,
+        Result = dot.Result
       });
     }
 
