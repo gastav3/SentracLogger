@@ -29,15 +29,8 @@ namespace SentLogger.Views
     /// </summary>
     private void SaveDataFromCornerButton_Clicked()
     {
-      try
-      {
-        DependencyService.Get<ICsv>().SaveFile(); // Saves to .csv
         PopupNavigation.Instance.PopAsync(true); // Closes the Popup
-      }
-      catch (Exception ex)
-      {
-        Debug.WriteLine(ex.Message);
-      }
+        //DependencyService.Get<ICsv>().SaveFile(); // Saves to .csv - Crashes the program
     }
 
     /// <summary>
