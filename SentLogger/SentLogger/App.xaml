@@ -253,13 +253,13 @@
 
                     <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2"
                              Grid.Column="1" Grid.ColumnSpan="9" VerticalOptions="FillAndExpand">
-                        <Button Text="File Explorer" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                        <Button Text="File Explorer" StyleClass="buttonText" WidthRequest="15"
                            Clicked="FileExplorerTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
                            Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
-                        <Button Text="Graph" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                        <Button Text="Graph" StyleClass="buttonText" WidthRequest="15"
                            Clicked="GraphTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
                            Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
-                        <Button Text="Histogram" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                        <Button Text="Histogram" StyleClass="buttonText" WidthRequest="15"
                            Clicked="HistogramTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
                            Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
                     </StackLayout>
@@ -373,13 +373,13 @@
 
                     <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2"
                              Grid.Column="1" Grid.ColumnSpan="10" VerticalOptions="FillAndExpand">
-                        <Button Text="File Explorer" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                        <Button Text="File Explorer" StyleClass="buttonText" WidthRequest="15"
                            Clicked="FileExplorerTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
                            Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
-                        <Button Text="Graph" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                        <Button Text="Graph" StyleClass="buttonText" WidthRequest="15"
                            Clicked="GraphTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
                            Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
-                        <Button Text="Histogram" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                        <Button Text="Histogram" StyleClass="buttonText" WidthRequest="15"
                            Clicked="HistogramTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
                            Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
                     </StackLayout>
@@ -492,13 +492,13 @@
 
                     <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="2"
                              Grid.Column="1" Grid.ColumnSpan="9" VerticalOptions="FillAndExpand">
-                        <Button Text="File Explorer" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                        <Button Text="File Explorer" StyleClass="buttonText" WidthRequest="15"
                            Clicked="FileExplorerTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
                            Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
-                        <Button Text="Graph" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                        <Button Text="Graph" StyleClass="buttonText" WidthRequest="15"
                            Clicked="GraphTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
                            Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
-                        <Button Text="Histogram" TextColor="White" Font="Arial" FontSize="12" WidthRequest="15"
+                        <Button Text="Histogram" StyleClass="buttonText" WidthRequest="15"
                            Clicked="HistogramTabButton_Clicked" BackgroundColor="Transparent" BorderWidth="0"
                            Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="Fill"/>
                     </StackLayout>
@@ -563,23 +563,7 @@
                 <Setter Property="Text" Value="Histogram"/>
             </Style>-->
 
-            <!--<OnPlatform x:Key="NavigationLabelFontSize" x:TypeArguments="x:Double">
-                <On Platform="iOS">
-                    <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="14"/>
-                </On>
-                <On Platform="Android">
-                    <OnIdiom x:TypeArguments="x:Double" Phone="14" Tablet="16"/>
-                </On>
-                <On Platform="Windows">
-                    <OnIdiom x:TypeArguments="x:Double" Phone="14" Tablet="24"/>
-                </On>
-            </OnPlatform>
-
-            <Style x:Key="NavigationLabel" TargetType="Label">
-                <Setter Property="Font" Value="Arial"/>
-                <Setter Property="FontSize" Value="{StaticResource NavigationLabelFontSize}"/>
-                <Setter Property="TextColor" Value="White"/>
-            </Style>-->
+            <StyleSheetExtension Source="/Resources/ScalableStyle.css"/>
 
         </ResourceDictionary>
     </Application.Resources>
