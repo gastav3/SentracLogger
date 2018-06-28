@@ -95,7 +95,7 @@ namespace SentLogger.Views
                     TextDataList.Add(dot);
                     i++;
 
-                    await Task.Delay(50);
+                    await Task.Delay(25);
                 }
             }
             return i;
