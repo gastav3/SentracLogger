@@ -5,3 +5,21 @@
     font-size: medium;
     text-size-adjust: auto;
 }
+.labelTextWhite {
+    color: white;
+    font: arial;
+    font-size: medium;
+    text-size-adjust: auto;
+}
+.labelTextWhiteS {
+    color: white;
+    font: arial;
+    font-size: small;
+    text-size-adjust: auto;
+}
+.labelTextBlue {
+    color: #5D74A1;
+    font: arial;
+    font-size: small;
+    text-size-adjust: auto;
+}

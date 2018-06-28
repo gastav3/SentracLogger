@@ -68,9 +68,6 @@
     <Compile Update="Views\LoadSQLitePopup.xaml.cs">
       <DependentUpon>LoadSQLitePopup.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\SPopup.xaml.cs">
-      <DependentUpon>SPopup.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -94,9 +91,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SettingsView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

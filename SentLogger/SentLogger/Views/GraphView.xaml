@@ -85,26 +85,26 @@
                     <ColumnDefinition Width="0.20763865*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Reject Limit: " Font="Arial" FontSize="Small" TextColor="White" Grid.Row="0" Grid.Column="0"
+                <Label Text="Reject Limit: " StyleClass="labelTextWhite" Grid.Row="0" Grid.Column="0"
                     VerticalTextAlignment="Center" Margin="10,0,0,0"/>
                 <Entry x:Name="AcceptedLineValueEntry" Grid.Row="0" Grid.Column="1" BackgroundColor="White"
                     Text="{Binding MaxAcceptedLineValue, Mode=TwoWay}" FontSize="Small" TextColor="#5D74A1"
-                    Margin="10"/>
+                    Margin="10" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
 
                 <Button Text="Previous Value" Grid.Row="1" Grid.Column="0" Command="{Binding PreviousDotCommand}"
                     BackgroundColor="White" BorderColor="Transparent" Font="Arial" FontSize="Default" TextColor="#5D74A1"
-                    BorderWidth="0" Margin="10"/>
+                    BorderWidth="0" Margin="10" FontAttributes="Bold"/>
 
                 <Button Text="Next Value" Grid.Row="1" Grid.Column="1" Command="{Binding NextDotCommand}" BorderWidth="0"
                     BackgroundColor="White" BorderColor="Transparent" Font="Arial" FontSize="Default" TextColor="#5D74A1"
-                    Margin="10"/>
+                    Margin="10" FontAttributes="Bold"/>
 
                 <Button Text="Update" Grid.Row="2" Grid.Column="0" Command="{Binding UpdateUiCommand}" BorderWidth="0"
                     BackgroundColor="White" BorderColor="Transparent" Font="Arial" FontSize="Default" TextColor="#5D74A1"
-                    Margin="10"/>
+                    Margin="10" FontAttributes="Bold"/>
 
-                <Label Text="Stream: " TextColor="White" Font="Arial" FontSize="Small" VerticalTextAlignment="Center"
-                    Grid.Row="3" Grid.Column="0" Margin="10,0,0,0"/>
+                <Label Text="Stream: " StyleClass="labelTextWhite" VerticalTextAlignment="Center" Grid.Row="3"
+                    Grid.Column="0" Margin="10,0,0,0"/>
                 <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.play.png}" Aspect="AspectFit"
                     Grid.Row="3" Grid.Column="1" Margin="10" x:Name="PlayButtonImage" IsVisible="True"/>
                 <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.stop.png}" Aspect="AspectFit"
@@ -112,29 +112,26 @@
                 <Button BackgroundColor="Transparent" BorderColor="Transparent" Grid.Row="3" Grid.Column="1" BorderWidth="0"
                     Margin="10" Command="{Binding PlayStopButtonCommand}" Clicked="PlayStopButton_Clicked"/>
 
-                <Label Text="Total number of Values: " TextColor="White" Font="Arial" FontSize="Small"
-                    VerticalTextAlignment="Center" Grid.Row="4" Grid.Column="0" Margin="10,0,0,0"/>
-                <Label Text="{Binding NumberOfTests}" Font="Arial" FontSize="Small" TextColor="White"
-                    Margin="10,0,0,0" Grid.Row="4" Grid.Column="1" x:Name="TotalValues" VerticalTextAlignment="Center"
+                <Label Text="Total number of Values: " StyleClass="labelTextWhite" VerticalTextAlignment="Center"
+                    Grid.Row="4" Grid.Column="0" Margin="10,0,0,0"/>
+                <Label Text="{Binding NumberOfTests}" StyleClass="labelTextWhite" Margin="10,0,0,0" Grid.Row="4"
+                    Grid.Column="1" x:Name="TotalValues" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+
+                <Label Text="Number of Rejects: " StyleClass="labelTextWhite" VerticalTextAlignment="Center"
+                    Grid.Row="5" Grid.Column="0" Margin="10,0,0,0"/>
+                <Label Text="{Binding NumberOfRejects}" StyleClass="labelTextWhite" Margin="10,0,0,0" Grid.Row="5"
+                    Grid.Column="1" x:Name="NumOfRejects" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+
+                <Label Text="Reject Percentage: " StyleClass="labelTextWhite" VerticalTextAlignment="Center"
+                    Grid.Row="6" Grid.Column="0" Margin="10,0,0,0"/>
+                <Label Text="{Binding LeakPrecentage}" StyleClass="labelTextWhite" Margin="10,0,0,0" Grid.Row="6"
+                    Grid.Column="1" x:Name="RejectPercentage" VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Center"/>
 
-                <Label Text="Number of Rejects: " TextColor="White" Font="Arial" FontSize="Small"
-                    VerticalTextAlignment="Center" Grid.Row="5" Grid.Column="0" Margin="10,0,0,0"/>
-                <Label Text="{Binding NumberOfRejects}" Font="Arial" FontSize="Small" TextColor="White"
-                    Margin="10,0,0,0" Grid.Row="5" Grid.Column="1" x:Name="NumOfRejects" VerticalTextAlignment="Center"
-                    HorizontalTextAlignment="Center"/>
-                
-                <Label Text="Reject Percentage: " TextColor="White" Font="Arial" FontSize="Small"
-                    VerticalTextAlignment="Center" Grid.Row="6" Grid.Column="0" Margin="10,0,0,0"/>
-                <Label Text="{Binding LeakPrecentage}" Font="Arial" FontSize="Small" TextColor="White"
-                    Margin="10,0,0,0" Grid.Row="6" Grid.Column="1" x:Name="RejectPercentage" VerticalTextAlignment="Center"
-                    HorizontalTextAlignment="Center"/>
-
-                <Label Text="Max Value: " TextColor="White" Font="Arial" FontSize="Small"
-                    VerticalTextAlignment="Center" Grid.Row="7" Grid.Column="0" Margin="10,0,0,0"/>
-                <Label Text="{Binding MaxValue}" Font="Arial" FontSize="Small" TextColor="White"
-                    Margin="10,0,0,0" Grid.Row="7" Grid.Column="1" x:Name="MaxValue" VerticalTextAlignment="Center"
-                    HorizontalTextAlignment="Center"/>
+                <Label Text="Max Value: " StyleClass="labelTextWhite" VerticalTextAlignment="Center" Grid.Row="7"
+                    Grid.Column="0" Margin="10,0,0,0"/>
+                <Label Text="{Binding MaxValue}" StyleClass="labelTextWhite" Margin="10,0,0,0" Grid.Row="7"
+                    Grid.Column="1" x:Name="MaxValue" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
             </Grid>
         </Grid>
     </ContentPage.Content>

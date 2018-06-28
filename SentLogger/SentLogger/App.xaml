@@ -77,7 +77,7 @@
                     Rotation="180" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="5" Aspect="Fill"/>
 
                     <Label Text="Settings" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
-                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="7" Grid.Column="4"/>
+                        StyleClass="labelTextWhite" Grid.Row="7" Grid.Column="4"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.graphView.png}"
                         Aspect="AspectFit" Grid.Row="7" Grid.Column="5" Margin="7"/>
@@ -85,7 +85,7 @@
                         Clicked="GoToGraphButton_Clicked"/> 
 
                     <Label Text="Sentrac Logger" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
-                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="7" Grid.Column="6"/>
+                        StyleClass="labelTextWhite" Grid.Row="7" Grid.Column="6"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
                     Aspect="AspectFit" Grid.Row="7" Grid.Column="8" Margin="2"/>
@@ -166,7 +166,7 @@
                     Rotation="180" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="5" Aspect="Fill"/>
 
                     <Label Text="Help" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
-                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="7" Grid.Column="4"/>
+                        StyleClass="labelTextWhite" Grid.Row="7" Grid.Column="4"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.graphView.png}"
                         Aspect="AspectFit" Grid.Row="7" Grid.Column="5" Margin="7"/>
@@ -174,7 +174,7 @@
                         Clicked="GoToGraphButton_Clicked"/>
 
                     <Label Text="Sentrac Logger" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
-                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="7" Grid.Column="6"/>
+                        StyleClass="labelTextWhite" Grid.Row="7" Grid.Column="6"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
                     Aspect="AspectFit" Grid.Row="7" Grid.Column="8" Margin="2"/>
@@ -284,7 +284,7 @@
                         Rotation="180" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="5" Aspect="Fill"/>
 
                     <Label Text="File Explorer" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
-                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="4"/>
+                        StyleClass="labelTextWhite" Grid.Row="8" Grid.Column="4"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.graphView.png}"
                         Aspect="AspectFit" Grid.Row="8" Grid.Column="5" Margin="7"/>
@@ -292,7 +292,7 @@
                         Clicked="GoToGraphButton_Clicked"/>
 
                     <Label Text="Sentrac Logger" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
-                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="6"/>
+                        StyleClass="labelTextWhite" Grid.Row="8" Grid.Column="6"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
                         Aspect="AspectFit" Grid.Row="8" Grid.Column="8" Margin="2"/>
@@ -404,7 +404,7 @@
                         Rotation="180" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="6" Aspect="Fill"/>
 
                     <Label Text="Graph" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
-                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="4"/>
+                        StyleClass="labelTextWhite" Grid.Row="8" Grid.Column="4"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.graphView.png}"
                         Aspect="AspectFit" Grid.Row="8" Grid.Column="5" Margin="7"/>
@@ -412,7 +412,7 @@
                         Clicked="GoToGraphButton_Clicked"/>
 
                     <Label Text="Sentrac Logger" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
-                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="6" Grid.ColumnSpan="2"/>
+                        StyleClass="labelTextWhite" Grid.Row="8" Grid.Column="6" Grid.ColumnSpan="2"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
                         Aspect="AspectFit" Grid.Row="8" Grid.Column="9" Margin="2"/>
@@ -523,7 +523,7 @@
                         Rotation="180" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="5" Aspect="Fill"/>
 
                     <Label Text="Histogram" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
-                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="4"/>
+                        StyleClass="labelTextWhite" Grid.Row="8" Grid.Column="4"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.graphView.png}"
                         Aspect="AspectFit" Grid.Row="8" Grid.Column="5" Margin="7"/>
@@ -531,7 +531,7 @@
                         Clicked="GoToGraphButton_Clicked"/>
 
                     <Label Text="Sentrac Logger" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
-                        FontSize="Small" Font="Arial" TextColor="White" Grid.Row="8" Grid.Column="6"/>
+                        StyleClass="labelTextWhite" Grid.Row="8" Grid.Column="6"/>
 
                     <Image Source="{local:ImageResourceExtension SentLogger.Resources.Images.load.png}"
                         Aspect="AspectFit" Grid.Row="8" Grid.Column="8" Margin="2"/>

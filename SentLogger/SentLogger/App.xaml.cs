@@ -59,7 +59,7 @@ namespace SentLogger
     /// </summary>
     private void SaveActionButton_Clicked(object sender, EventArgs e)
     {
-      PopupNavigation.Instance.PushAsync(new Views.SPopup());
+      //TODO - Insert code for Windows fileExplorer view...
     }
 
     /// <summary>
