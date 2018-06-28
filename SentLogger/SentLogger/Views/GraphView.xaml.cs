@@ -34,15 +34,18 @@ namespace SentLogger.Views
             SliderZoom.ValueChanged += KeepScrollPosistion;
             AcceptedLineValueEntry.TextChanged += graphViewModel.UpdateAcceptedValueLine;
             graphViewModel.GetGraphDotsList().CollectionChanged += DrawChangedDots; // Called when a new dot/value is added to the graph list
-            graphViewModel.graphYValues.CollectionChanged += DrawYValueListChanged;
+            StaticValues.graphYValues.CollectionChanged += DrawYValueListChanged;
+            GraphScroller.Scrolled += GraphYValuesFollowScroll;
+
             DrawExistingDots();
+            DrawExistingYValues();
         }
 
         // -----------------------DRAW--------------------------------
 
 
         /// <summary>
-        /// Draw dots already in the StaticValues.dotlist
+        /// Draw dots already in the StaticValues.dotlist when creating view
         /// </summary>
         private void DrawExistingDots()
         {
@@ -51,6 +54,21 @@ namespace SentLogger.Views
                 if (dot.GraphicDot != null)
                 {
                     DrawNewDot(dot);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Draw the generated y values when creating the view
+        /// </summary>
+        private void DrawExistingYValues()
+        {
+            foreach (GraphYValues yValue in StaticValues.graphYValues)
+            {
+                if (yValue.LabelObject != null)
+                {
+                    GraphDrawArea.Children.Add(yValue.LabelObject);
+                    GraphDrawArea.Children.Add(yValue.Line);
                 }
             }
         }
@@ -101,30 +119,45 @@ namespace SentLogger.Views
         }
 
         /// <summary>
-        /// Update the y values when the list is containing the labels are changed
-        /// </summary>
+        /// When the list containing yValues is changed the values should be removed or added.
+        /// </summary> 
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public void DrawYValueListChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
             {
-                foreach (Label label in e.NewItems)
+                foreach (GraphYValues YValue in e.NewItems)
                 {
-                    if (label != null) {
-                          GraphDrawArea.Children.Add(label);
+                    if (YValue != null && GraphDrawArea != null) {
+                        GraphDrawArea.Children.Add(YValue.LabelObject);
+                        GraphDrawArea.Children.Add(YValue.Line);
                     }
                 }
             }
             if (e.OldItems != null)
             {
-                foreach (Label label in e.OldItems)
+                foreach (GraphYValues YValue in e.OldItems)
                 {
-                    if (label != null)
+                    if (YValue != null && GraphDrawArea != null)
                     {
-                     //   GraphDrawArea.Children.Remove(label);
+                        GraphDrawArea.Children.Remove(YValue.LabelObject);
+                        GraphDrawArea.Children.Remove(YValue.Line);
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Graph Y values are following the scrolling of the graph. to be able to see the y values.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GraphYValuesFollowScroll(object sender, EventArgs e)
+        {
+            foreach (GraphYValues yValue in StaticValues.graphYValues)
+            {
+                AbsoluteLayout.SetLayoutBounds(yValue.LabelObject, new Rectangle(GraphScroller.ScrollX, yValue.LabelObject.Y, yValue.LabelObject.Width, yValue.LabelObject.Height));
             }
         }
 

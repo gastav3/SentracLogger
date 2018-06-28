@@ -50,7 +50,7 @@ namespace SentLogger.Resources
 
         public static bool IsWindows()
         {
-           if( String.Equals( CrossDeviceInfo.Current.Platform.ToString(), Platform.Windows.ToString() ) )
+           if( String.Equals( CrossDeviceInfo.Current.Platform.ToString(), Platform.Windows.ToString()))
             {
                 return true;
             }

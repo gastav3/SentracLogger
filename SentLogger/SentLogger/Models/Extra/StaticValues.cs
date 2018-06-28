@@ -10,9 +10,9 @@ namespace SentLogger.Models.Extra
     {
         public static List<DataDotObject> dotList = new List<DataDotObject>();
         public static ObservableCollection<GraphDot> graphDots = new ObservableCollection<GraphDot>();
+        public static ObservableCollection<GraphYValues> graphYValues = new ObservableCollection<GraphYValues>();
 
         public static string SelectedPort { get; set; }
         public static GraphViewModel graphViewModel = new GraphViewModel();
-
     }
 }

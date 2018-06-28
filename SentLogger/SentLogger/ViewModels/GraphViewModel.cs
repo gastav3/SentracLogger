@@ -54,7 +54,6 @@ namespace SentLogger.ViewModels
         private double maxValue = 0.0;
 
         private bool streamingPlay = false;
-        public ObservableCollection<Label> graphYValues = new ObservableCollection<Label>();
 
         //----------------UI-------------------
         /// <summary>
@@ -65,6 +64,7 @@ namespace SentLogger.ViewModels
             if (!Extras.IsTaskRunning(updateUITask))
             {
                RunUpdateUITask(); // maybe await this?
+               UpdateYValues();
             }
 
             UpdateAcceptedValueLine(this, EventArgs.Empty);
@@ -143,23 +143,81 @@ namespace SentLogger.ViewModels
             hasCreatedDot = true;
         }
 
+        /// <summary>
+        /// Update the positons of the Y Values.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<int> UpdateYValues()
+        {
+            int i = 0;
+            foreach (GraphYValues yValue in StaticValues.graphYValues)
+            {
+                if (yValue != null) {
 
+                    yValue.LabelObject.FontSize = 12 * Extras.Clamp((((GraphFrameSizeWidth - graphFrameSizeOffsetX) / windowStartSizeX) * frozenZoomUpdate),0.1, 1.333);
+
+                    double newPosX = (yValue.StartPoint.X * (((GraphFrameSizeWidth - graphFrameSizeOffsetX) / windowStartSizeX) * frozenZoomUpdate));
+                    double newPosY = ((yValue.StartPoint.Y * DotSize.Y) * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount())) + (GraphFrameSizeHeight - ((DotSize.Y * 4f) * GetZoomAmount()));
+
+                    AbsoluteLayout.SetLayoutBounds(yValue.LabelObject, new Rectangle(0, newPosY, (DotSize.X*5f) * frozenZoomUpdate, (DotSize.Y*4f) * frozenZoomUpdate));
+                    AbsoluteLayout.SetLayoutBounds(yValue.Line, new Rectangle(0, newPosY, GraphFrameSizeWidth * frozenZoomUpdate, 1.0 * frozenZoomUpdate));
+                    i++;
+                    await Task.Delay(1);
+                }
+            }
+            return i;
+        }
+
+        /// <summary>
+        /// Count how many Y values can fit inside the graph and return the number.
+        /// </summary>
+        /// <returns></returns>
+        private int CreateHowManyYValues()
+        {
+           int amt = (int)GraphFrameSizeHeight / (int)((DotSize.Y * 3f) * GetZoomAmount());
+            return amt;
+        }
+
+        /// <summary>
+        /// Create and draw the Y values on the graph
+        /// </summary>
         public void DrawYValues()
         {
-                Label label = new Label();
-                label.BackgroundColor = Color.Red;
-                label.HeightRequest = 100;
-                label.WidthRequest = 100;
-                label.Text = "heifdhuipfdsg";
+                SetWindowStartSize();
 
-                double newPosY = (1f * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount())) + (GraphFrameSizeHeight - ((DotSize.Y * 4f) * GetZoomAmount()));
+                for (int i = 0; i < CreateHowManyYValues(); i++)
+                {
+                    Label label = new Label
+                    {
+                        BackgroundColor = Color.Transparent,
+                        FontAttributes = FontAttributes.Bold,
+                        FontSize = 12 * Extras.Clamp((((GraphFrameSizeWidth - graphFrameSizeOffsetX) / windowStartSizeX) * GetZoomAmount()), 0.1, 1.333)
+            };
 
-                AbsoluteLayout.SetLayoutBounds(label, new Rectangle(5.0, newPosY, DotSize.X * GetZoomAmount(), DotSize.Y * GetZoomAmount()));
-                AbsoluteLayout.SetLayoutFlags(label, AbsoluteLayoutFlags.None);
+                    BoxView line = new BoxView
+                    {
+                        BackgroundColor = Color.LightGray,
+                    };
 
-                Debug.WriteLine("WTFTFTFT");
+                    GraphYValues YValue = new GraphYValues(new Point(0.0, -((i + 1) * 2.0)), label, (i / 20f) * 2f, line);
+                     label.Text = Math.Round(YValue.Value, 2).ToString("0.00");
 
-                graphYValues.Add(label);
+                double newPosY = ((YValue.StartPoint.Y * DotSize.Y) * (((GraphFrameSizeHeight - graphFrameSizeOffsetY) / windowStartSizeY) * GetZoomAmount())) + (GraphFrameSizeHeight - ((DotSize.Y * 4f) * GetZoomAmount()));
+
+                    AbsoluteLayout.SetLayoutBounds(label, new Rectangle(0, newPosY, (DotSize.X * 5f) * GetZoomAmount(), (DotSize.Y * 3.5f) * GetZoomAmount()));
+                    AbsoluteLayout.SetLayoutFlags(label, AbsoluteLayoutFlags.None);
+
+                    AbsoluteLayout.SetLayoutBounds(line, new Rectangle(0, newPosY, GraphFrameSizeWidth * GetZoomAmount(), 1.0 * GetZoomAmount()));
+                    AbsoluteLayout.SetLayoutFlags(line, AbsoluteLayoutFlags.None);
+
+                try
+                {
+                    StaticValues.graphYValues.Add(YValue);
+                }
+                catch(Exception e) {
+                    Debug.WriteLine(e.Message + "\nCould not add new Y value to [StaticValues.graphYValues]");
+                }
+            }
         }
 
         /// <summary>
@@ -461,7 +519,14 @@ namespace SentLogger.ViewModels
         /// </summary>
         public void AddNewDot(double y, double value)
         {
-            AddNewDotToGraphList(new Point(((1 + GetGraphDotsList().Count) * dotIntervalX), -y), value); // -pos.Y to reverse to fit graph
+            if (!hasCreatedDot)
+            {
+                AddNewDotToGraphList(new Point(((1 + GetGraphDotsList().Count) * (dotIntervalX)*3f), -y), value); // -pos.Y to reverse to fit graph
+            }
+            else
+            {
+                AddNewDotToGraphList(new Point(((1 + GetGraphDotsList().Count) * dotIntervalX), -y), value); // -pos.Y to reverse to fit graph
+            }
         }
 
         /// <summary>
@@ -470,7 +535,7 @@ namespace SentLogger.ViewModels
         /// </summary>
         private void ShouldDotChangeColor(GraphDot dot, double value)
         {
-            if (dot.Value <= value)
+            if (dot.Value < value)
             {
                 dot.GraphicDot.Color = Color.Green;
             }
@@ -520,6 +585,16 @@ namespace SentLogger.ViewModels
             StreamingPlay = false; // stop streaming data
             GetGraphDotsList().Clear(); // clear the list that contains all the drawn dots/values
 
+            StaticValues.graphYValues.Clear();
+            try
+            {
+                DrawYValues(); // Crashes if GraphView is the first page to be opend when program starts.
+            }
+            catch (NullReferenceException e)
+            {
+                Debug.WriteLine(e.Message);
+            }
+
             foreach (DataDotObject dot in StaticValues.dotList) // Add all existing dots to the graph - Maybe should make this async...
             {
                 if (dot != null)
@@ -540,7 +615,6 @@ namespace SentLogger.ViewModels
             {
                 return new Command(() =>
                 {
-                    DrawYValues();
                     UpdateUiElement(this, EventArgs.Empty);
                 });
             }

@@ -30,7 +30,7 @@ namespace SentLogger.Views
     /// Loadbutton in the popup that shows up when loadbutton in FileExplorer is clicked while set in SQLite format
     /// </summary>
     /// <param name="date">In parameter from popup for loadbutton in FileExplorer to be able to locate data to load</param>
-    private void LoadSQLiteDataButton_Clicked(DateTime date)
+    private void LoadSQLiteDataButton_Clicked()
     {
       try
       {

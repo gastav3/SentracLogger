@@ -43,17 +43,24 @@ namespace SentLogger.Resources.Data
 
         public async void SaveFile()
         {
-            DataTranslator translator = new DataTranslator();
-
-            FileSavePicker savePicker = new FileSavePicker();
-            savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
-            savePicker.FileTypeChoices.Add("CSV", new List<string>() { ".csv" });
-            savePicker.SuggestedFileName = "Sentrac Data";
-
-            StorageFile file = await savePicker.PickSaveFileAsync();
-            if (file != null)
+            try
             {
-                WriteToFile(file, translator.DataDotObjectsToDataTable(StaticValues.dotList));
+                DataTranslator translator = new DataTranslator();
+
+                FileSavePicker savePicker = new FileSavePicker();
+                savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+                savePicker.FileTypeChoices.Add("CSV", new List<string>() { ".csv" });
+                savePicker.SuggestedFileName = "Sentrac_Data";
+
+                StorageFile file = await savePicker.PickSaveFileAsync();
+                if (file != null)
+                {
+                    WriteToFile(file, translator.DataDotObjectsToDataTable(StaticValues.dotList));
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
             }
         }
 

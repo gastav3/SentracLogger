@@ -53,7 +53,7 @@ namespace SentLogger.Views
             }
             else if (FormatPicker.SelectedIndex == 1)
             {
-                await PopupNavigation.Instance.PushAsync(new LoadSQLitePopup());
+                    await PopupNavigation.Instance.PushAsync(new LoadSQLitePopup());
             }
         }
         
