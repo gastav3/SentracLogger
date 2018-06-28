@@ -93,6 +93,7 @@ namespace SentLogger.Views
 
         private void Button_Clicked_Test_Connection(object sender, EventArgs e)
         {
+            // TODO - Not yet connected
         }
     }
 }

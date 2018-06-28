@@ -57,7 +57,7 @@ namespace SentLogger
     /// <summary>
     /// Upper right corner save button (saves current data (in the graph) from any screen in .csv format)
     /// </summary>
-    private void SaveActionButton_Clicked(object sender, EventArgs e)
+    private void SaveCornerButton_Clicked(object sender, EventArgs e)
     {
             try
             {
