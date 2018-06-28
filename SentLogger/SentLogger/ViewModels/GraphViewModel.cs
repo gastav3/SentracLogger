@@ -185,10 +185,11 @@ namespace SentLogger.ViewModels
         {
                 SetWindowStartSize();
 
-                for (int i = 0; i < CreateHowManyYValues(); i++)
+            for (int i = 0; i < CreateHowManyYValues(); i++)
                 {
-                    Label label = new Label
-                    {
+                Label label = new Label
+                {
+                        TextColor = Color.FromHex("#5D74A1"),
                         BackgroundColor = Color.Transparent,
                         FontAttributes = FontAttributes.Bold,
                         FontSize = 12 * Extras.Clamp((((GraphFrameSizeWidth - graphFrameSizeOffsetX) / windowStartSizeX) * GetZoomAmount()), 0.1, 1.333)

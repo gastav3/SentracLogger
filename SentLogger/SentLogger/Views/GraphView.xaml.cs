@@ -21,6 +21,9 @@ namespace SentLogger.Views
     {
         private GraphViewModel graphViewModel; // the viewmodel class
 
+        /// <summary>
+        /// Initializes the GraphView and draws the existing dots
+        /// </summary>
         public GraphView()
         {
             InitializeComponent();
@@ -166,7 +169,7 @@ namespace SentLogger.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void KeepScrollPosistion(object sender, EventArgs e) // maybe remove
+        private void KeepScrollPosistion(object sender, EventArgs e)
         {
             double graphScrollXRatio = GraphScroller.ScrollX / GraphScroller.Width;
             double graphScrollYRatio = GraphScroller.ScrollY / GraphScroller.Height;

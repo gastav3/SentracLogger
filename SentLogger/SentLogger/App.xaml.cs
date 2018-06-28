@@ -59,8 +59,15 @@ namespace SentLogger
     /// </summary>
     private void SaveCornerButton_Clicked(object sender, EventArgs e)
     {
-      //TODO - Insert code for Windows fileExplorer view...
-    }
+            try
+            {
+                DependencyService.Get<ICsv>().SaveFile();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
 
     /// <summary>
     /// Time and date on press button
