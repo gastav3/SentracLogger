@@ -23,17 +23,14 @@ namespace SentLogger.Views
 
         public SettingsView ()
 		    {
-			      InitializeComponent ();
+			InitializeComponent ();
 
             settingsViewModel = new SettingsViewModel();
             this.BindingContext = settingsViewModel;
 
             portPicker.SelectedIndexChanged += (sender, args) =>
             {
-                if (portPicker.SelectedIndex == -1)
-                {
-                }
-                else
+                if (portPicker.SelectedIndex != -1)
                 {
                     string name = portPicker.Items[portPicker.SelectedIndex];
                     settingsViewModel.SelectedPort = name;
@@ -41,6 +38,11 @@ namespace SentLogger.Views
             };
         }
 
+        /// <summary>
+        /// Loads all ports aviable when focusing on the port dropdown
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void portPicker_Focused(object sender, FocusEventArgs e)
         {
             foreach (ComPort p in DependencyService.Get<IUsbConnectionSerialPort>().GetPorts())
@@ -52,6 +54,11 @@ namespace SentLogger.Views
             }          
         }
 
+        /// <summary>
+        /// Selects the port choosen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void portPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -65,6 +72,13 @@ namespace SentLogger.Views
             }
         }
 
+        /// <summary>
+        /// Check if there are dupes in the port list
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="id"></param>
+        /// <param name="ports"></param>
+        /// <returns></returns>
         private bool CheckListForNameAndId(string name, string id, ObservableCollection<ComPort> ports)
         {
             foreach (ComPort p in ports)
@@ -79,7 +93,6 @@ namespace SentLogger.Views
 
         private void Button_Clicked_Test_Connection(object sender, EventArgs e)
         {
-
         }
     }
 }

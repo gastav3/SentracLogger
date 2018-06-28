@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SentLogger.ViewModels
 {
-    class HistogramViewModel
+   public class HistogramViewModel
     {
     }
 }

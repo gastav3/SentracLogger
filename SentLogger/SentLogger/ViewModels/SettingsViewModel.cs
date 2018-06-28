@@ -30,6 +30,9 @@ namespace SentLogger.ViewModels
             }
         }
 
+        /// <summary>
+        /// Selects the port to be used
+        /// </summary>
         public string SelectedPort
         {
             get => this.selectedPort;
@@ -46,6 +49,11 @@ namespace SentLogger.ViewModels
             }
         }
 
+        /// <summary>
+        /// Looks through all ports loaded and find the id of a port by its name.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         private string FindCorrectPortIdByName(string name)
         {
             foreach(ComPort port in Ports)

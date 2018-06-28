@@ -11,6 +11,11 @@ namespace SentLogger.Resources
     public class DataTranslator
     {
 
+        /// <summary>
+        /// Converts DataDotObjects into DataTable
+        /// </summary>
+        /// <param name="objs"></param>
+        /// <returns></returns>
         public DataTable DataDotObjectsToDataTable(List<DataDotObject> objs)
         {
             //Create Table
@@ -29,6 +34,11 @@ namespace SentLogger.Resources
             return data;
         }
 
+        /// <summary>
+        /// Creates a DataDotObject from string read from sentrac
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public DataDotObject TranslateIntoOneDot(string s)
         {
             string sep = "\t"; // split between the tabs
@@ -70,6 +80,11 @@ namespace SentLogger.Resources
             return null;
         }
 
+        /// <summary>
+        /// Converts a list of strings into DataDotObjects
+        /// </summary>
+        /// <param name="stringList"></param>
+        /// <returns></returns>
         public List<DataDotObject> TranslateListIntoDots(List<String> stringList)
         {
             List<DataDotObject> tempList = new List<DataDotObject>();

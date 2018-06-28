@@ -36,7 +36,8 @@
                     HorizontalTextAlignment="Start"/>
             </StackLayout>
 
-            <Label Text="Leak size (g/yr)" StyleClass="labelTextBlue" HorizontalOptions="CenterAndExpand"
+
+                <Label Text="Leak size (g/yr)" StyleClass="labelTextBlue" HorizontalOptions="CenterAndExpand"
                 VerticalOptions="End" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="7"/>
 
             <Switch BackgroundColor="#5D74A1" Grid.Row="5" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"
