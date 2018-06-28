@@ -10,7 +10,8 @@
             <Grid.RowDefinitions TotalHeight="0.632*">
                 <RowDefinition Height="0.0125*"/>
                 <RowDefinition Height="0.05*"/>
-                <RowDefinition Height="0.405*"/>
+                <RowDefinition Height="0.370*"/>
+                <RowDefinition Height="0.035*"/>
                 <RowDefinition Height="0.0125*"/>
                 <RowDefinition Height="0.0125*"/>
                 <RowDefinition Height="0.08225*"/>
@@ -29,40 +30,40 @@
                 <ColumnDefinition Width="0.0125*"/>
             </Grid.ColumnDefinitions>
 
-            <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="1" Grid.RowSpan="2"
-                 Grid.Column="1" Grid.ColumnSpan="2">
+            <StackLayout Orientation="Horizontal" Margin="0" Padding="0" Grid.Row="1" Grid.RowSpan="3"
+                 Grid.Column="1" Grid.ColumnSpan="3">
                 <Label Text="Number of leaks" StyleClass="labelTextBlue" Margin="0" LineBreakMode="NoWrap"
                     Rotation="90" VerticalTextAlignment="Start" HorizontalOptions="Start" VerticalOptions="Center"
                     HorizontalTextAlignment="Start"/>
             </StackLayout>
 
             <Label Text="Leak size (g/yr)" StyleClass="labelTextBlue" HorizontalOptions="CenterAndExpand"
-                VerticalOptions="End" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="7"/>
+                VerticalOptions="End" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="7"/>
 
-            <Switch BackgroundColor="#5D74A1" Grid.Row="5" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"
+            <Switch BackgroundColor="#5D74A1" Grid.Row="6" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"
                 VerticalOptions="Center" HorizontalOptions="End" OnColor="White"/>
-            <Label Text="   Repeatability / C Index " StyleClass="labelTextWhiteS" Grid.Row="5" Grid.RowSpan="2"
+            <Label Text="   Repeatability / C Index " StyleClass="labelTextWhiteS" Grid.Row="6" Grid.RowSpan="2"
                 Grid.Column="3" Grid.ColumnSpan="2" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
 
-            <Label Text="Total number of Tests: " StyleClass="labelTextWhiteS" Grid.Row="5" Grid.Column="5"
-                VerticalTextAlignment="Center" Margin="15,0,0,0"/>
-            <Entry FontFamily="Arial" FontSize="Micro" TextColor="#5D74A1" BackgroundColor="White" VerticalOptions="Center"
-                HorizontalTextAlignment="Center" Grid.Row="5" Grid.Column="6" Margin="10,0,10,0"/>
-
-            <Label Text="Average Value: " StyleClass="labelTextWhiteS" Grid.Row="6" Grid.Column="5"
+            <Label Text="Total number of Tests: " StyleClass="labelTextWhiteS" Grid.Row="6" Grid.Column="5"
                 VerticalTextAlignment="Center" Margin="15,0,0,0"/>
             <Entry FontFamily="Arial" FontSize="Micro" TextColor="#5D74A1" BackgroundColor="White" VerticalOptions="Center"
                 HorizontalTextAlignment="Center" Grid.Row="6" Grid.Column="6" Margin="10,0,10,0"/>
 
-            <Label Text="       Max Value: " StyleClass="labelTextWhiteS" Grid.Row="5" Grid.Column="7"
-                VerticalTextAlignment="Center" Margin="20,0,0,0"/>
+            <Label Text="Average Value: " StyleClass="labelTextWhiteS" Grid.Row="7" Grid.Column="5"
+                VerticalTextAlignment="Center" Margin="15,0,0,0"/>
             <Entry FontFamily="Arial" FontSize="Micro" TextColor="#5D74A1" BackgroundColor="White" VerticalOptions="Center"
-                HorizontalTextAlignment="Center" Grid.Row="5" Grid.Column="8" Margin="10,0,10,0"/>
+                HorizontalTextAlignment="Center" Grid.Row="7" Grid.Column="6" Margin="10,0,10,0"/>
 
-            <Label Text="       Min Value: " StyleClass="labelTextWhiteS" Grid.Row="6" Grid.Column="7"
+            <Label Text="       Max Value: " StyleClass="labelTextWhiteS" Grid.Row="6" Grid.Column="7"
                 VerticalTextAlignment="Center" Margin="20,0,0,0"/>
             <Entry FontFamily="Arial" FontSize="Micro" TextColor="#5D74A1" BackgroundColor="White" VerticalOptions="Center"
                 HorizontalTextAlignment="Center" Grid.Row="6" Grid.Column="8" Margin="10,0,10,0"/>
+
+            <Label Text="       Min Value: " StyleClass="labelTextWhiteS" Grid.Row="7" Grid.Column="7"
+                VerticalTextAlignment="Center" Margin="20,0,0,0"/>
+            <Entry FontFamily="Arial" FontSize="Micro" TextColor="#5D74A1" BackgroundColor="White" VerticalOptions="Center"
+                HorizontalTextAlignment="Center" Grid.Row="7" Grid.Column="8" Margin="10,0,10,0"/>
 
         </Grid>
     </ContentPage.Content>

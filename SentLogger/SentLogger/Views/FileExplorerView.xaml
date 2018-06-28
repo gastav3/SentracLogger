@@ -26,7 +26,7 @@
             <!-- Shows the loaded list of data from saved data -->
             <Frame  Margin="0" Padding="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="9">
                 <StackLayout x:Name="DataStackLayout" HorizontalOptions="FillAndExpand" Padding="12.5">
-                    <Label Text="   Data:" Font="Arial" FontSize="Small" FontAttributes="Bold" TextColor="#5D74A1"/>
+                    <Label Text="   Data:" StyleClass="labelTextBlue" FontAttributes="Bold"/>
                     <ListView x:Name="SentracDataView">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -66,23 +66,23 @@
                     <ColumnDefinition Width="0.1258332*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Text="Load" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="2"
+                <Button Text="Load" Font="Arial" FontSize="Default" Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="2"
                     BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,10,0" BorderColor="Transparent"
                     Clicked="LoadButton_Clicked"/>
-                <Label Text="   Format: " TextColor="White" Font="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="0"
+                <Label Text="   Format: " StyleClass="labelTextWhiteS" Grid.Row="1" Grid.Column="0"
                     VerticalTextAlignment="Center"/>
-                <Picker FontFamily="Arial" FontSize="Micro" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4"
+                <Picker FontFamily="Arial" FontSize="Small" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4"
                     TextColor="#5D74A1" BackgroundColor="White" Margin="0,0,10,0" x:Name="FormatPicker">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>.csv</x:String>
                             <x:String>SQLite</x:String>
-                            <x:String>MySQL database</x:String>
+                            <!--<x:String>MySQL database</x:String>     Not yet Fixed!-->
                         </x:Array>
                     </Picker.ItemsSource>
                     <Picker.SelectedIndex>0</Picker.SelectedIndex>
                 </Picker>
-                <Button Text="Save" Font="Arial" FontSize="Micro" Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
+                <Button Text="Save" Font="Arial" FontSize="Default" Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2"
                     BackgroundColor="#A3B8DD" TextColor="White" Margin="10,0,10,0" BorderColor="Transparent"
                     Clicked="SaveButton_Clicked"/>
             </Grid>

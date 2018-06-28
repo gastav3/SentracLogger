@@ -23,23 +23,20 @@
             </Grid.ColumnDefinitions>
 
             <StackLayout Margin="0" Padding="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7">
-                <Label Text="   FAQ:" Font="Arial" FontSize="Small" Margin="10,10,0,0" TextColor="#5D74A1"
+                <Label Text="   FAQ:" StyleClass="labelTextBlue" Margin="10,10,0,0" FontAttributes="Bold"/>
+                <Label Text="       Q: Something doesn't work as it's supposed to..." StyleClass="labelTextBlue"
+                    Margin="10,5,0,0"/>
+                <Label Text="       A: Restart the app and try again." StyleClass="labelTextBlue" Margin="10,5,0,0"/>
+                <Label Text="   Required settings for Sentrac: " StyleClass="labelTextBlue" Margin="10,10,0,0"
                     FontAttributes="Bold"/>
-                <Label Text="   Q: Something doesn't work as it's supposed to..." Font="Arial" FontSize="Small"
-                    Margin="10,5,0,0" TextColor="#5D74A1"/>
-                <Label Text="   A: Restart the app and try again." Font="Arial" FontSize="Small" Margin="10,5,0,0"
-                    TextColor="#5D74A1"/>
-                <Label Text="   Required settings for Sentrac: " Font="Arial" FontSize="Small" Margin="10,5,0,0"
-                    TextColor="#5D74A1" FontAttributes="Bold"/>
-                <Label Text="   Enter Settings/Communication on Sentrac: Check - Time, Measure, Date and Result for proper function of the graph."
-                    Font="Arial" FontSize="Small" Margin="10,5,0,0" TextColor="#5D74A1"/>
-                <Label Text="   Prefered Print Setting: Probe Button." Font="Arial" FontSize="Small" Margin="10,5,0,0"
-                    TextColor="#5D74A1"/>
+                <Label Text="       Enter Settings/Communication on Sentrac: Check - Time, Measure, Date and Result for proper function of the graph."
+                    StyleClass="labelTextBlue" Margin="10,5,0,0"/>
+                <Label Text="       Prefered Print Setting: Probe Button." StyleClass="labelTextBlue" Margin="10,5,0,0"/>
             </StackLayout>
 
             <StackLayout Margin="0" Padding="0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7">
-            <Label Text="   Contact:" TextColor="White" Font="Arial" FontSize="Small" Margin="10,10,0,0"/>
-            <Label Text="   Inficon" TextColor="White" Font="Arial" FontSize="Small" Margin="10,5,0,0"/>
+                <Label Text="   Contact:" StyleClass="labelTextWhiteS" Margin="10,10,0,0"/>
+                <Label Text="       Inficon" StyleClass="labelTextWhiteS" Margin="10,5,0,0"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>
